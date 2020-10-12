@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Alatsi&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Abel&display=swap');
+
 /* Colors */
 
 body {
@@ -13,13 +17,23 @@ body {
 }
 
 /* Document layout */
+body{
+    margin: 0 10%;
+}
+
+#solid {
+    margin: 0 10%;
+}
 
 
 /* Typogrophy */
 
+* {
+    font-family: abel, open sans;
+}
+
 p {
     font-size: 24px;
-    font-family: alatsi, righteous;
 }
 
 h2 {
@@ -28,10 +42,20 @@ h2 {
 
 h3 {
     font-size: 36px;
+    border-bottom: 1px solid;
+    display: inline-block;
+    margin: 15px 0;
 }
 
 
 /* Img */
 
+/* Tables */
+
+.baneguide_nav, td {
+    text-align: center;
+    margin: 5px 10px;
+    border: solid 1px FCFFFC;
+}
 
 
