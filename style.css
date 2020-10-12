@@ -1,0 +1,37 @@
+/* Colors */
+
+body {
+    background-color: FCFFFC;
+}
+
+.nav {
+    background-color: 9BBD6A;
+}
+
+.footer{
+    background-color: 9BBD6A;
+}
+
+/* Document layout */
+
+
+/* Typogrophy */
+
+p {
+    font-size: 24px;
+    font-family: alatsi, righteous;
+}
+
+h2 {
+    font-size: 41px;
+}
+
+h3 {
+    font-size: 36px;
+}
+
+
+/* Img */
+
+
+
