@@ -2,22 +2,26 @@
 @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Abel&display=swap');
 
+:root {
+    --primary-color: #9BBD6A;
+}
+
 /* Colors */
 
 body {
-    background-color: FCFFFC;
+    background-color: #FCFFFC;
 }
 
 .nav {
-    background-color: 9BBD6A;
+    background-color: #9BBD6A;
 }
 
 .footer{
-    background-color: 9BBD6A;
+    background-color: #9BBD6A;
 }
 
 /* Document layout */
-body{
+main{
     margin: 0 10%;
 }
 
@@ -29,7 +33,7 @@ body{
 /* Typogrophy */
 
 * {
-    font-family: abel, open sans;
+    font-family: abel, 'open sans';
 }
 
 p {
@@ -55,7 +59,7 @@ h3 {
 .baneguide_nav, td {
     text-align: center;
     margin: 5px 10px;
-    border: solid 1px FCFFFC;
+    border: solid 1px #FCFFFC;
 }
 
 
