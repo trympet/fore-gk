@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyhetsarkiv</title>
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <fore-navigasjon></fore-navigasjon>
+    <main>
+      <!-- ... -->
+      <!-- <template is="fore-full-nyhet">
+      <h1>Nyhet</h1>
+    </template> -->
+      <script src="./scripts/nyheter.js"></script>
+
+      <script>
+      
+      const nyhetsParameter = decodeURIComponent(window.location.hash.slice(1));
+      const n = new NyhetCard();
+      n.dataset.nyhet = nyhetsParameter;
+      document.querySelector("main").append(n);
+  
+    </script>
+    </main>
+    <fore-footer></fore-footer>
+    <script type="module" src="./scripts/common.js"></script>
+  </body>
+</html>

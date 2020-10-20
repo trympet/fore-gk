@@ -1,14 +1,30 @@
 [
   {
-  "tittel": "Nyhet 1"
+    "dato": 1603225192481,
+    "tittel": "lol",
+    "forfatter": "Gunnar Olsen",
+    "bilde": "/assets/nyheter/nyhet-bilde-1.jpg",
+    "tekst": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec tortor quis neque eleifend posuere. Morbi iaculis purus ex, vitae faucibus ante vulputate id. Suspendisse in leo quis diam laoreet vehicula sed quis diam. "
   },
   {
-  "tittel": "Nyhet 2"
+    "dato": 1603224192481,
+    "tittel": "Jeg elsker golf",
+    "forfatter": "Gunnar Olsen",
+    "bilde": "/assets/nyheter/nyhet-bilde-1.jpg",
+    "tekst": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec tortor quis neque eleifend posuere. Morbi iaculis purus ex, vitae faucibus ante vulputate id. Suspendisse in leo quis diam laoreet vehicula sed quis diam. "
   },
   {
-  "tittel": "Nyhet 3"
+    "dato": 1603223192481,
+    "tittel": "Digge golfere",
+    "forfatter": "Gunnar Olsen",
+    "bilde": "/assets/nyheter/nyhet-bilde-1.jpg",
+    "tekst": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec tortor quis neque eleifend posuere. Morbi iaculis purus ex, vitae faucibus ante vulputate id. Suspendisse in leo quis diam laoreet vehicula sed quis diam. "
   },
   {
-  "tittel": "Nyhet 4"
+    "dato": 1603222192481,
+    "tittel": "Golfbanen er konkurs",
+    "forfatter": "Gunnar Olsen",
+    "bilde": "/assets/nyheter/nyhet-bilde-1.jpg",
+    "tekst": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec tortor quis neque eleifend posuere. Morbi iaculis purus ex, vitae faucibus ante vulputate id. Suspendisse in leo quis diam laoreet vehicula sed quis diam. "
   }
 ]

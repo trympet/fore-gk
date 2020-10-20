@@ -32,6 +32,10 @@ main {
 /* Document layout */
 main{
     margin: 0 10%;
+    position: relative;
+}
+.wrapper {
+    position: relative;
 }
 
 #solid {
@@ -49,7 +53,7 @@ p {
     /* font-size: 24px; */
 }
 
-h2 {
+/* h2 {
     font-size: 41px;
 }
 
@@ -58,7 +62,7 @@ h3 {
     border-bottom: 1px solid;
     display: inline-block;
     margin: 15px 0;
-}
+} */
 
 
 /* Img */
