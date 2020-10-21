@@ -5,15 +5,15 @@
 /* Colors */
 
 body {
-    background-color: FCFFFC;
+    background-color: #FCFFFC;
 }
 
 .nav {
-    background-color: 9BBD6A;
+    background-color: #9BBD6A;
 }
 
 .footer{
-    background-color: 9BBD6A;
+    background-color: #9BBD6A;
 }
 
 /* Document layout */
@@ -54,8 +54,19 @@ h3 {
 
 .baneguide_nav, td {
     text-align: center;
-    margin: 5px 10px;
+    padding: 5px;
     border: solid 1px FCFFFC;
+    color: #FCFFFC;
+}
+
+.baneguide_nav, table {
+    background-color: #9BBD6A;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td:hover {
+    background-color: grey;
 }
 
 
