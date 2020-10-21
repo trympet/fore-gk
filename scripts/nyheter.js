@@ -98,7 +98,7 @@ class NyhetCardCollectionElement extends HTMLElement {
     this.visNyheter();
   }
   async nyheter() {
-    const req = await fetch("/api/nyheter.json");
+    const req = await fetch("./api/nyheter.json");
     const nyheter = await req.json();
     return nyheter.sort((a, b) => b.dato - a.dato).slice(0, this.antallNyheter);
   }
