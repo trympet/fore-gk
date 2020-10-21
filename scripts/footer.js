@@ -8,7 +8,7 @@ export default class ForeFooter extends HTMLElement {
     "treva.png",
     "ntnu.png",
   ]
-  SPONSOR_LOGO_PATH = "/assets/sponsors/";
+  SPONSOR_LOGO_PATH = "./assets/sponsors/";
   HTML = `
 <div class="footer-wrapper">
   <div class="footer-item">
