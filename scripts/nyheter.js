@@ -10,7 +10,7 @@ class NyhetCard extends HTMLElement {
   get Style() {
     const linkElem = document.createElement("link");
     linkElem.setAttribute("rel", "stylesheet");
-    linkElem.setAttribute("href", "/css/nyhet.css");
+    linkElem.setAttribute("href", "./css/nyhet.css");
     return linkElem;
   }
 
