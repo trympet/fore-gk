@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fore GK</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/index.css">
+  </head>
+  <body>
+    <fore-navigasjon></fore-navigasjon>
+    <div class="wrapper">
+      <section class="hero">
+        <picture>
+          <!-- Generer nye bilder her: https://www.responsivebreakpoints.com/ -->
+          <source
+            media="(max-width: 767px)"
+            sizes="(max-width: 767px) 100vw, 767px"
+            srcset="/assets/hero/golf-bane-hero_hvhs1e_ar_1_1,c_fill,g_auto__c_scale,w_200.jpg
+            200w,
+            /assets/hero/golf-bane-hero_hvhs1e_ar_1_1,c_fill,g_auto__c_scale,w_343.jpg
+            343w,
+            /assets/hero/golf-bane-hero_hvhs1e_ar_1_1,c_fill,g_auto__c_scale,w_454.jpg
+            454w,
+            /assets/hero/golf-bane-hero_hvhs1e_ar_1_1,c_fill,g_auto__c_scale,w_540.jpg
+            540w,
+            /assets/hero/golf-bane-hero_hvhs1e_ar_1_1,c_fill,g_auto__c_scale,w_618.jpg
+            618w,
+            /assets/hero/golf-bane-hero_hvhs1e_ar_1_1,c_fill,g_auto__c_scale,w_694.jpg
+            694w,
+            /assets/hero/golf-bane-hero_hvhs1e_ar_1_1,c_fill,g_auto__c_scale,w_744.jpg
+            744w,
+            /assets/hero/golf-bane-hero_hvhs1e_ar_1_1,c_fill,g_auto__c_scale,w_767.jpg
+            767w">
+          <img
+            sizes="(max-width: 3500px) 100vw, 1400px"
+            srcset="/assets/hero/golf-bane-hero_hvhs1e_ar_16_9,c_fill,g_auto__c_scale,w_308.jpg
+            308w,
+            /assets/hero/golf-bane-hero_hvhs1e_ar_16_9,c_fill,g_auto__c_scale,w_589.jpg
+            589w,
+            /assets/hero/golf-bane-hero_hvhs1e_ar_16_9,c_fill,g_auto__c_scale,w_803.jpg
+            803w,
+            /assets/hero/golf-bane-hero_hvhs1e_ar_16_9,c_fill,g_auto__c_scale,w_966.jpg
+            966w,
+            /assets/hero/golf-bane-hero_hvhs1e_ar_16_9,c_fill,g_auto__c_scale,w_1115.jpg
+            1115w,
+            /assets/hero/golf-bane-hero_hvhs1e_ar_16_9,c_fill,g_auto__c_scale,w_1256.jpg
+            1256w,
+            /assets/hero/golf-bane-hero_hvhs1e_ar_16_9,c_fill,g_auto__c_scale,w_1391.jpg
+            1391w,
+            /assets/hero/golf-bane-hero_hvhs1e_ar_16_9,c_fill,g_auto__c_scale,w_1400.jpg
+            1400w"
+            src="/assets/hero/golf-bane-hero_hvhs1e_ar_16_9,c_fill,g_auto__c_scale,w_1400.jpg"
+            alt="">
+        </picture>
+      </section>
+      <main>
+        <fore-nyheter data-antall="4">
+          <fore-nyhet></fore-nyhet>
+        </fore-nyheter>
+        <aside>
+          <h3>Baneforhold</h3>
+          <p id="baneforhold"></p>
+          <h3>Værmelding</h3>
+          <h3>Åpningstider</h3>
+          <ol>
+            <li>Mandag:</li>
+            <li>Tirsdag:</li>
+            <li>Onsdag:</li>
+            <li>Torsdag:</li>
+            <li>Fredag:</li>
+            <li>Lørdag:</li>
+            <li>Søndag:</li>
+          </ol>
+        </aside>
+        <!-- <div class="card card-link">
+            <div class="card-primary">
+              <h2 class="card-title">Lorem Ipsum</h2>
+              <h3 class="card-subtitle">Av Gunnar Olsen</h3>
+            </div>
+            <div class="card-body">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec
+              tortor quis neque eleifend posuere. Morbi iaculis purus ex, vitae
+              faucibus ante vulputate id. Suspendisse in leo quis diam laoreet
+              vehicula sed quis diam.
+            </div>
+          </div> -->
+      </main>
+    </div>
+    <fore-footer></fore-footer>
+    <script type="module" src="./scripts/common.js"></script>
+    <script src="./scripts/nyheter.js"></script>
+  </body>
+</html>
