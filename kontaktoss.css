@@ -1,0 +1,77 @@
+input{
+    padding: 12px 20px; 
+    width: 20rem;
+    box-shadow: 10;
+    margin-bottom: 20px; 
+    box-shadow: 50%;
+}
+
+
+textarea{
+    padding: 12px 20px;
+    width: 20rem;
+    height: 20rem;
+}
+
+
+.info {
+    display: inline;
+    font-weight: bold;
+}
+
+.infotekst {
+    margin-top: 0px;
+}
+
+input[type=submit] {
+    width: 200px;
+    background-color: #9bbd6a;
+    color: white;
+    padding: 14px 20px;
+    margin: 25px 9px;
+    margin-left: 160px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+input[type=submit]:hover {
+    background-color: #82a461;
+}
+
+
+#telefon{
+    background-image: url(./assets/telefon.png);
+    height: 24px;
+    width: 24px;
+    display: inline-block;
+}
+
+#adresse{
+    background-image: url(./assets/hjem.png);
+    height: 24px;
+    width: 24px;
+    display: inline-block;    
+}
+
+#mail{
+    background-image: url(./assets/mail.png);
+    height: 24px;
+    width: 24px;
+    display: inline-block;  
+}
+
+#infoboks{
+    width: 15rem;
+    height: 15rem;
+    background-color: #E8E8E8;
+    padding: 2rem;
+    border-radius: 20%;
+    margin-left: 100px;
+}
+
+#bokser{
+    display: flex;
+}
+
