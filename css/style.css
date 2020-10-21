@@ -2,10 +2,23 @@
 @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Abel&display=swap');
 
-/* Colors */
+:root {
+    --primary-color: #9BBD6A;
+}
 
+/* Colors */
+html {
+    height: 100%;
+}
 body {
     background-color: #FCFFFC;
+    margin: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex-grow: 1;
 }
 
 .nav {
@@ -17,8 +30,12 @@ body {
 }
 
 /* Document layout */
-body{
+main{
     margin: 0 10%;
+    position: relative;
+}
+.wrapper {
+    position: relative;
 }
 
 #solid {
@@ -29,14 +46,14 @@ body{
 /* Typogrophy */
 
 * {
-    font-family: abel, open sans;
+    font-family: abel, 'open sans';
 }
 
 p {
-    font-size: 24px;
+    /* font-size: 24px; */
 }
 
-h2 {
+/* h2 {
     font-size: 41px;
 }
 
@@ -45,7 +62,7 @@ h3 {
     border-bottom: 1px solid;
     display: inline-block;
     margin: 15px 0;
-}
+} */
 
 
 /* Img */
@@ -67,6 +84,8 @@ h3 {
 
 td:hover {
     background-color: grey;
+    margin: 5px 10px;
+    border: solid 1px #FCFFFC;
 }
 
 
