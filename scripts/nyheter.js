@@ -46,7 +46,7 @@ class NyhetCard extends HTMLElement {
   }
 
   async GetNyhetFraNavn(navn) {
-      const req = await fetch("/api/nyheter.json");
+      const req = await fetch("./api/nyheter.json");
       const res = await req.json();
       return res.find(n => n.tittel === navn);
   }
