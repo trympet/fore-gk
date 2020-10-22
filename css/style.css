@@ -69,14 +69,13 @@ h3 {
 
 /* Tables */
 
-.baneguide_nav, td {
+.baneguide_navbar, td {
     text-align: center;
-    padding: 5px;
-    border: solid 1px FCFFFC;
-    color: #FCFFFC;
+    margin: 5px 10px;
+    border: solid 1px #FCFFFC;
 }
 
-.baneguide_nav, table {
+.baneguide_navbar, table {
     background-color: #9BBD6A;
     width: 100%;
     border-collapse: collapse;
@@ -84,8 +83,34 @@ h3 {
 
 td:hover {
     background-color: grey;
-    margin: 5px 10px;
-    border: solid 1px #FCFFFC;
+    cursor: pointer;
 }
 
+
+/* Baneguide */
+
+.bg_slider {
+    
+    max-width: 1140px;
+    margin: auto;
+    position: relative;
+    border: 2px black;
+}
+
+.bg_slides {
+    display: none;
+}
+
+#next, #prev{
+    position: absolute;
+    top: 50%;
+    height: 50px;
+    margin: 3px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#next {
+    right: 0;
+}
 
