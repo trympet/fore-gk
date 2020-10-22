@@ -10,7 +10,7 @@ class NyhetCard extends HTMLElement {
   get Style() {
     const linkElem = document.createElement("link");
     linkElem.setAttribute("rel", "stylesheet");
-    linkElem.setAttribute("href", "/css/nyhet.css");
+    linkElem.setAttribute("href", "./css/nyhet.css");
     return linkElem;
   }
 
@@ -46,7 +46,7 @@ class NyhetCard extends HTMLElement {
   }
 
   async GetNyhetFraNavn(navn) {
-      const req = await fetch("/api/nyheter.json");
+      const req = await fetch("./api/nyheter.json");
       const res = await req.json();
       return res.find(n => n.tittel === navn);
   }
@@ -98,7 +98,7 @@ class NyhetCardCollectionElement extends HTMLElement {
     this.visNyheter();
   }
   async nyheter() {
-    const req = await fetch("/api/nyheter.json");
+    const req = await fetch("./api/nyheter.json");
     const nyheter = await req.json();
     return nyheter.sort((a, b) => b.dato - a.dato).slice(0, this.antallNyheter);
   }
