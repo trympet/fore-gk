@@ -19,6 +19,7 @@ export default class ForeNavigasjon extends HTMLElement {
     {
       navn: "Nyheter",
       uri: "nyhetsarkiv.html",
+      alias: "nyhet.html",
     },
     {
       navn: "Kontakt oss",
@@ -33,11 +34,18 @@ export default class ForeNavigasjon extends HTMLElement {
 <nav>
 <ul id="nav-list">
 </ul>
+<select id="nav-select">
+</select>
 </nav>`;
 
 
-  isActive(path) {
-    return window.location.pathname.includes(path) ? "active" : "";
+  isActive(path, alias = null) {
+    return window.location.pathname
+      .split("#")[0]
+      .includes(path)
+      || window.location.pathname
+      .split("#")[0]
+      .includes(alias);
   }
 
   constructor() {
@@ -48,11 +56,15 @@ export default class ForeNavigasjon extends HTMLElement {
 
 
     const navList = template.querySelector("#nav-list");
-    this.SIDER.forEach(({navn, uri}) => {
+    const navSelect = template.querySelector("#nav-select");
+    this.SIDER.forEach(({navn, uri, alias}) => {
       navList.innerHTML += 
       `<li class="nav-item">
-        <a href="${uri}" class="nav-link ${this.isActive(uri)}">${navn}</a>
+        <a href="${uri}" class="nav-link ${this.isActive(uri) ? "active" : ""}">${navn}</a>
       </li>`;
+      navSelect.innerHTML +=
+      `<option value="${uri}" ${this.isActive(uri, alias) ? "selected" : ""}>${navn}</option>
+      `
     });
 
     const stiler = document.createElement("style");
@@ -62,7 +74,21 @@ export default class ForeNavigasjon extends HTMLElement {
       margin: auto;
       display: block;
     }
-    
+    #nav-list, #nav-select {
+      font-family: abel, 'open sans';
+      font-size: 1rem;
+    }
+    #nav-select {
+      display: block;
+      user-select: none;
+      cursor: pointer;
+      background: var(--primary-color);
+      width: 100%;
+      padding: .55em .45em;
+      border: none;
+      font-size: 1.25rem;
+      display: none;
+    }
     .active {
       font-weight: bold;
     }
@@ -91,12 +117,34 @@ export default class ForeNavigasjon extends HTMLElement {
       position: absolute;
       background: red;
     }
+    @media only screen and (max-width: 600px) {
+      #nav-list {
+        display: none;
+      }
+      #nav-select {
+        display: block;
+      }
+    }
+    @media only screen and (max-width: 460px) {
+      header {
+        display: none;
+      }
+    }
     `;
     template.appendChild(stiler);
 
+
     this.attachShadow({mode: 'open'})
       .appendChild(template.cloneNode(true));
-}
+    this.shadowRoot
+      .querySelector("#nav-select")
+      .addEventListener("change", this.onSelectonChange);
+
+  }
+
+  onSelectonChange(e) {
+    window.location.pathname = e.target.value;
+  }
 }
 
 customElements.define('fore-navigasjon', ForeNavigasjon);

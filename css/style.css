@@ -33,6 +33,10 @@ main {
 main{
     margin: 0 10%;
     position: relative;
+    max-width: 960px;
+    margin: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 .wrapper {
     position: relative;
@@ -99,6 +103,10 @@ td:hover {
 
 .bg_slides {
     display: none;
+}
+
+.bg_slides img {
+    max-width: 100%;
 }
 
 #next, #prev{
