@@ -43,7 +43,7 @@
         }
 
         function bg_nav(cel){
-            let click_value = (cel.innerHTML);
+            let click_value = (parseInt(cel.innerHTML));
             slide_index = click_value;
             slideShow();
         }
