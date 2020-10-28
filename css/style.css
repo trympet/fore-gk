@@ -29,6 +29,10 @@ main {
     background-color: #9BBD6A;
 }
 
+fore-footer {
+    padding-top: 3rem;
+}
+
 /* Document layout */
 main{
     margin: 0 10%;
