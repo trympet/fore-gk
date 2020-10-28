@@ -55,6 +55,7 @@ main{
 
 * {
     font-family: abel, 'open sans';
+    box-sizing: border-box;
 }
 
 p {

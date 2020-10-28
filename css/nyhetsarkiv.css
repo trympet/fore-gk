@@ -10,16 +10,27 @@
     flex-direction: row;
   }
 
+  .boks > div {
+      flex: 0 0 50%;
+  }
+
 .boksetekst {
     padding: 20px;
 }
 
 img {
     height: 100%;
-    width: 500px;
+    width: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .boks h2, .boks h3, .boks p {
     margin: 0;
+}
+
+@media (max-width: 960px) {
+    .boks {
+        flex-direction: column-reverse;
+    }
 }
