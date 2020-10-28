@@ -58,7 +58,7 @@ export default class ForeNavigasjon extends HTMLElement {
     const navList = this.template.querySelector("#nav-list");
     this.SIDER.forEach(({ navn, uri, alias }) => {
       navList.innerHTML += `<li class="nav-item ${
-        this.isActive(uri) ? "active" : ""
+        this.isActive(uri, alias) ? "active" : ""
       }">
         <a href="${uri}" class="nav-link">${navn}</a>
       </li>`;
@@ -66,14 +66,10 @@ export default class ForeNavigasjon extends HTMLElement {
     const togglebutton = document.createElement("button");
     togglebutton.className = "sidenav-button";
 
-    const toggleItem = document.createElement("li");
-    // navList.innerHTML += `<li class="toggle"><button>-</button></li>`
     const linkElem = document.createElement("link");
     linkElem.setAttribute("rel", "stylesheet");
     linkElem.setAttribute("href", "./css/navigasjon.css");
     this.template.appendChild(linkElem);
-
-    navList.appendChild(toggleItem);
     this.attachShadow({ mode: "open" }).appendChild(this.template);
 
     this.backdrop.addEventListener("click", this.onBackdropClick.bind(this))

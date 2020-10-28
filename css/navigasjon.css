@@ -1,3 +1,8 @@
+/* header logo */
+header {
+  padding: 0 1rem;
+}
+
 .header-img {
   width: 440px;
   max-width: 100%;
@@ -5,30 +10,12 @@
   display: block;
 }
 
+
+/* navigasjonsbar */
 nav {
   background: var(--primary-color);
   display: flex;
   flex-direction: column;
-}
-
-#nav-list, #nav-select {
-  font-family: abel, 'open sans';
-  font-size: 1rem;
-}
-
-#nav-select {
-  display: block;
-  user-select: none;
-  cursor: pointer;
-  width: 100%;
-  padding: .55em .45em;
-  border: none;
-  font-size: 1.25rem;
-  display: none;
-}
-
-.nav-item.active {
-  font-weight: bold;
 }
 
 #nav-list {
@@ -40,11 +27,22 @@ nav {
   padding: .5rem 0;
   line-height: 1;
   overflow: hidden;
+  font-size: 1rem;
 }
 
 .nav-item {
-  padding: 8px 16px;
   border-right: 1px solid rgb(0 0 0 / 50%);
+}
+
+.nav-item a {
+  padding: 8px 16px;
+  display: block;
+}
+
+
+/* navigasjonslenke */
+.nav-item.active {
+  font-weight: bold;
 }
 
 .nav-item:last-of-type {
@@ -56,12 +54,7 @@ nav {
   color: black;
 }
 
-.nav-item::after {
-  content: '';
-  position: absolute;
-  background: red;
-}
-
+/* responsiv sidenav */
 #nav-list.active {
   transform: translate3d(0, 0, 0);
   left: 0;
@@ -93,11 +86,8 @@ nav {
 
 .sidenav-button {
   padding: 0;
-  min-width: 0;
   width: 40px;
   height: 40px;
-  flex-shrink: 0;
-  line-height: 40px;
   border-radius: 50%; /* lettere å treffe på mobil */
   background: url("../assets/menu.svg");
   background-repeat: no-repeat;
@@ -111,18 +101,16 @@ nav {
   #nav-list {
     transform: translate3d(-100%, 0, 0);
     flex-direction: column;
-    width: 200px;
     position: fixed;
     top: 0;
     bottom: 0;
     width: 200px;
     z-index: 1000;
   }
+  .nav-item {
+    border: 0;
+  }
   .sidenav-button {
     display: block;
   }
-}
-
-@media only screen and (max-width: 460px) {
-
 }
