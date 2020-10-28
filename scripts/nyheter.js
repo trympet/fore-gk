@@ -39,13 +39,13 @@ class NyhetCard extends HTMLElement {
   async connectedCallback() {
     // Nyhet kan også spesifiseres i dataset
     if (!this.nyhet && this.dataset.nyhet) {
-      this.nyhet = await this.GetNyhetFraNavn(this.dataset.nyhet)
+      this.nyhet = await NyhetCard.GetNyhetFraNavn(this.dataset.nyhet)
     }
     this.shadowRoot.innerHTML = this.Content;
     this.shadowRoot.append(this.Style);
   }
 
-  async GetNyhetFraNavn(navn) {
+  static async GetNyhetFraNavn(navn) {
       const req = await fetch("./api/nyheter.json");
       const res = await req.json();
       return res.find(n => n.tittel === navn);
@@ -53,14 +53,11 @@ class NyhetCard extends HTMLElement {
 }
 customElements.define("fore-nyhet", NyhetCard, { extends: "article" });
 
-class FullNyhet extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: "open" });
+class Nyhet extends NyhetCard {
+  static async visNyhet() {
+
   }
 }
-
-customElements.define("fore-full-nyhet", FullNyhet, { extends: "article" });
 
 class NyhetCardCollectionElement extends HTMLElement {
   antallNyheter;
