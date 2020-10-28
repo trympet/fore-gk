@@ -10,11 +10,13 @@
     flex-direction: row;
   }
 
-  .boks > div {
-      flex: 0 0 50%;
+  .boks .boksetekst {
+      flex: 0 0 40%;
   }
-
-.boksetekst {
+  .boks .boksebilde {
+    flex: 0 0 60%;
+}
+.boksetekst-wrapper {
     padding: 20px;
 }
 

@@ -1,30 +1,29 @@
 //@ts-check
 class NyhetCard extends HTMLElement {
+  _nyhet;
 
-  nyhet;
-
-  get Dato() {
-    return new Date(this.nyhet.dato);
+  get dato() {
+    return new Date(this._nyhet.dato);
   }
 
-  get Style() {
+  get stiler() {
     const linkElem = document.createElement("link");
     linkElem.setAttribute("rel", "stylesheet");
     linkElem.setAttribute("href", "./css/nyhet.css");
     return linkElem;
   }
 
-  get Content() {
+  get HTML() {
     return `
-<a href="/nyhet.html#${this.nyhet.tittel}">
+<a href="/nyhet.html#${this._nyhet.tittel}">
   <div class="card card-link">
-    <div class="card-image" style="background-image: url(${this.nyhet.bilde})">
+    <div class="card-image" style="background-image: url(${this._nyhet.bilde})">
     </div>
     <div class="card-primary">
-      <h2 class="card-title">${this.nyhet.tittel}</h2>
-      <h3 class="card-subtitle">${this.nyhet.forfatter}</h3>
+      <h2 class="card-title">${this._nyhet.tittel}</h2>
+      <h3 class="card-subtitle">${this._nyhet.forfatter}</h3>
     </div>
-    <div class="card-body">${this.nyhet.tekst}</div>
+    <div class="card-body">${this._nyhet.tekst}</div>
   </div>
 </a>`;
   }
@@ -33,37 +32,65 @@ class NyhetCard extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
     this.classList.add("fore-nyhet", "card", "card-link");
-    this.nyhet = nyhet;
+    this._nyhet = nyhet;
   }
 
   async connectedCallback() {
     // Nyhet kan også spesifiseres i dataset
-    if (!this.nyhet && this.dataset.nyhet) {
-      this.nyhet = await NyhetCard.GetNyhetFraNavn(this.dataset.nyhet)
+    if (!this._nyhet && this.dataset.nyhet) {
+      this._nyhet = await NyhetCard.GetNyhetFraNavn(this.dataset.nyhet);
     }
-    this.shadowRoot.innerHTML = this.Content;
-    this.shadowRoot.append(this.Style);
+    this.shadowRoot.innerHTML = this.HTML;
+    this.shadowRoot.append(this.stiler);
   }
 
   static async GetNyhetFraNavn(navn) {
-      const req = await fetch("./api/nyheter.json");
-      const res = await req.json();
-      return res.find(n => n.tittel === navn);
+    const req = await fetch("./api/nyheter.json");
+    const res = await req.json();
+    return res.find((n) => n.tittel === navn);
   }
 }
 customElements.define("fore-nyhet", NyhetCard, { extends: "article" });
 
-class Nyhet extends NyhetCard {
-  static async visNyhet() {
+class NyhetArkivCard extends NyhetCard {
+  // override parent
+  get stiler() {
+    const linkElem = document.createElement("link");
+    linkElem.setAttribute("rel", "stylesheet");
+    linkElem.setAttribute("href", "./css/nyhetsarkiv.css");
+    return linkElem;
+  }
 
+  // override parent
+  get HTML() {
+    return `
+<div class="boks">
+  <div class="boksetekst">
+    <div class="boksetekst-wrapper">
+    <h2>${this._nyhet.tittel}</h2>
+    <h3>Dato publisert: ${this.dato.toLocaleDateString()}</h3>
+    <p>${this._nyhet.tekst}</p>
+  </div>
+  </div>
+  <div class="boksebilde">
+    <img src="${this._nyhet.bilde}">
+  </div>
+</div>`;
+  }
+
+  constructor(nyhet) {
+    super(nyhet);
   }
 }
+customElements.define("fore-arkiv-nyhet", NyhetArkivCard, {
+  extends: "article",
+});
 
 class NyhetCardCollectionElement extends HTMLElement {
   antallNyheter;
-  root;
-  template;
-  get Style() {
+  _template;
+
+  get stiler() {
     const style = document.createElement("style");
     style.append(`
       fore-nyheter {
@@ -73,39 +100,33 @@ class NyhetCardCollectionElement extends HTMLElement {
         gap: 2rem;
       }
       `);
-      return style;
+    return style;
   }
 
-  constructor(antallNyheter = undefined, template = NyhetCard) {
+  constructor(template = NyhetCard) {
     super();
-
-    // Typereferanse til mal for nyhet.
-    // Her kan man benytte sin egen template som tar nyhet i ctor
-    if (this.children.length > 0 && this.children[0].constructor) {
-      this.template = this.children[0].constructor;
-    } else {
-      this.template = template;
-    }
-
+    this._template = template;
+    this.antallNyheter = parseInt(this.dataset.antall) || 4;
+    
     this.attachShadow({ mode: "open" });
-    this.antallNyheter = parseInt(this.dataset.antall) || antallNyheter;
+  }
 
-    this.shadowRoot.append(this.Style);
-
+  async connectedCallback() {
+    this.shadowRoot.append(this.stiler);
     this.visNyheter();
   }
-  async nyheter() {
+
+  async getNyheter() {
     const req = await fetch("./api/nyheter.json");
     const nyheter = await req.json();
     return nyheter.sort((a, b) => b.dato - a.dato).slice(0, this.antallNyheter);
   }
 
   async visNyheter() {
-    const nyheter = await this.nyheter();
+    const nyheter = await this.getNyheter();
     nyheter.forEach((nyhet) => {
-      this.shadowRoot.append(new NyhetCard(nyhet));
+      this.shadowRoot.append(new this._template(nyhet));
     });
   }
 }
 customElements.define("fore-nyheter", NyhetCardCollectionElement);
-
