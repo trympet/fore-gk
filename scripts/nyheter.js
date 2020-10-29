@@ -7,9 +7,9 @@ class NyhetCard extends HTMLElement {
   }
 
   get stiler() {
-    const linkElem = document.createElement("link");
-    linkElem.setAttribute("rel", "stylesheet");
-    linkElem.setAttribute("href", "./css/nyhet.css");
+    const linkElem = document.createElement('link');
+    linkElem.setAttribute('rel', 'stylesheet');
+    linkElem.setAttribute('href', './css/nyhet.css');
     return linkElem;
   }
 
@@ -30,8 +30,8 @@ class NyhetCard extends HTMLElement {
 
   constructor(nyhet) {
     super();
-    this.attachShadow({ mode: "open" });
-    this.classList.add("fore-nyhet", "card", "card-link");
+    this.attachShadow({ mode: 'open' });
+    this.classList.add('fore-nyhet', 'card', 'card-link');
     this._nyhet = nyhet;
   }
 
@@ -45,19 +45,19 @@ class NyhetCard extends HTMLElement {
   }
 
   static async GetNyhetFraNavn(navn) {
-    const req = await fetch("./api/nyheter.json");
+    const req = await fetch('./api/nyheter.json');
     const res = await req.json();
     return res.find((n) => n.tittel === navn);
   }
 }
-customElements.define("fore-nyhet", NyhetCard, { extends: "article" });
+customElements.define('fore-nyhet', NyhetCard, { extends: 'article' });
 
 class NyhetArkivCard extends NyhetCard {
   // override parent
   get stiler() {
-    const linkElem = document.createElement("link");
-    linkElem.setAttribute("rel", "stylesheet");
-    linkElem.setAttribute("href", "./css/nyhetsarkiv.css");
+    const linkElem = document.createElement('link');
+    linkElem.setAttribute('rel', 'stylesheet');
+    linkElem.setAttribute('href', './css/nyhetsarkiv.css');
     return linkElem;
   }
 
@@ -82,8 +82,8 @@ class NyhetArkivCard extends NyhetCard {
     super(nyhet);
   }
 }
-customElements.define("fore-arkiv-nyhet", NyhetArkivCard, {
-  extends: "article",
+customElements.define('fore-arkiv-nyhet', NyhetArkivCard, {
+  extends: 'article',
 });
 
 class NyhetCardCollectionElement extends HTMLElement {
@@ -92,7 +92,7 @@ class NyhetCardCollectionElement extends HTMLElement {
   _template;
 
   get stiler() {
-    const style = document.createElement("style");
+    const style = document.createElement('style');
     style.append(`
       fore-nyheter {
         display: grid;
@@ -108,41 +108,42 @@ class NyhetCardCollectionElement extends HTMLElement {
     super();
     this._template = template;
     this.antallNyheter = parseInt(this.dataset.antall) || 4;
-    
-    this.attachShadow({ mode: "open" });
+
+    this.attachShadow({ mode: 'open' });
   }
 
   async connectedCallback() {
-    await this.visNyheter();
   }
 
   async getNyheter() {
-    const req = await fetch("./api/nyheter.json");
+    const req = await fetch('./api/nyheter.json');
     const nyheter = await req.json();
-    return nyheter.sort((a, b) => b.dato - a.dato).slice(this.startNyheter, this.startNyheter + this.antallNyheter);
+    return nyheter
+      .sort((a, b) => b.dato - a.dato)
+      .slice(this.startNyheter, this.startNyheter + this.antallNyheter);
   }
 
   static get observedAttributes() {
     return ['start-nyheter', 'antall-nyheter'];
-}
+  }
 
   async attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
-      case "start-nyheter":
+      case 'start-nyheter':
         this.startNyheter = parseInt(newValue);
         break;
-      case "antall-nyheter":
+      case 'antall-nyheter':
         this.antallNyheter = parseInt(newValue);
         break;
       default:
         break;
     }
-    await this.visNyheter()
-    console.log(name, oldValue, newValue)
+    await this.visNyheter();
+    console.log(name, oldValue, newValue);
   }
 
   async visNyheter() {
-    this.innerHTML = "";
+    this.shadowRoot.innerHTML = '';
     this.shadowRoot.append(this.stiler);
     const nyheter = await this.getNyheter();
     nyheter.forEach((nyhet) => {
@@ -150,4 +151,4 @@ class NyhetCardCollectionElement extends HTMLElement {
     });
   }
 }
-customElements.define("fore-nyheter", NyhetCardCollectionElement);
+customElements.define('fore-nyheter', NyhetCardCollectionElement);

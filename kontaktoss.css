@@ -5,7 +5,6 @@ input{
     margin-bottom: 20px; 
 }
 
-
 textarea{
     padding: 12px 20px;
     width: 100%;
@@ -22,6 +21,7 @@ textarea{
     margin-top: 0px;
 }
 
+/*Style for submit knapp på "kontakt oss"- og "bli medlem" - form. */
 input[type=submit] {
     /* width: 200px; */
     background-color: #9bbd6a;
@@ -34,6 +34,7 @@ input[type=submit] {
     font-size: 15px;
     flex: 1 0 0;
 }
+
 
 input[type=submit]:hover {
     background-color: #82a461;
@@ -50,7 +51,7 @@ input[type=submit]:hover {
     height: 20px;
     width: 23px;
     display: inline-block;
-    mix-blend-mode: multiply;
+    mix-blend-mode: color-burn;
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -61,20 +62,21 @@ input[type=submit]:hover {
     width: 24px;
     display: inline-block;
     background-repeat: no-repeat;
-    mix-blend-mode: multiply;
     background-size: contain;
+    mix-blend-mode: color-burn;
 }
 
 #mail{
     background-image: url(./assets/mailikon.png);
-     height: 23px;
+    height: 25px;
     width: 30px;
     display: inline-block;
-    mix-blend-mode: multiply;
+    mix-blend-mode: color-burn;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
     margin-left: -5px;
+    margin-bottom: -3px;
 }
 
 #infoboks{
@@ -100,6 +102,8 @@ input[type=submit]:hover {
     width: 100%;
     }
 
+
+/* Bruker media-query for å gjøre nettsiden responsiv */
 @media (max-width: 720px) {
     #bokser {
         flex-direction: column;
