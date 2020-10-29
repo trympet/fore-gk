@@ -3,7 +3,6 @@ input{
     width: 20rem;
     box-shadow: 10;
     margin-bottom: 20px; 
-    box-shadow: 50%;
 }
 
 
@@ -69,6 +68,8 @@ input[type=submit]:hover {
     padding: 2rem;
     border-radius: 20%;
     margin-left: 100px;
+    transform: translate(120%, -30%);
+    position: absolute;
 }
 
 #bokser{
