@@ -26,5 +26,19 @@
     "forfatter": "Gunnar Olsen",
     "bilde": "./images/corona.png",
     "tekst": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec tortor quis neque eleifend posuere. Morbi iaculis purus ex, vitae faucibus ante vulputate id. Suspendisse in leo quis diam laoreet vehicula sed quis diam. "
+  },
+  {
+    "dato": 1585699200000,
+    "tittel": "",
+    "forfatter": "Gunnar Olsen",
+    "bilde": "./images/corona.png",
+    "tekst": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec tortor quis neque eleifend posuere. Morbi iaculis purus ex, vitae faucibus ante vulputate id. Suspendisse in leo quis diam laoreet vehicula sed quis diam. "
+  },
+  {
+    "dato": 1585699200000,
+    "tittel": "",
+    "forfatter": "Gunnar Olsen",
+    "bilde": "./images/corona.png",
+    "tekst": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec tortor quis neque eleifend posuere. Morbi iaculis purus ex, vitae faucibus ante vulputate id. Suspendisse in leo quis diam laoreet vehicula sed quis diam. "
   }
 ]

@@ -88,6 +88,7 @@ customElements.define("fore-arkiv-nyhet", NyhetArkivCard, {
 
 class NyhetCardCollectionElement extends HTMLElement {
   antallNyheter;
+  startNyheter;
   _template;
 
   get stiler() {
@@ -119,7 +120,7 @@ class NyhetCardCollectionElement extends HTMLElement {
   async getNyheter() {
     const req = await fetch("./api/nyheter.json");
     const nyheter = await req.json();
-    return nyheter.sort((a, b) => b.dato - a.dato).slice(0, this.antallNyheter);
+    return nyheter.sort((a, b) => b.dato - a.dato).slice(this.startNyheter, this.antallNyheter + this.startNyheter);
   }
 
   async visNyheter() {
