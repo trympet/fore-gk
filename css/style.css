@@ -29,10 +29,19 @@ main {
     background-color: #9BBD6A;
 }
 
+fore-footer {
+    padding-top: 3rem;
+}
+
 /* Document layout */
 main{
     margin: 0 10%;
     position: relative;
+    max-width: 960px;
+    width: 100%;
+    margin: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 .wrapper {
     position: relative;
@@ -42,11 +51,15 @@ main{
     margin: 0 10%;
 }
 
+.flex-spacer {
+    flex-grow: 1;
+}
 
 /* Typogrophy */
 
 * {
     font-family: abel, 'open sans';
+    box-sizing: border-box;
 }
 
 p {
@@ -69,14 +82,13 @@ h3 {
 
 /* Tables */
 
-.baneguide_nav, td {
+.baneguide_navbar, td {
     text-align: center;
-    padding: 5px;
-    border: solid 1px FCFFFC;
-    color: #FCFFFC;
+    margin: 5px 10px;
+    border: solid 1px #FCFFFC;
 }
 
-.baneguide_nav, table {
+.baneguide_navbar, table {
     background-color: #9BBD6A;
     width: 100%;
     border-collapse: collapse;
@@ -84,8 +96,38 @@ h3 {
 
 td:hover {
     background-color: grey;
-    margin: 5px 10px;
-    border: solid 1px #FCFFFC;
+    cursor: pointer;
 }
 
+
+/* Baneguide */
+
+.bg_slider {
+    
+    max-width: 1140px;
+    margin: auto;
+    position: relative;
+    border: 2px black;
+}
+
+.bg_slides {
+    display: none;
+}
+
+.bg_slides img {
+    max-width: 100%;
+}
+
+#next, #prev{
+    position: absolute;
+    top: 50%;
+    height: 50px;
+    margin: 3px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#next {
+    right: 0;
+}
 

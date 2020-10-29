@@ -19,6 +19,7 @@ export default class ForeNavigasjon extends HTMLElement {
     {
       navn: "Nyheter",
       uri: "nyhetsarkiv.html",
+      alias: "nyhet.html",
     },
     {
       navn: "Kontakt oss",
@@ -26,77 +27,72 @@ export default class ForeNavigasjon extends HTMLElement {
     },
   ];
 
-  HTML = 
-`<header>
-<img class="hero-img" src="assets/logo.svg" alt="Fore Golfklubb">
+  HTML = `<header>
+<img class="header-img" src="assets/logo.svg" alt="Fore Golfklubb">
 </header>
 <nav>
 <ul id="nav-list">
 </ul>
+<div class="backdrop"></div>
 </nav>`;
 
-
-  isActive(path) {
-    return window.location.pathname.includes(path) ? "active" : "";
+  get backdrop() {
+    return this.shadowRoot.querySelector(".backdrop");
   }
+
+  isActive(path, alias = null) {
+    return (
+      window.location.pathname.split("#")[0].includes(path) ||
+      window.location.pathname.split("#")[0].includes(alias)
+    );
+  }
+  
+  template;
+
 
   constructor() {
     super();
-    const template = document.createElement("div");
-    template.innerHTML = this.HTML;
+    this.template = document.createElement("div");
+    this.template.innerHTML = this.HTML;
 
-
-
-    const navList = template.querySelector("#nav-list");
-    this.SIDER.forEach(({navn, uri}) => {
-      navList.innerHTML += 
-      `<li class="nav-item">
-        <a href="${uri}" class="nav-link ${this.isActive(uri)}">${navn}</a>
+    const navList = this.template.querySelector("#nav-list");
+    this.SIDER.forEach(({ navn, uri, alias }) => {
+      navList.innerHTML += `<li class="nav-item ${
+        this.isActive(uri, alias) ? "active" : ""
+      }">
+        <a href="${uri}" class="nav-link">${navn}</a>
       </li>`;
     });
+    const togglebutton = document.createElement("button");
+    togglebutton.className = "sidenav-button";
 
-    const stiler = document.createElement("style");
-    stiler.textContent = `
-    .hero-img {
-      max-width: 440px;
-      margin: auto;
-      display: block;
-    }
-    
-    .active {
-      font-weight: bold;
-    }
-    #nav-list {
-      display: flex;
-      list-style: none;
-      flex-direction: row;
-      background: var(--primary-color);
-      margin: 0;
-      padding: .5rem 0;
-      line-height: 1;
-    }
-    .nav-item {
-      padding: 8px 16px;
-      border-right: 1px solid rgb(0 0 0 / 50%);
-    }
-    .nav-item:last-of-type {
-      border-right: 0;
-    }
-    .nav-item a {
-      text-decoration: none;
-      color: black;
-    }
-    .nav-item::after {
-      content: '';
-      position: absolute;
-      background: red;
-    }
-    `;
-    template.appendChild(stiler);
+    const linkElem = document.createElement("link");
+    linkElem.setAttribute("rel", "stylesheet");
+    linkElem.setAttribute("href", "./css/navigasjon.css");
+    this.template.appendChild(linkElem);
+    this.attachShadow({ mode: "open" }).appendChild(this.template);
 
-    this.attachShadow({mode: 'open'})
-      .appendChild(template.cloneNode(true));
-}
+    this.backdrop.addEventListener("click", this.onBackdropClick.bind(this))
+    this.shadowRoot.querySelector("nav").append(togglebutton);
+    this.shadowRoot
+      .querySelector("button")
+      .addEventListener("click", this.onNavToggle.bind(this));
+
+  }
+
+  onSelectonChange(e) {
+    window.location.pathname = e.target.value;
+  }
+
+  onNavToggle(e) {
+    // forhindrer animasjon når siden lastes inn
+    this.template.querySelector("#nav-list").classList.add("touched")
+    this.template.querySelector("#nav-list").classList.toggle("active")
+  }
+
+  onBackdropClick(e) {
+    this.template.querySelector("#nav-list").classList.remove("active")
+  }
 }
 
-customElements.define('fore-navigasjon', ForeNavigasjon);
+customElements.define("fore-navigasjon", ForeNavigasjon);

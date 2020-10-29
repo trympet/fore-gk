@@ -1,6 +1,6 @@
 input{
     padding: 12px 20px; 
-    width: 20rem;
+    width: 100%;
     box-shadow: 10;
     margin-bottom: 20px; 
 }
@@ -8,8 +8,8 @@ input{
 
 textarea{
     padding: 12px 20px;
-    width: 20rem;
-    height: 20rem;
+    width: 100%;
+    min-height: 20rem;
 }
 
 
@@ -23,22 +23,27 @@ textarea{
 }
 
 input[type=submit] {
-    width: 200px;
+    /* width: 200px; */
     background-color: #9bbd6a;
     color: white;
     padding: 14px 20px;
-    margin: 25px 9px;
-    margin-left: 160px;
+    /* margin: 25px 9px; */
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 15px;
+    flex: 1 0 0;
 }
 
 input[type=submit]:hover {
     background-color: #82a461;
 }
 
+
+.form-footer {
+    display: flex;
+    margin-top: 1.5rem;
+}
 
 #telefon{
     background-image: url(./assets/telefon.png);
@@ -62,17 +67,46 @@ input[type=submit]:hover {
 }
 
 #infoboks{
-    width: 15rem;
-    height: 15rem;
+    min-width: 18rem;
     background-color: #E8E8E8;
-    padding: 2rem;
-    border-radius: 20%;
-    margin-left: 100px;
-    transform: translate(120%, -30%);
-    position: absolute;
-}
+    padding: 2rem; 
+    border-radius: 60px;
+    column-gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: -510px;
+    margin-inline-end: 100px;
+    }
 
+    
 #bokser{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+#kontakt_form {
+    max-width: 20rem;
+    width: 100%;
+    }
+
+@media (max-width: 720px) {
+    #bokser {
+        flex-direction: column;
+    }
+    #kontakt_form {
+        max-width: unset;
+    }
+    .form-footer {
+        flex-direction: column;
+    }
+    #infoboks{
+        flex-direction: row;
+    }
+}
+@media (max-width: 480px) {
+    #infoboks{
+        flex-direction: column;
+        text-align: center;
+    }
+}

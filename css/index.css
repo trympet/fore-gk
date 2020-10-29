@@ -1,4 +1,5 @@
 /* forsidebilde */
+
 .hero {
   background: rgba(0, 0, 0, .5);
   height: 600px;
@@ -17,26 +18,45 @@
 }
 
 /* Nyheter grid */
+
 fore-nyheter {
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 344px));
+  grid-template-columns: repeat(auto-fit, minmax(240px, auto));
   grid-auto-rows: 1fr;
   gap: 2rem;
   grid-column: 1/2;
   align-items: flex-start;
+  max-width: 780px;
 }
 
 main {
   display: grid;
   grid-template-columns: 2fr max-content;
   column-gap: .5rem;
-  padding: 3rem 0;
+  gap: 2rem;
+  padding-top: 3rem;
 }
 
 /* aside innhold */
-aside {
-  grid-column: 2/3;
+
+aside {}
+
+aside .content-wrapper {
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
+}
+
+@media only screen and (max-width: 720px) {
+  main {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  aside .content-wrapper {
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-evenly;
+  }
 }
