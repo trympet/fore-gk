@@ -3,7 +3,6 @@ input{
     width: 100%;
     box-shadow: 10;
     margin-bottom: 20px; 
-    box-shadow: 50%;
 }
 
 
@@ -47,36 +46,48 @@ input[type=submit]:hover {
 }
 
 #telefon{
-    background-image: url(./assets/telefon.png);
-    height: 24px;
-    width: 24px;
+    background-image: url(./assets/telefonikon.jpg);
+    height: 20px;
+    width: 23px;
     display: inline-block;
+    mix-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 #adresse{
-    background-image: url(./assets/hjem.png);
+   background-image: url(./assets/husikon.png);
     height: 24px;
     width: 24px;
-    display: inline-block;    
+    display: inline-block;
+    background-repeat: no-repeat;
+    mix-blend-mode: multiply;
+    background-size: contain;
 }
 
 #mail{
-    background-image: url(./assets/mail.png);
-    height: 24px;
-    width: 24px;
-    display: inline-block;  
+    background-image: url(./assets/mailikon.png);
+     height: 23px;
+    width: 30px;
+    display: inline-block;
+    mix-blend-mode: multiply;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    margin-left: -5px;
 }
 
 #infoboks{
     min-width: 18rem;
-    /* height: 18rem; */
     background-color: #E8E8E8;
-    padding: 2rem;
-    border-radius: 58px;
+    padding: 2rem; 
+    border-radius: 60px;
     column-gap: 2rem;
     display: flex;
     flex-direction: column;
-}
+    margin-top: -510px;
+    margin-inline-end: 100px;
+    }
 
 #bokser{
     display: flex;
@@ -87,7 +98,7 @@ input[type=submit]:hover {
 #kontakt_form {
     max-width: 20rem;
     width: 100%;
-}
+    }
 
 @media (max-width: 720px) {
     #bokser {
