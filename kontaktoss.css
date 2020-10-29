@@ -46,24 +46,35 @@ input[type=submit]:hover {
 }
 
 #telefon{
-    background-image: url(./assets/telefon.png);
-    height: 24px;
-    width: 24px;
+    background-image: url(./assets/telefonikon.jpg);
+    height: 20px;
+    width: 23px;
     display: inline-block;
+    mix-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 #adresse{
-    background-image: url(./assets/hjem.png);
+   background-image: url(./assets/husikon.png);
     height: 24px;
     width: 24px;
-    display: inline-block;    
+    display: inline-block;
+    background-repeat: no-repeat;
+    mix-blend-mode: multiply;
+    background-size: contain;
 }
 
 #mail{
-    background-image: url(./assets/mail.png);
-    height: 24px;
-    width: 24px;
-    display: inline-block;  
+    background-image: url(./assets/mailikon.png);
+     height: 23px;
+    width: 30px;
+    display: inline-block;
+    mix-blend-mode: multiply;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    margin-left: -5px;
 }
 
 #infoboks{
@@ -78,7 +89,6 @@ input[type=submit]:hover {
     margin-inline-end: 100px;
     }
 
-    
 #bokser{
     display: flex;
     justify-content: space-between;
