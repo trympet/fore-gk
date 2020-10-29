@@ -54,3 +54,8 @@ img {
     margin: 0;
 }
 
+@media (max-width: 960px) {
+  .boks {
+      flex-direction: column-reverse;
+  }
+}

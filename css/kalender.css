@@ -50,4 +50,26 @@ body {font-family: Verdana, sans-serif;}
     margin-bottom: 16px;
     font-size:15px;
     color: #555;
+    cursor: pointer;
+}
+
+.idag {
+    background-color: #9bbd6a !important;
+    border-radius: 50px !important;
+    color: white !important;
+}
+
+.dag li:hover {
+    background-color: lightgray;
+    border-radius: 50px;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+#textWrapper {
+    flex-basis: 50%;
+    text-align: center;
 }
