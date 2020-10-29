@@ -113,7 +113,7 @@ class NyhetCardCollectionElement extends HTMLElement {
   }
 
   async connectedCallback() {
-    this.visNyheter();
+    await this.visNyheter();
   }
 
   async getNyheter() {
