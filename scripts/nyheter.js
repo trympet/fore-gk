@@ -88,6 +88,7 @@ customElements.define("fore-arkiv-nyhet", NyhetArkivCard, {
 
 class NyhetCardCollectionElement extends HTMLElement {
   antallNyheter;
+  startNyheter;
   _template;
 
   get stiler() {
@@ -112,17 +113,37 @@ class NyhetCardCollectionElement extends HTMLElement {
   }
 
   async connectedCallback() {
-    this.shadowRoot.append(this.stiler);
     this.visNyheter();
   }
 
   async getNyheter() {
     const req = await fetch("./api/nyheter.json");
     const nyheter = await req.json();
-    return nyheter.sort((a, b) => b.dato - a.dato).slice(0, this.antallNyheter);
+    return nyheter.sort((a, b) => b.dato - a.dato).slice(this.startNyheter, this.startNyheter + this.antallNyheter);
+  }
+
+  static get observedAttributes() {
+    return ['start-nyheter', 'antall-nyheter'];
+}
+
+  async attributeChangedCallback(name, oldValue, newValue) {
+    switch (name) {
+      case "start-nyheter":
+        this.startNyheter = newValue;
+        break;
+      case "antall-nyheter":
+        this.antallNyheter = newValue;
+        break;
+      default:
+        break;
+    }
+    await this.visNyheter()
+    console.log(name, oldValue, newValue)
   }
 
   async visNyheter() {
+    this.innerHTML = "";
+    this.shadowRoot.append(this.stiler);
     const nyheter = await this.getNyheter();
     nyheter.forEach((nyhet) => {
       this.shadowRoot.append(new this._template(nyhet));
