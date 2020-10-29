@@ -1,17 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Nyhetsarkiv</title>
-        <link rel="stylesheet" href="./css/style.css">
-        <link rel="stylesheet" href="./css/nyhetsarkiv.css">
-    </head>
-    <body>
-        <fore-navigasjon></fore-navigasjon>
-        <main>
-
-            <div id="nyhetsarkiv">
 
                 <div id="overLinja">
 
@@ -30,9 +18,9 @@
 
                 </div id="overLinja">
 
-                <hr>
+            <hr>
 
-                <fore-arkiv-nyheter></fore-arkiv-nyheter>
+            <fore-arkiv-nyheter></fore-arkiv-nyheter>
 
             </div>
         </main>
@@ -48,8 +36,10 @@
                     super(NyhetArkivCard);
                 }
             }
-            
-            customElements.define("fore-arkiv-nyheter", ArkivCollection);
-        </script>
-    </body>
+        }
+
+        customElements.define("fore-arkiv-nyheter", ArkivCollection);
+    </script>
+</body>
+
 </html>
