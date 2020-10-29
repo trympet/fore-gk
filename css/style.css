@@ -49,9 +49,9 @@ main{
     font-family: abel, 'open sans';
 }
 
-p {
-    /* font-size: 24px; */
-}
+/*p {
+    font-size: 24px;
+}*/
 
 /* h2 {
     font-size: 41px;
@@ -84,33 +84,5 @@ h3 {
 td:hover {
     background-color: grey;
     cursor: pointer;
-}
-
-
-/* Baneguide */
-
-.bg_slider {
-    
-    max-width: 1140px;
-    margin: auto;
-    position: relative;
-    border: 2px black;
-}
-
-.bg_slides {
-    display: none;
-}
-
-#next, #prev{
-    position: absolute;
-    top: 50%;
-    height: 50px;
-    margin: 3px;
-    cursor: pointer;
-    user-select: none;
-}
-
-#next {
-    right: 0;
 }
 

@@ -1,5 +1,5 @@
         let slide_index = 1;
-
+        
         document.getElementById('prev').addEventListener('click', prev_slide);
         document.getElementById('next').addEventListener('click', next_slide);
 
@@ -23,7 +23,7 @@
 
             for (let i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";}
-            slides[slide_index-1].style.display = 'block';
+            slides[slide_index-1].style.display = 'flex';
             console.log(slide_index)
         }
 
