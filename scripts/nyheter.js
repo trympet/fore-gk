@@ -129,10 +129,10 @@ class NyhetCardCollectionElement extends HTMLElement {
   async attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
       case "start-nyheter":
-        this.startNyheter = newValue;
+        this.startNyheter = parseInt(newValue);
         break;
       case "antall-nyheter":
-        this.antallNyheter = newValue;
+        this.antallNyheter = parseInt(newValue);
         break;
       default:
         break;
