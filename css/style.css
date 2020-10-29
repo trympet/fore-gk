@@ -29,10 +29,19 @@ main {
     background-color: #9BBD6A;
 }
 
+fore-footer {
+    padding-top: 3rem;
+}
+
 /* Document layout */
 main{
     margin: 0 10%;
     position: relative;
+    max-width: 960px;
+    width: 100%;
+    margin: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 .wrapper {
     position: relative;
@@ -42,11 +51,15 @@ main{
     margin: 0 10%;
 }
 
+.flex-spacer {
+    flex-grow: 1;
+}
 
 /* Typogrophy */
 
 * {
     font-family: abel, 'open sans';
+    box-sizing: border-box;
 }
 
 /*p {

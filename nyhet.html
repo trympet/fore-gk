@@ -5,24 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nyhetsarkiv</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/nyhetsarkiv.css">
   </head>
   <body>
+    <style>
+      .boks {
+        box-shadow: none;
+        cursor: default;
+      }
+    </style>
     <fore-navigasjon></fore-navigasjon>
     <main>
-      <!-- ... -->
-      <!-- <template is="fore-full-nyhet">
-      <h1>Nyhet</h1>
-    </template> -->
+      <h1 class="nyhet-navn"></h1>
+      <hr>
+      <div class="boks">
+        <div class="boksetekst">
+          <p class="nyhet-tekst"></p>
+        </div>
+        <div class="boksebilde"></div>
+      </div>
+
+
+
       <script src="./scripts/nyheter.js"></script>
 
+
+
       <script>
-      
-      const nyhetsParameter = decodeURIComponent(window.location.hash.slice(1));
-      const n = new NyhetCard();
-      n.dataset.nyhet = nyhetsParameter;
-      document.querySelector("main").append(n);
-  
-    </script>
+      (async () => {
+        const tittelElement = document.querySelector(".nyhet-navn");
+        const tekstElement = document.querySelector(".nyhet-tekst");
+        const bildeContainer = document.querySelector(".boksebilde");
+        
+        const nyhetNavn = decodeURIComponent(window.location.hash.slice(1));
+        tittelElement.textContent = nyhetNavn;
+        
+        const nyhet = await NyhetCard.GetNyhetFraNavn(nyhetNavn)
+        tekstElement.textContent = nyhet?.tekst || "Vi klarte ikke å laste inn nyheten. Vennligst prøv igjen senere.";
+        
+        const bildeElement = document.createElement("img");
+        bildeElement.setAttribute("src", nyhet.bilde);
+        bildeElement.setAttribute("alt", nyhet.tittel);
+        bildeContainer.append(bildeElement);
+      })();
+      </script>
     </main>
     <fore-footer></fore-footer>
     <script type="module" src="./scripts/common.js"></script>
