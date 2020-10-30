@@ -1,45 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 
-                <div id="overLinja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyhetsarkiv</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/nyhetsarkiv.css">
+</head>
 
-                    <h1>
-                        Nyheter
-                    </h1>
-                                       
-                    <div class="buttons">
-                        <button class="backward">
-                            
-                        </button>
-                        <button class="forward">
+<body>
 
-                        </button>
-                    </div>
+    <fore-navigasjon></fore-navigasjon>
 
-                </div id="overLinja">
+    <main>
 
-            <hr>
+        <div id="overLinja">
 
-            <fore-arkiv-nyheter start-nyheter="0"></fore-arkiv-nyheter>
+            <h1>
+                Nyheter
+            </h1>
 
+            <div class="buttons">
+                <button class="backward">
+
+                </button>
+                <button class="forward">
+
+                </button>
             </div>
-        </main>
-        <fore-footer></fore-footer>
-        <script type="module" src="./scripts/common.js"></script>
-        <script src="./scripts/nyheter.js"></script>
-        <script>  
 
-            class ArkivCollection extends NyhetCardCollectionElement {
-                antallNyheter = 2;
-                startNyheter = 4;
-                constructor() {
-                    super(NyhetArkivCard);
-                }
+        </div id="overLinja">
+
+        <hr>
+
+        <fore-arkiv-nyheter start-nyheter="0"></fore-arkiv-nyheter>
+
+    </main>
+
+    <fore-footer></fore-footer>
+
+    <script type="module" src="./scripts/common.js"></script>
+
+    <script src="./scripts/nyheter.js"></script>
+
+    <script>
+        let side = 0;
+        const forwardButton = document.getElementsByClassName("forward")[0]
+        const backwardButton = document.getElementsByClassName("backward")[0]
+
+        forwardButton.addEventListener("click", blaForover)
+
+        function blaForover() {
+            side += 4;
+            const foreArkivNyheter = document.getElementsByTagName("fore-arkiv-nyheter")[0];
+            foreArkivNyheter.attributes["start-nyheter"] = side;
+        }
+
+        function blaBakover() {
+            side -= 4;
+            const foreArkivNyheter = document.getElementsByTagName("fore-arkiv-nyheter")[0];
+            foreArkivNyheter.attributes["start-nyheter"] = side;
+        }
+
+
+        class ArkivCollection extends NyhetCardCollectionElement {
+            antallNyheter = 4;
+            startNyheter = 0;
+            constructor() {
+                super(NyhetArkivCard);
             }
         }
 
         customElements.define("fore-arkiv-nyheter", ArkivCollection);
+
     </script>
+
 </body>
 
 </html>
