@@ -25,28 +25,41 @@
         <div class="boksebilde"></div>
       </div>
 
-
-
       <script src="./scripts/nyheter.js"></script>
-
-
-
       <script>
+        /**
+         * Denne siden bruker location-fragmentet i URIen til å hente korresponderende nyhetsartikkel.
+         * Hvis nyheten ikke finnes, printes det ut en feilmelding.
+         */
+
       (async () => {
         const tittelElement = document.querySelector(".nyhet-navn");
         const tekstElement = document.querySelector(".nyhet-tekst");
         const bildeContainer = document.querySelector(".boksebilde");
+        let tekst = "";
+        let tittel = "Nyhet ikke funnet";
         
-        const nyhetNavn = decodeURIComponent(window.location.hash.slice(1));
-        tittelElement.textContent = nyhetNavn;
+        const nyhetNavnFraURI = decodeURIComponent(window.location.hash.slice(1));
         
-        const nyhet = await NyhetCard.GetNyhetFraNavn(nyhetNavn)
-        tekstElement.textContent = nyhet?.tekst || "Vi klarte ikke å laste inn nyheten. Vennligst prøv igjen senere.";
-        
-        const bildeElement = document.createElement("img");
-        bildeElement.setAttribute("src", nyhet.bilde);
-        bildeElement.setAttribute("alt", nyhet.tittel);
-        bildeContainer.append(bildeElement);
+        if (nyhetNavnFraURI) {
+          
+          const nyhet = await NyhetCard.getNyhetFraNavn(nyhetNavnFraURI)
+          tekst = nyhet?.tekst || "Vi klarte ikke å laste inn nyheten. Vennligst prøv igjen senere.";
+
+          if (nyhet) {
+            tittel = nyhet.tittel;
+            const bildeElement = document.createElement("img");
+            bildeElement.setAttribute("src", nyhet.bilde);
+            bildeElement.setAttribute("alt", nyhet.tittel);
+            bildeContainer.append(bildeElement);
+          }
+        }
+        else {
+          tekst = "Vi klarte ikke å finne nyheten. Vennligst prøv igjen senere."
+        }
+        tittelElement.textContent = tittel;
+        tekstElement.textContent = tekst;
+
       })();
       </script>
     </main>
