@@ -27,6 +27,8 @@
                 </h1>
 
                 <div class="buttons">
+                    <p class="paginator-status">Side <span id="side-nummer">1</span> av <span
+                            id="antall-sider"></span></p>
                     <button class="backward">
 
                     </button>
@@ -51,41 +53,45 @@
 
         <script>
         // Override for å spesifisere NyhetArkivCard som argument til cctor til parent.
-        let side = 0;
+        let sideIndeks = 0;
         const forwardButton = document.getElementsByClassName("forward")[0]
         const backwardButton = document.getElementsByClassName("backward")[0]
-        let antallNyheter = 0;
-
+        const sideNummer = document.querySelector("#side-nummer");
+        const antallSider = document.querySelector("#antall-sider");
         const nyhetsElement = document.querySelector("fore-arkiv-nyheter");
 
         forwardButton.addEventListener("click", blaForover)
         backwardButton.addEventListener("click", blaBakover)
 
         function blaForover() {
-            side += 4;
+            sideIndeks += 1;
             const foreArkivNyheter = document.getElementsByTagName("fore-arkiv-nyheter")[0];
-            foreArkivNyheter.attributes["start-nyheter"].value = side;
+            foreArkivNyheter.attributes["start-nyheter"].value = sideIndeks;
             setButtonState();
+            setPaginatorState();
         }
 
         function blaBakover() {
-            side -= 4;
+            sideIndeks -= 1;
             const foreArkivNyheter = document.getElementsByTagName("fore-arkiv-nyheter")[0];
-            foreArkivNyheter.attributes["start-nyheter"].value = side;
+            foreArkivNyheter.attributes["start-nyheter"].value = sideIndeks;
             setButtonState();
+            setPaginatorState();
         }
 
-        function setButtonState() {
+        async function setButtonState() {
             forwardButton.disabled = false;
             backwardButton.disabled = false;
 
-            if (side >= antallNyheter) {
+            if (sideIndeks >= await nyhetsElement.nyheterCount) {
                 forwardButton.disabled = true;
             }
-            else if (side <= 0) {
+            else if (sideIndeks <= 0) {
                 backwardButton.disabled = true;
             }
         }
+        setButtonState();
+
 
 
         class ArkivCollection extends NyhetCardCollectionElement {
@@ -96,6 +102,20 @@
             }
         }
         customElements.define("fore-arkiv-nyheter", ArkivCollection);
+        const antallSiderIPaginator = async () => {
+            const antallNyheter = await nyhetsElement.nyheterCount;
+            const harRest = antallNyheter % nyhetsElement.antallNyheter > 0;
+            return Math.floor(antallNyheter / nyhetsElement.antallNyheter)
+            + (harRest ? 1 : 0);
+        }
+
+
+        async function setPaginatorState() {
+            sideNummer.textContent = sideIndeks + 1;
+            antallSider.textContent = await antallSiderIPaginator();
+        }
+
+        setPaginatorState();
         (async () => {
             antallNyheter = await nyhetsElement.nyheterCount;
             console.log(await nyhetsElement.nyheterCount);

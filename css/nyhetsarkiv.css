@@ -12,7 +12,12 @@
     background: none;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: 80%;
+}
+
+.paginator-status {
+    margin: 0 1rem 0 0;
+    align-self: flex-end;
 }
 
 .backward {
@@ -25,14 +30,17 @@
     align-items: center;
     align-self: flex-end;
 }
+
 .buttons button {
     padding: 1rem;
     border-radius: 50%;
     cursor: pointer;
 }
+
 .buttons button:hover {
     background-color: rgba(0, 0, 0, .04);
 }
+
 .buttons button:disabled {
     opacity: .7;
     cursor: default;
@@ -40,11 +48,11 @@
 }
 
 .backward {
-background-image: url(../images/backward.png)
+    background-image: url(../images/backward.png)
 }
 
 .forward {
-background-image: url(../images/forward.png);
+    background-image: url(../images/forward.png);
 }
 
 .boks {
@@ -57,14 +65,21 @@ background-image: url(../images/forward.png);
     height: 100%;
     display: flex;
     flex-direction: row;
-  }
+}
 
-  .boks .boksetekst {
-      flex: 0 0 40%;
-  }
-  .boks .boksebilde {
+.boks .boksetekst {
+    flex: 0 0 40%;
+}
+
+.boks .boksetekst p {
+    /* Tillater newline fra API */
+    white-space: pre-line;
+}
+
+.boks .boksebilde {
     flex: 0 0 60%;
 }
+
 .boksetekst-wrapper {
     padding: 20px;
 }
