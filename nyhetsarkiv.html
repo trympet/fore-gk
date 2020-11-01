@@ -30,6 +30,8 @@
     <script type="module" src="./scripts/common.js"></script>
     <script src="./scripts/nyheter.js"></script>
     <script>
+
+        // Override for å spesifisere NyhetArkivCard som argument til cctor til parent.
         class ArkivCollection extends NyhetCardCollectionElement {
             antallNyheter = 4;
             startNyheter = 0;
@@ -37,8 +39,10 @@
                 super(NyhetArkivCard);
             }
         }
-
         customElements.define("fore-arkiv-nyheter", ArkivCollection);
+        (async () => {
+            console.log(await document.querySelector("fore-arkiv-nyheter").nyheterCount);
+        })()
     </script>
 </body>
 
