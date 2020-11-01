@@ -15,11 +15,28 @@
     background-size: contain;
 }
 
+.backward {
+    margin-right: 1rem;
+}
+
 .buttons {
     line-height: 1.5;
     display: flex;
     align-items: center;
     align-self: flex-end;
+}
+.buttons button {
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.buttons button:hover {
+    background-color: rgba(0, 0, 0, .04);
+}
+.buttons button:disabled {
+    opacity: .7;
+    cursor: default;
+    background-color: unset;
 }
 
 .backward {
