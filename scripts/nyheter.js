@@ -5,6 +5,7 @@
  */
 class NyhetCard extends HTMLElement {
   _nyhet; // Tildelt i cctor
+  truncateTegn = null;
 
   get _dato() {
     return new Date(this._nyhet.dato);
@@ -17,6 +18,21 @@ class NyhetCard extends HTMLElement {
     return link;
   }
 
+  get _tekst() {
+    let tekst = this._nyhet.tekst;
+    if (!this.truncateTegn) {
+      return tekst;
+    }
+    if (this.truncateTegn >= tekst.length) {
+      return tekst;
+    }
+    if (this.truncateTegn) {
+      tekst = tekst.slice(0,this.truncateTegn) + "...";
+      tekst = tekst.replace(/^\s+|\s+$/g, ''); // fjerne newline fra slutten av tekst
+    }
+    return tekst;
+  }
+
   get _HTML() {
     return `
 <a href="/nyhet.html#${this._nyhet.tittel}">
@@ -27,7 +43,7 @@ class NyhetCard extends HTMLElement {
       <h2 class="card-title">${this._nyhet.tittel}</h2>
       <h3 class="card-subtitle">${this._nyhet.forfatter}</h3>
     </div>
-    <div class="card-body">${this._nyhet.tekst}</div>
+    <div class="card-body">${this._tekst}</div>
   </div>
 </a>`;
   }
@@ -75,6 +91,7 @@ customElements.define("fore-nyhet", NyhetCard, { extends: "article" });
  */
 class NyhetArkivCard extends NyhetCard {
   // Override stiler fra NyhetCard
+  truncateTegn = 300;
   get _stiler() {
     const linkElem = document.createElement("link");
     linkElem.setAttribute("rel", "stylesheet");
@@ -90,7 +107,7 @@ class NyhetArkivCard extends NyhetCard {
     <div class="boksetekst-wrapper">
     <h2>${this._nyhet.tittel}</h2>
     <h3>Dato publisert: ${this._dato.toLocaleDateString()}</h3>
-    <p>${this._nyhet.tekst}</p>
+    <p>${this._tekst}</p>
   </div>
   </div>
   <div class="boksebilde">
@@ -218,7 +235,7 @@ class NyhetCardCollectionElement extends HTMLElement {
   async _getNyheter() {
     const req = await fetch("./api/nyheter.json");
     const nyheter = await req.json();
-    this._nyheterCount = nyheter.length;
+    this._nyheterLengde = nyheter.length;
     return nyheter
       .sort((a, b) => b.dato - a.dato)
       .slice(this.startNyheter, this.startNyheter + this.antallNyheter);
@@ -231,7 +248,6 @@ class NyhetCardCollectionElement extends HTMLElement {
     this.shadowRoot.innerHTML = "";
     this.shadowRoot.append(this._stiler);
     const nyheter = await this._getNyheter();
-    this._nyheterLengde = nyheter.length;
     nyheter.forEach((nyhet) => {
       this.shadowRoot.append(new this._template(nyhet));
     });
