@@ -19,7 +19,7 @@
 
 /* Nyheter grid */
 
-fore-nyheter {
+fore-hjem-nyheter {
   display: grid;
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(240px, auto));
