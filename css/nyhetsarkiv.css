@@ -1,3 +1,5 @@
+/* Lagt inn i style.css */
+
 #overLinja {
     display: flex;
     flex-direction: row;
@@ -62,7 +64,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 12px 17px rgba(0, 0, 0, 0.14);
     position: relative;
     cursor: pointer;
-    height: 100%;
+    height: 240px;
     display: flex;
     flex-direction: row;
 }
@@ -85,7 +87,7 @@
 }
 
 img {
-    height: 15em;
+    height: 100%;
     width: 100%;
     object-fit: cover;
     display: block;
@@ -99,4 +101,9 @@ img {
     .boks {
         flex-direction: column-reverse;
     }
+}
+
+.tekstlink {
+    text-decoration: none;
+    color: inherit;
 }

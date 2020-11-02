@@ -1,15 +1,18 @@
+/* Lagt inn i style.css */
+
 @import url('https://fonts.googleapis.com/css?family=Alatsi&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Abel&display=swap');
-
 :root {
     --primary-color: #9BBD6A;
 }
 
 /* Colors */
+
 html {
     height: 100%;
 }
+
 body {
     background-color: #FCFFFC;
     margin: 0;
@@ -17,6 +20,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 main {
     flex-grow: 1;
 }
@@ -25,7 +29,7 @@ main {
     background-color: #9BBD6A;
 }
 
-.footer{
+.footer {
     background-color: #9BBD6A;
 }
 
@@ -34,7 +38,8 @@ fore-footer {
 }
 
 /* Document layout */
-main{
+
+main {
     margin: 0 10%;
     position: relative;
     max-width: 960px;
@@ -43,6 +48,7 @@ main{
     padding-left: 1rem;
     padding-right: 1rem;
 }
+
 .wrapper {
     position: relative;
 }
@@ -76,7 +82,6 @@ h3 {
     display: inline-block;
     margin: 15px 0;
 } */
-
 
 /* Img */
 
@@ -112,7 +117,7 @@ td:hover {
     display: none;
 }
 
-#next, #prev{
+#next, #prev {
     position: absolute;
     top: 42%;
     height: 50px;
@@ -128,9 +133,8 @@ td:hover {
 a {
     text-decoration: none;
     color: inherit;
-  }
-  
-  
+}
+
 .bg_slides {
     background: #FFFFFF;
     margin: 1.5rem 0;
@@ -141,7 +145,7 @@ a {
     height: 100%;
     display: flex;
     flex-direction: row;
-  }
+}
 
 .slide_text {
     padding: 20px;
@@ -158,9 +162,9 @@ img {
 }
 
 @media (max-width: 960px) {
-  .boks {
-      flex-direction: column-reverse;
-  }
+    .boks {
+        flex-direction: column-reverse;
+    }
 }
 
 
@@ -251,11 +255,204 @@ img {
     border-radius: 50px;
 }
 
+/* CSS til nyhetsarkiv */
+
+#overLinja {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forward, .backward {
+    height: 1rem;
+    width: 1rem;
+    border: none;
+    background: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
+}
+
+.paginator-status {
+    margin: 0 1rem 0 0;
+    align-self: flex-end;
+}
+
+.backward {
+    margin-right: 1rem;
+}
+
+.buttons {
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    align-self: flex-end;
+}
+
+.buttons button {
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.buttons button:hover {
+    background-color: rgba(0, 0, 0, .04);
+}
+
+.buttons button:disabled {
+    opacity: .7;
+    cursor: default;
+    background-color: unset;
+}
+
+.backward {
+    background-image: url(../images/backward.png)
+}
+
+.forward {
+    background-image: url(../images/forward.png);
+}
+
+.boks {
+    background: #FFFFFF;
+    margin: 1.5rem 0;
+    /* skygge */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 12px 17px rgba(0, 0, 0, 0.14);
+    position: relative;
+    cursor: pointer;
+    height: 240px;
+    flex-direction: column-reverse;
+}
+
+/* CSS til nyhet */
+
+/* Card nyheter */
+
+.boks .boksetekst {
+    flex: 0 0 40%;
+}
+
+.boks .boksetekst p {
+    /* Tillater newline fra API */
+    white-space: pre-line;
+}
+
+.boks .boksebilde {
+    flex: 0 0 60%;
+}
+
+.boksetekst-wrapper {
+    padding: 20px;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.boks h2, .boks h3, .boks p {
+    margin: 0;
+}
+
+@media (max-width: 960px) {
+    .boks {
+        flex-direction: column-reverse;
+    }
+}
+
+.tekstlink {
+    text-decoration: none;
+    color: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card {
+    background: #FFFFFF;
+    /* skygge */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 12px 17px rgba(0, 0, 0, 0.14);
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card.card-link::before {
+    background-color: #000;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    content: '';
+    position: absolute;
+    transition: opacity 15ms linear, background-color 15ms linear;
+}
+
+.card.card-link:hover::before {
+    opacity: .04;
+}
+
+.card-image {
+    position: relative;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    height: 200px;
+}
+
+.card-primary {
+    padding: 1rem;
+}
+
+.card-title {
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 2rem;
+}
+
+.card-subtitle {
+    font-size: .875rem;
+    line-height: 1.375rem;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 0 1rem 8px;
+    font-size: .875rem;
+    flex-grow: 1;
+    line-height: 1.25rem;
+}
+
+.card-body, .card-subtitle {
+    color: rgba(0, 0, 0, .54);
+}
+
+.card-image:first-child, .card-image:last-child {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+h2 {
+    line-height: 1.2;
+}
+
 /*Form medlemskap*/
 
 input[type=text], input[type=number], select, #fdato, #epost {
     width: 100%;
-    padding: 12px 20px;
+    padding: 15px 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;

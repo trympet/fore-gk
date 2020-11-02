@@ -27,7 +27,7 @@ class NyhetCard extends HTMLElement {
       return tekst;
     }
     if (this.truncateTegn) {
-      tekst = tekst.slice(0,this.truncateTegn) + "...";
+      tekst = tekst.slice(0, this.truncateTegn) + "...";
       tekst = tekst.replace(/^\s+|\s+$/g, ''); // fjerne newline fra slutten av tekst
     }
     return tekst;
@@ -91,7 +91,7 @@ customElements.define("fore-nyhet", NyhetCard, { extends: "article" });
  */
 class NyhetArkivCard extends NyhetCard {
   // Override stiler fra NyhetCard
-  truncateTegn = 300;
+  truncateTegn = 250;
   get _stiler() {
     const linkElem = document.createElement("link");
     linkElem.setAttribute("rel", "stylesheet");
@@ -102,6 +102,7 @@ class NyhetArkivCard extends NyhetCard {
   // Override HTML fra NyhetCard
   get _HTML() {
     return `
+<a href="/nyhet.html#${this._nyhet.tittel}" class="tekstlink">
 <div class="boks">
   <div class="boksetekst">
     <div class="boksetekst-wrapper">
@@ -113,7 +114,8 @@ class NyhetArkivCard extends NyhetCard {
   <div class="boksebilde">
     <img src="${this._nyhet.bilde}">
   </div>
-</div>`;
+</div>
+</a>`;
   }
 
   constructor(nyhet) {
