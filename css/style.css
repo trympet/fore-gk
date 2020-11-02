@@ -267,10 +267,6 @@ a {
 /* CSS til nyhetsarkiv */
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 14348c57f354cf6793afcdd2c0ad5eadf0662dc1
 #overLinja {
     display: flex;
     flex-direction: row;
@@ -343,21 +339,13 @@ a {
 
 /* Card nyheter */
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 14348c57f354cf6793afcdd2c0ad5eadf0662dc1
 .boks .boksetekst {
     flex: 0 0 40%;
 }
 
 .boks .boksetekst p {
     /* Tillater newline fra API */
-<<<<<<< HEAD
-   white-space: pre-line;
-=======
     white-space: pre-line;
->>>>>>> 14348c57f354cf6793afcdd2c0ad5eadf0662dc1
 }
 
 .boks .boksebilde {
