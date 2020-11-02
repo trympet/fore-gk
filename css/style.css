@@ -457,7 +457,7 @@ h2 {
 
 /*Form medlemskap*/
 
-input[type=text], input[type=number], select, #fdato, #epost {
+input, select, #fdato, #epost {
     width: 100%;
     padding: 15px 20px;
     border: 1px solid #ccc;
