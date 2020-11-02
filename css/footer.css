@@ -70,28 +70,18 @@ h1, h2, h3 {
 
 .footer_adresse {
   background-image: url(../assets/husikon.svg);
-  height: 20px;
-  width: 20px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  margin-right: 4px;
 }
 
-.footer_telefon {
-  background-image: url(../assets/telefonikon.svg);
-  height: 20px;
-  width: 20px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  margin-right: 4px;
-}
 
 .footer_epost {
   background-image: url(../assets/mailikon.svg);
+}
+
+.footer_telefon {
+     background-image: url(../assets/telefonikon.svg); 
+}
+
+.footer_telefon, .footer_epost, .footer_adresse{
   height: 20px;
   width: 20px;
   display: inline-block;
