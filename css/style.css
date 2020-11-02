@@ -3,39 +3,15 @@
 @import url('https://fonts.googleapis.com/css?family=Alatsi&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Abel&display=swap');
+
+
+/* Colors */
+
 :root {
     --primary-color: #9BBD6A;
 }
 
-/* Colors */
 
-html {
-    height: 100%;
-}
-
-body {
-    background-color: #FCFFFC;
-    margin: 0;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    flex-grow: 1;
-}
-
-.nav {
-    background-color: var(--primary-color);
-}
-
-.footer {
-    background-color: var(--primary-color);
-}
-
-fore-footer {
-    padding-top: 3rem;
-}
 
 /* Ikoner */
 
@@ -48,6 +24,11 @@ fore-footer {
     background-position: center;
     margin-right: 4px;
 }
+.touch-knapp.ikon, .touch-knapp .ikon {
+    height: 2rem;
+    width: 2rem;
+}
+
 h1 .ikon, h2 .ikon, h3 .ikon {
     height: 24px;
     width: 24px;
@@ -64,6 +45,16 @@ h1 .ikon, h2 .ikon, h3 .ikon {
 .ikon-hus {
     background-image: url(../assets/husikon.svg);
 }
+
+.ikon-forover {
+    background-image: url(../images/forover.svg)
+}
+
+.ikon-bakover {
+    background-image: url(../images/bakover.svg);
+}
+
+
 
 /* Document layout */
 
@@ -93,12 +84,43 @@ hr {
     margin-top: 0;
 }
 
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #FCFFFC;
+    margin: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+}
+
+.nav {
+    background-color: var(--primary-color);
+}
+
+.footer {
+    background-color: var(--primary-color);
+}
+
+fore-footer {
+    padding-top: 3rem;
+}
+
+
+
 /* Typogrophy */
 
 * {
     font-family: abel, 'open sans';
     box-sizing: border-box;
 }
+
 h1, h2, h3, h4, h5, h6 {
     /* Lar header elementer spille pent med ikoner */
     display: flex;
@@ -111,6 +133,8 @@ h3, .h3 {
 h4, .h4 {
     font-size: 1rem;
 }
+
+
 
 /* Tables */
 
@@ -130,6 +154,8 @@ td:hover {
     background-color: grey;
     cursor: pointer;
 }
+
+
 
 /* klubben.html */
 
@@ -202,6 +228,8 @@ a {
         flex-direction: column-reverse;
     }
 }
+
+
 
 /*Calendar*/
 
@@ -290,6 +318,8 @@ a {
     border-radius: 50px;
 }
 
+
+
 /* CSS til nyhetsarkiv */
 
 #overLinja {
@@ -309,44 +339,40 @@ a {
     background-size: 80%;
 }
 
-.paginator-status {
-    margin: 0 1rem 0 0;
-    align-self: flex-end;
-}
 
-.backward {
+
+/* Paginator */
+
+.paginator .ikon-bakover {
     margin-right: 1rem;
 }
 
-.buttons {
+.paginator {
     line-height: 1.5;
     display: flex;
     align-items: center;
     align-self: flex-end;
 }
 
-.buttons button {
+.paginator-status {
+    margin: 0 1rem 0 0;
+    align-self: flex-end;
+}
+
+.paginator button {
     padding: 1rem;
     border-radius: 50%;
     cursor: pointer;
 }
 
-.buttons button:hover {
+.paginator button:hover {
     background-color: rgba(0, 0, 0, .04);
 }
 
-.buttons button:disabled {
-    opacity: .7;
+.paginator button:disabled {
+    opacity: .4;
     cursor: default;
     background-color: unset;
-}
-
-.backward {
-    background-image: url(../images/backward.png)
-}
-
-.forward {
-    background-image: url(../images/forward.png);
 }
 
 .boks {
@@ -399,6 +425,8 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+
 
 /* CSS til nyhet */
 
@@ -482,7 +510,10 @@ h2 {
     line-height: 1.2;
 }
 
+
+
 /* Form/skjemaer */
+
 input, select, textarea {
     padding: 15px 20px;
     width: 100%;
@@ -524,6 +555,16 @@ input[type=submit]:hover {
     background-color: #82a461;
 }
 
+.touch-knapp {
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: unset;
+}
+
+
 /* Bli medlem */
 
 input[type=submit]:hover {
@@ -555,6 +596,8 @@ input[type=submit]:hover {
 #postnr {
     grid-column: 7 / span 4;
 }
+
+
 
 /*kontakt oss */
 
@@ -596,6 +639,8 @@ input[type=submit]:hover {
     max-width: 20rem;
     width: 100%;
 }
+
+
 
 /* Bruker media-query for å gjøre nettsiden responsiv */
 
