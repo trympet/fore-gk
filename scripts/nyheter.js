@@ -32,7 +32,7 @@ class NyhetCard extends HTMLElement {
     }
     return tekst;
   }
-
+ 
   get _HTML() {
     return `
 <a href="/nyhet.html#${this._nyhet.tittel}">
