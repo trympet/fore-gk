@@ -46,13 +46,14 @@ input[type=submit]:hover {
     margin-top: 1.5rem;
 }
 
+/*
 #telefon{
     background-image: url(./assets/telefonikon.jpg);
     height: 20px;
     width: 23px;  
 }
 
-#adresse{
+#adresse_kontakt{
    background-image: url(./assets/husikon.png);
     height: 24px;
     width: 24px;
@@ -74,6 +75,8 @@ input[type=submit]:hover {
     background-repeat: no-repeat;
 }
 
+*/
+
  .ikon {
     height: 24px;
     width: 24px;
@@ -88,7 +91,7 @@ input[type=submit]:hover {
     background-image: url(../assets/telefonikon.svg);
 }
 
-#adresse {
+#adresse_kontakt {
     background-image: url(../assets/husikon.svg);
 }
 
