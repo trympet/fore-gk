@@ -41,15 +41,23 @@ export class DialogBoks extends HTMLElement {
   }
 
   get dialogBoks() {
-    return this.querySelector(".dialogboks");
+    return this.shadowRoot.querySelector(".dialogboks");
   }
 
   get bakgrunn() {
-    return this.querySelector(".dialog-bakgrunn");
+    return this.shadowRoot.querySelector(".dialog-bakgrunn");
   }
 
   get loader() {
-    return this.querySelector("dialog");
+    return this.shadowRoot.querySelector("dialog");
+  }
+
+  
+  get styleLink() {
+    const linkElem = document.createElement('link');
+    linkElem.setAttribute('rel', 'stylesheet');
+    linkElem.setAttribute('href', './css/style.css');
+    return linkElem;
   }
 
   /**
@@ -60,10 +68,10 @@ export class DialogBoks extends HTMLElement {
    */
   constructor() {
     super();
-    // Shadowroot burde brukes her, men dette er ikke brukt da oppgaven kaller for én felles CSS-fil.
+    this.attachShadow({ mode: "open" })
     const template = document.createElement("template");
     template.innerHTML = this.templateHTML;
-    this.append(template.content);
+    this.shadowRoot.append(this.styleLink, template.content);
   }
 
   /**
