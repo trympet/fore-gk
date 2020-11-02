@@ -37,6 +37,34 @@ fore-footer {
     padding-top: 3rem;
 }
 
+/* Ikoner */
+
+.ikon {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin-right: 4px;
+}
+h1 .ikon, h2 .ikon, h3 .ikon {
+    height: 24px;
+    width: 24px;
+}
+
+.ikon-epost {
+    background-image: url(../assets/mailikon.svg);
+}
+
+.ikon-telefon {
+    background-image: url(../assets/telefonikon.svg);
+}
+
+.ikon-hus {
+    background-image: url(../assets/husikon.svg);
+}
+
 /* Document layout */
 
 main {
@@ -61,11 +89,23 @@ main {
     flex-grow: 1;
 }
 
+hr {
+    margin-top: 0;
+}
+
 /* Typogrophy */
 
 * {
     font-family: abel, 'open sans';
     box-sizing: border-box;
+}
+h1, h2, h3, h4, h5, h6 {
+    /* Lar header elementer spille pent med ikoner */
+    display: flex;
+}
+
+h3, .h3 {
+    font-size: 1.17rem;
 }
 
 /*p {
@@ -351,12 +391,12 @@ a {
     padding: 20px;
 }
 
-img {
+/* img {
     height: 15em;
     width: 100%;
     object-fit: cover;
     display: block;
-}
+} */
 
 .boks h2, .boks h3, .boks p {
     margin: 0;
@@ -527,20 +567,11 @@ textarea {
     margin: 0;
     font-weight: bold;
     align-items: flex-end;
+    font-size: 1rem;
 }
 
 .infotekst {
     margin-top: 0px;
-}
-
-.ikon {
-    height: 24px;
-    width: 24px;
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    margin-right: 4px;
 }
 
 #telefon {
