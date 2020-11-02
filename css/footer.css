@@ -75,8 +75,8 @@ h1, h2, h3 {
   display: inline-block;
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center;
-  margin-right: 4px;
+  background-position: left;
+  padding-left: 20px;
 }
 
 .footer_telefon {
@@ -86,8 +86,8 @@ h1, h2, h3 {
   display: inline-block;
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center;
-  margin-right: 4px;
+  background-position: left;
+  padding-left: 20px;
 }
 
 .footer_epost {
@@ -97,8 +97,8 @@ h1, h2, h3 {
   display: inline-block;
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center;
-  margin-right: 4px;
+  background-position: left;
+  padding-left: 20px;
 }
 
 .footer-sponsors {
