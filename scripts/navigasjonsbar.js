@@ -1,4 +1,6 @@
-export default class ForeNavigasjon extends HTMLElement {
+import { ForeElement } from "./fore-element.js";
+
+export default class ForeNavigasjon extends ForeElement {
   SIDER = [
     {
       navn: "Hjem",
@@ -27,14 +29,17 @@ export default class ForeNavigasjon extends HTMLElement {
     },
   ];
 
-  HTML = `<header>
-<a href='./index.html'><img class="header-img" src="assets/logo.svg" alt="Fore Golfklubb"><a>
-</header>
-<nav>
-<ul id="nav-list">
-</ul>
-<div class="backdrop"></div>
-</nav>`;
+  HTML = `
+  <header class="nav-header">
+    <a href='./index.html'>
+      <img class="nav-header-img" src="./assets/logo.svg" alt="Fore Golfklubb">
+    <a>
+  </header>
+  <nav class="navbar">
+    <ul id="nav-list">
+    </ul>
+    <div class="backdrop"></div>
+  </nav>`;
 
   get backdrop() {
     return this.shadowRoot.querySelector(".backdrop");
@@ -65,12 +70,7 @@ export default class ForeNavigasjon extends HTMLElement {
     });
     const togglebutton = document.createElement("button");
     togglebutton.className = "sidenav-button";
-
-    const linkElem = document.createElement("link");
-    linkElem.setAttribute("rel", "stylesheet");
-    linkElem.setAttribute("href", "./css/navigasjon.css");
-    this.template.appendChild(linkElem);
-    this.attachShadow({ mode: "open" }).appendChild(this.template);
+    this.shadowRoot.append(this.template, this.stiler)
 
     this.backdrop.addEventListener("click", this.onBackdropClick.bind(this))
     this.shadowRoot.querySelector("nav").append(togglebutton);

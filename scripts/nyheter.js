@@ -1,24 +1,12 @@
 //@ts-check
 
-class ForeElement extends HTMLElement {
-  get stiler() {
-    const linkElem = document.createElement("link");
-    linkElem.setAttribute("rel", "stylesheet");
-    linkElem.setAttribute("href", "./css/style.css");
-    return linkElem;
-  }
-
-  constructor() {
-    super();
-    this.attachShadow({ mode: "open" });
-  }
-}
+import { ForeElement } from "./fore-element.js";
 
 /**
  * HTMLElement for én nyhetsartikkel. Inneholder egne stiler.
  * @extends ForeElement
  */
-class NyhetCard extends ForeElement {
+export class NyhetBoks extends ForeElement {
   _nyhet; // Tildelt i cctor
   truncateTegn = null;
 
@@ -73,7 +61,7 @@ class NyhetCard extends ForeElement {
     // Nyhet kan også spesifiseres i dataset
     this.shadowRoot.innerHTML = this._HTML;
     if (!this._nyhet && this.dataset.nyhet) {
-      this._nyhet = await NyhetCard.getNyhetFraNavn(this.dataset.nyhet);
+      this._nyhet = await NyhetBoks.getNyhetFraNavn(this.dataset.nyhet);
     }
     this.shadowRoot.append(this.stiler);
   }
@@ -90,17 +78,16 @@ class NyhetCard extends ForeElement {
     return res.find((nyhet) => nyhet.tittel === navn);
   }
 }
-customElements.define("fore-nyhet", NyhetCard, { extends: "article" });
 
 /**
  * HTMLElement for nyhetseartikler i nyhetsarkiv
- * @extends NyhetCard
+ * @extends NyhetBoks
  */
-class NyhetArkivCard extends NyhetCard {
-  // Override stiler fra NyhetCard
+export class NyhetArkivBoks extends NyhetBoks {
+  // Override stiler fra NyhetBoks
   truncateTegn = 250;
 
-  // Override HTML fra NyhetCard
+  // Override HTML fra NyhetBoks
   get _HTML() {
     return `
 <a href="./nyhet.html#${this._nyhet.tittel}">
@@ -123,15 +110,13 @@ class NyhetArkivCard extends NyhetCard {
     this.shadowRoot.append(this.stiler);
   }
 }
-customElements.define("fore-arkiv-nyhet", NyhetArkivCard, {
-  extends: "article",
-});
+
 
 /**
  * Element som lager og viser flere nyheter
  * @extends ForeElement
  */
-class NyhetCardCollectionElement extends ForeElement {
+export class NyhetBoksCollectionElement extends ForeElement {
   antallNyheter = 4; // antall nyheter i collection
   startNyheter = 0; // startindeks på nyheter.
 
@@ -177,7 +162,7 @@ class NyhetCardCollectionElement extends ForeElement {
     return ["start-nyheter", "antall-nyheter"];
   }
 
-  constructor(template = NyhetCard) {
+  constructor(template = NyhetBoks) {
     super();
     this._template = template;
   }
@@ -241,4 +226,11 @@ class NyhetCardCollectionElement extends ForeElement {
     });
   }
 }
-customElements.define("fore-nyheter", NyhetCardCollectionElement);
+
+export const Init = () => {
+  customElements.define("fore-nyheter", NyhetBoksCollectionElement);
+  customElements.define("fore-nyhet", NyhetBoks, { extends: "article" });
+  customElements.define("fore-arkiv-nyhet", NyhetArkivBoks, {
+    extends: "article",
+  });
+}
