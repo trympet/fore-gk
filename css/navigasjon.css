@@ -19,15 +19,18 @@ nav {
 }
 
 #nav-list {
-  display: flex;
-  list-style: none;
-  flex-direction: row;
-  background: var(--primary-color);
-  margin: 0;
-  padding: .5rem 0;
-  line-height: 1;
-  overflow: hidden;
-  font-size: 1rem;
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    background: var(--primary-color);
+    margin: 0;
+    padding: .5rem 0;
+    line-height: 1;
+    overflow: hidden;
+    font-size: 1rem;
+    justify-content: space-evenly;
+    margin-left: 140px;
+    margin-right: 140px;
 }
 
 .nav-item {
