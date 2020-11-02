@@ -102,7 +102,7 @@ class NyhetArkivCard extends NyhetCard {
   // Override HTML fra NyhetCard
   get _HTML() {
     return `
-<a href="/nyhet.html#${this._nyhet.tittel}" class="tekstlink">
+<a href="./nyhet.html#${this._nyhet.tittel}" class="tekstlink">
 <div class="boks">
   <div class="boksetekst">
     <div class="boksetekst-wrapper">
