@@ -1,68 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Medlemskap</title>
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/skjema.css">
-</head>
-<body>
-  <fore-navigasjon></fore-navigasjon>
-  <main>
-            <h1>Medlemskap</h1>
-        <hr>
-        <p>Ønsker du å bli medlem av Fore GK? Registrer deg enkelt her!</p>
-        <p>Priser finner du lenger ned på siden!</p>
-        
-    
-        <form action="">
-            <div id="form">
-            <label for="navn">Fullt navn<input type="text" id="navn" name="navn" required></label>
-            <label for="fdato">Fødselsdato<input type="date" id="fdato" name="fdato" required></label>
-            <label for="adresse" id="adresse">Adresse<input type="text" name="adresse" required></label>
-            <label for="postnr" id="postnr">Postnummer<input type="number" name="postnr" required></label>
-            <label for="epost">E-post<input type="email" id="epost" name="epost" required></label>
-            <label for="tlf">Telefon<input type="number" id="tlf" name="tlf" required></label>
-            </div>
-            <br><input type="submit" value="Send inn">
-        </form>
-    
-        
-        <h3>Informasjon om priser</h3>
-        
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend tempus maximus. 
-        Sed gravida, odio sit amet tempus pretium, tortor nunc tincidunt diam, vitae vulputate diam ipsum eu nisl. 
-        Sed ornare nibh nec massa dignissim, eu molestie urna interdum. Pellentesque faucibus commodo 
-        venenatis. Quisque ac cursus dui, a rutrum sem. In nec vulputate nunc. Cras hendrerit, ante ac accumsan 
-        rhoncus, justo ligula convallis est, a finibus sapien ipsum nec felis. Sed semper tincidunt purus, hendrerit 
-        convallis orci feugiat sit amet. Duis lacinia euismod tellus, iaculis faucibus lectus malesuada in. 
-        Nulla facilisi. Curabitur eu justo sem. Sed tempus condimentum lectus, nec pretium purus luctus vel. 
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medlemskap</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/skjema.css">
+  </head>
+  <body>
+    <fore-navigasjon></fore-navigasjon>
+    <main>
+      <h1>Medlemskap</h1>
+      <hr>
+      <p>Ønsker du å bli medlem av Fore GK? Registrer deg enkelt her!</p>
+      <p>Priser finner du lenger ned på siden!</p>
+
+
+      <form action="">
+
+        <div id="form">
+          <label for="navn">
+            Fullt navn
+            <input type="text" id="navn" name="navn" autocomplete="name" required>
+          </label>
+
+          <label for="fdato">
+            Fødselsdato
+            <input type="date" id="fdato" name="fodselsdato" autocomplete="bday" required>
+          </label>
+
+          <label for="adresse" id="adresse">
+            Adresse
+            <input type="text" name="adresse" autocomplete="street-address" required>
+          </label>
+
+          <label for="postnr" id="postnr">
+            Postnummer
+            <input type="number" name="postnummer" autocomplete="postal-code" required>
+          </label>
+
+          <label for="epost">
+            E-post
+            <input type="email" id="epost" name="epost" autocomplete="email" required>
+          </label>
+
+          <label for="tlf">
+            Telefon
+            <input type="tel" id="tlf" name="telefon" minlength="8"
+              maxlength="8" autocomplete="tel" required>
+          </label>
+        </div>
+
+        <br><input type="submit" value="Send inn">
+      </form>
+
+
+      <h3>Informasjon om priser</h3>
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend
+        tempus maximus.
+        Sed gravida, odio sit amet tempus pretium, tortor nunc tincidunt diam,
+        vitae vulputate diam ipsum eu nisl.
+        Sed ornare nibh nec massa dignissim, eu molestie urna interdum.
+        Pellentesque faucibus commodo
+        venenatis. Quisque ac cursus dui, a rutrum sem. In nec vulputate nunc.
+        Cras hendrerit, ante ac accumsan
+        rhoncus, justo ligula convallis est, a finibus sapien ipsum nec felis.
+        Sed semper tincidunt purus, hendrerit
+        convallis orci feugiat sit amet. Duis lacinia euismod tellus, iaculis
+        faucibus lectus malesuada in.
+        Nulla facilisi. Curabitur eu justo sem. Sed tempus condimentum lectus,
+        nec pretium purus luctus vel.
         Nullam porttitor lectus ullamcorper ex tristique aliquam. </p>
-        
-        <h3>Medlemsfordeler</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend tempus maximus. 
-        Sed gravida, odio sit amet tempus pretium, tortor nunc tincidunt diam, vitae vulputate diam ipsum eu nisl. 
-        Sed ornare nibh nec massa dignissim, eu molestie urna interdum. Pellentesque faucibus commodo venenatis. 
-        Quisque ac cursus dui, a rutrum sem. In nec vulputate nunc. Cras hendrerit, ante ac accumsan rhoncus, justo ligula convallis est, 
-        a finibus sapien ipsum nec felis. Sed semper tincidunt purus, hendrerit convallis orci feugiat sit amet. Duis lacinia euismod tellus, 
-        iaculis faucibus lectus malesuada in. Nulla facilisi. Curabitur eu justo sem. Sed tempus condimentum lectus, nec pretium purus luctus vel. Nullam porttitor lectus ullamcorper ex tristique aliquam.</p>
 
-        <app-dialogboks>
-          <h2 slot="dialog-header">Takk for din henvendelse</h2>
-          <p slot="dialog-body">Takk for din interesse! Din forespørsel er nå registrert. Vi vil svare deg på oppgitt epost innen 2 virkedager.</p>
-          <button slot="dialog-footer" id="lukk-dialog-knapp">Ok</button>
-        </app-dialogboks>
+      <h3>Medlemsfordeler</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend
+        tempus maximus.
+        Sed gravida, odio sit amet tempus pretium, tortor nunc tincidunt diam,
+        vitae vulputate diam ipsum eu nisl.
+        Sed ornare nibh nec massa dignissim, eu molestie urna interdum.
+        Pellentesque faucibus commodo venenatis.
+        Quisque ac cursus dui, a rutrum sem. In nec vulputate nunc. Cras
+        hendrerit, ante ac accumsan rhoncus, justo ligula convallis est,
+        a finibus sapien ipsum nec felis. Sed semper tincidunt purus, hendrerit
+        convallis orci feugiat sit amet. Duis lacinia euismod tellus,
+        iaculis faucibus lectus malesuada in. Nulla facilisi. Curabitur eu justo
+        sem. Sed tempus condimentum lectus, nec pretium purus luctus vel. Nullam
+        porttitor lectus ullamcorper ex tristique aliquam.</p>
 
-  </main>
-  <fore-footer></fore-footer>
-  <script type="module" src="./scripts/common.js"></script>
-  <script type="module" src="./scripts/form.js"></script>
-  <script type="module">
+      <app-dialogboks>
+        <h2 slot="dialog-header">Takk for din henvendelse</h2>
+        <p slot="dialog-body">Takk for din interesse! Din forespørsel er nå
+          registrert. Vi vil svare deg på oppgitt epost innen 2 virkedager.</p>
+        <button slot="dialog-footer" id="lukk-dialog-knapp">Ok</button>
+      </app-dialogboks>
+
+    </main>
+    <fore-footer></fore-footer>
+    <script type="module" src="./scripts/common.js"></script>
+    <script type="module" src="./scripts/form.js"></script>
+    <script type="module">
     import {DialogBoks} from "./scripts/form.js";
     const lukk = document.querySelector("#lukk-dialog-knapp");
     const dialog = document.querySelector("app-dialogboks");
     lukk.addEventListener("click", () => dialog.skjul());
   </script>
-</body>
+  </body>
 </html>
