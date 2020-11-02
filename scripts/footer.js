@@ -13,8 +13,8 @@ export default class ForeFooter extends HTMLElement {
 <div class="footer-wrapper">
   <div class="footer-item">
     <div class="footer-item-content">
-      <img src="./assets/footer-logo.svg" alt="Fore Golfklubb"
-        class="footer-logo-img">
+      <a href='./index.html'><img src="./assets/footer-logo.svg" alt="Fore Golfklubb"
+        class="footer-logo-img"></a>
     </div>
   </div>
   <div class="footer-item">

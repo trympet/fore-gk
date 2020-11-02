@@ -28,7 +28,7 @@ export default class ForeNavigasjon extends HTMLElement {
   ];
 
   HTML = `<header>
-<img class="header-img" src="assets/logo.svg" alt="Fore Golfklubb">
+<a href='./index.html'><img class="header-img" src="assets/logo.svg" alt="Fore Golfklubb"><a>
 </header>
 <nav>
 <ul id="nav-list">
