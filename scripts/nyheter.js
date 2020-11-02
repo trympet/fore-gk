@@ -207,6 +207,7 @@ export class NyhetBoksCollectionElement extends ForeElement {
     const req = await fetch("./api/nyheter.json");
     const nyheter = await req.json();
     this._nyheterLengde = nyheter.length;
+    console.log(this.startNyheter, this.startNyheter + this.antallNyheter);
     return nyheter
       .sort((a, b) => b.dato - a.dato)
       .slice(this.startNyheter, this.startNyheter + this.antallNyheter);
