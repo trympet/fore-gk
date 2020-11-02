@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Kontakt oss</title>
         <link rel="stylesheet" href="./css/style.css">
-
     </head>
 
 
@@ -24,8 +23,7 @@
                     <p> Du kan sjekke om spørsmålet ditt allerede
                         er besvart under vår Q&A.
                     </p>
-                    <form action="link"
-                        method="post" id="Kontakt_oss">
+                    <form id="Kontakt_oss">
                         <div class="form-body">
                             <label>
                                 Navn
@@ -76,7 +74,25 @@
             </div>
         </main>
         <fore-footer></fore-footer>
+
+        <fore-dialogboks>
+            <h2 slot="dialog-header">Din henvendelse er mottatt</h2>
+            <p slot="dialog-body">Din henvendelse er registrert. Vi svarer vanligvis innen to virkedager.</p>
+            <button slot="dialog-footer" id="lukk-dialog-knapp" class="grønn-knapp">Ok</button>
+        </fore-dialogboks>
+
         <script type="module" src="./scripts/common.js"></script>
-        <script src="forms.js"></script>
+        <script type="module">
+            import {DialogBoks} from "./scripts/form.js";
+        
+            const form = document.querySelector("form");
+        
+            
+            const dialog = document.querySelector("fore-dialogboks");
+            dialog.visDialogForForm(form);
+        
+            const lukk = document.querySelector("#lukk-dialog-knapp");
+            lukk.addEventListener("click", () => dialog.skjul());
+          </script>
     </body>
 </html>

@@ -1,3 +1,5 @@
+import { ForeElement } from "./fore-element.js";
+
 /** Modulær dialogboks som kan tilpasses ved å gi slottede elementer.
  * Dialogboksen består av en header, body og footer, hvor slottene henholdsvis heter
  * 'dialog-header', 'dialog-body' og 'dialog-footer'.
@@ -6,7 +8,7 @@
  *
  * åpne() og lukk() fyrer av eventene 'åpnet' og 'lukkes'.
  */
-export class DialogBoks extends HTMLElement {
+export class DialogBoks extends ForeElement {
   get templateHTML() {
     return `
       <div class="dialogboks">
@@ -52,14 +54,6 @@ export class DialogBoks extends HTMLElement {
     return this.shadowRoot.querySelector("dialog");
   }
 
-  
-  get styleLink() {
-    const linkElem = document.createElement('link');
-    linkElem.setAttribute('rel', 'stylesheet');
-    linkElem.setAttribute('href', './css/style.css');
-    return linkElem;
-  }
-
   /**
    * Lage en dialogboks
    * @param {String} overskrift - Overskriften til dialogboksen
@@ -68,10 +62,9 @@ export class DialogBoks extends HTMLElement {
    */
   constructor() {
     super();
-    this.attachShadow({ mode: "open" })
     const template = document.createElement("template");
     template.innerHTML = this.templateHTML;
-    this.shadowRoot.append(this.styleLink, template.content);
+    this.shadowRoot.append(this.stiler, template.content);
   }
 
   /**
@@ -121,4 +114,4 @@ export class DialogBoks extends HTMLElement {
     });
   }
 }
-customElements.define("app-dialogboks", DialogBoks); // definerer DialogBoks-elementet
+customElements.define("fore-dialogboks", DialogBoks); // definerer DialogBoks-elementet

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medlemskap</title>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/skjema.css">
   </head>
   <body>
     <fore-navigasjon></fore-navigasjon>
@@ -92,26 +91,26 @@
         sem. Sed tempus condimentum lectus, nec pretium purus luctus vel. Nullam
         porttitor lectus ullamcorper ex tristique aliquam.</p>
 
-      <app-dialogboks>
-        <h2 slot="dialog-header">Takk for din henvendelse</h2>
-        <p slot="dialog-body">Takk for din interesse! Din forespørsel er nå
-          registrert. Vi vil svare deg på oppgitt epost innen 2 virkedager.</p>
-        <button slot="dialog-footer" id="lukk-dialog-knapp" class="grønn-knapp">Ok</button>
-      </app-dialogboks>
 
     </main>
-    
+
     <fore-footer></fore-footer>
-    
+
+    <fore-dialogboks>
+      <h2 slot="dialog-header">Takk for din henvendelse</h2>
+      <p slot="dialog-body">Takk for din interesse! Din forespørsel er nå
+        registrert. Vi vil svare deg på oppgitt epost innen 2 virkedager.</p>
+      <button slot="dialog-footer" id="lukk-dialog-knapp" class="grønn-knapp">Ok</button>
+    </fore-dialogboks>
+
     <script type="module" src="./scripts/common.js"></script>
-    <script type="module" src="./scripts/form.js"></script>
     <script type="module">
     import {DialogBoks} from "./scripts/form.js";
 
     const form = document.querySelector("form");
 
     
-    const dialog = document.querySelector("app-dialogboks");
+    const dialog = document.querySelector("fore-dialogboks");
     dialog.visDialogForForm(form);
 
     const lukk = document.querySelector("#lukk-dialog-knapp");
