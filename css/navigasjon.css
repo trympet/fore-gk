@@ -1,4 +1,5 @@
 /* header logo */
+
 header {
   padding: 0 1rem;
 }
@@ -10,8 +11,8 @@ header {
   display: block;
 }
 
-
 /* navigasjonsbar */
+
 nav {
   background: var(--primary-color);
   display: flex;
@@ -19,18 +20,16 @@ nav {
 }
 
 #nav-list {
-    display: flex;
-    list-style: none;
-    flex-direction: row;
-    background: var(--primary-color);
-    margin: 0;
-    padding: .5rem 0;
-    line-height: 1;
-    overflow: hidden;
-    font-size: 1rem;
-    justify-content: space-evenly;
-    margin-left: 140px;
-    margin-right: 140px;
+  display: flex;
+  list-style: none;
+  flex-direction: row;
+  background: var(--primary-color);
+  margin: 0;
+  padding: .5rem 0;
+  line-height: 1;
+  overflow: hidden;
+  font-size: 1rem;
+  justify-content: center;
 }
 
 .nav-item {
@@ -42,8 +41,8 @@ nav {
   display: block;
 }
 
-
 /* navigasjonslenke */
+
 .nav-item.active {
   font-weight: bold;
 }
@@ -58,6 +57,7 @@ nav {
 }
 
 /* responsiv sidenav */
+
 #nav-list.active {
   transform: translate3d(0, 0, 0);
   left: 0;
@@ -91,7 +91,8 @@ nav {
   padding: 0;
   width: 40px;
   height: 40px;
-  border-radius: 50%; /* lettere å treffe på mobil */
+  border-radius: 50%;
+  /* lettere å treffe på mobil */
   background: url("../assets/menu.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -109,6 +110,7 @@ nav {
     bottom: 0;
     width: 200px;
     z-index: 1000;
+    justify-content: initial;
   }
   .nav-item {
     border: 0;
