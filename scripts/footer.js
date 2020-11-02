@@ -22,15 +22,15 @@ export default class ForeFooter extends HTMLElement {
     <div class="footer-item-content">
       <div class="kontakt-oss-grid">
         <div class="kontakt-oss-epost">
-          <h5>Epost </h5>
+          <h5 class='footer_epost'>Epost</h5>
           <p>mail@foregk.no</p>
         </div>
         <div class="kontakt-oss-telefon">
-          <h5>Telefon</h5>
+          <h5 class='footer_telefon'>Telefon</h5>
           <p>+47&nbsp;98765432</p>
         </div>
         <div class="kontakt-oss-adresse">
-          <h5>Adresse</h5>
+          <h5 class='footer_adresse'>Adresse</h5>
           <p>Adresse&nbsp;10A&nbsp;<br>7040,&nbsp;Trondheim<br>Norway</p>
         </div>
       </div>
