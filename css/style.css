@@ -304,7 +304,7 @@ fore-nyheter {
 }
 
 .boksebilde.nyhetsbilde img {
-    height: 15em;
+    height: 16em;
     width: 100%;
     object-fit: cover;
     display: block;

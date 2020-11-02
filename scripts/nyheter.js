@@ -24,11 +24,11 @@ export class NyhetBoks extends ForeElement {
     }
     if (this.truncateTegn) {
       tekst = tekst.slice(0, this.truncateTegn) + "...";
-      tekst = tekst.replace(/^\s+|\s+$/g, ''); // fjerne newline fra slutten av tekst
+      tekst = tekst.replace(/^\s+|\s+$/g, ""); // fjerne newline fra slutten av tekst
     }
     return tekst;
   }
- 
+
   get _HTML() {
     return `
 <a href="./nyhet.html#${this._nyhet.tittel}" class="boks-link">
@@ -97,7 +97,7 @@ export class NyhetArkivBoks extends NyhetBoks {
     <h3 class="boks-underoverskrift">Dato publisert: ${this._dato.toLocaleDateString()}</h3>
     <p>${this._tekst}</p>
   </div>
-  <div class="boksebilde">
+  <div class="boksebilde nyhetsbilde">
     <img src="${this._nyhet.bilde}">
   </div>
 </div>
@@ -106,11 +106,10 @@ export class NyhetArkivBoks extends NyhetBoks {
 
   constructor(nyhet) {
     super(nyhet);
-    this.classList.add("fore-arkiv-nyhet")
+    this.classList.add("fore-arkiv-nyhet");
     this.shadowRoot.append(this.stiler);
   }
 }
-
 
 /**
  * Element som lager og viser flere nyheter
@@ -227,10 +226,21 @@ export class NyhetBoksCollectionElement extends ForeElement {
   }
 }
 
+export class ArkivCollection extends NyhetBoksCollectionElement {
+  antallNyheter = 4;
+  startNyheter = 0;
+  constructor() {
+    super(NyhetArkivBoks);
+  }
+}
+
 export const Init = () => {
   customElements.define("fore-nyheter", NyhetBoksCollectionElement);
   customElements.define("fore-nyhet", NyhetBoks, { extends: "article" });
   customElements.define("fore-arkiv-nyhet", NyhetArkivBoks, {
     extends: "article",
   });
-}
+  customElements.define("fore-arkiv-nyheter", ArkivCollection);
+};
+
+
