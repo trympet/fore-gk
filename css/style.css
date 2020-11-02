@@ -939,119 +939,201 @@ input[type=submit]:hover {
     background: var(--primary-color);
     padding: 0 1.5rem;
     padding-bottom: 1rem;
-  }
-  
-  .fore-footer-wrapper {
+}
+
+.fore-footer-wrapper {
     display: grid;
     grid-template-columns: 2fr 3fr 2fr;
-  }
-  .fore-footer-item {
+}
+
+.fore-footer-item {
     border-right: 1px solid black;
     flex: 0 0 30%;
     margin: 2rem 0;
-  }
-  
-  .fore-footer-item:last-of-type {
+}
+
+.fore-footer-item:last-of-type {
     border-right: 0;
-  }
-  .fore-footer-item header {
+}
+
+.fore-footer-item header {
     margin-top: -2rem;
-  }
-  .fore-footer-item header h2, .fore-footer-item ul {
+}
+
+.fore-footer-item header h2, .fore-footer-item ul {
     text-align: center;
     justify-content: center;
-  }
-  .fore-footer-item ul {
+}
+
+.fore-footer-item ul {
     list-style: none;
     margin: 0;
     padding: 0;
-  }
-  
-  .fore-footer-logo-img {
+}
+
+.fore-footer-logo-img {
     mix-blend-mode: color-burn;
     max-height: 140px;
     margin: auto;
     display: block;
-  }
-  
-  
-  .kontakt-oss-grid {
+}
+
+.kontakt-oss-grid {
     display: grid;
     justify-content: space-evenly;
-    grid-template-areas: 
-    "epost adresse"
-    "telefon adresse";
-  }
-  .kontakt-oss-grid h5 {
+    grid-template-areas: "epost adresse" "telefon adresse";
+}
+
+.kontakt-oss-grid h5 {
     font-weight: 500;
     color: rgba(0, 0, 0, 0.95);
     font-weight: bold;
-  }
-  .kontakt-oss-grid h5, .kontakt-oss-grid p {
+}
+
+.kontakt-oss-grid h5, .kontakt-oss-grid p {
     margin: 0;
-  }
-  .kontakt-oss-grid > * {
+}
+
+.kontakt-oss-grid>* {
     margin-bottom: 1rem;
-  }
-  .kontakt-oss-epost {
+}
+
+.kontakt-oss-epost {
     grid-area: epost;
-  }
-  .kontakt-oss-telefon {
+}
+
+.kontakt-oss-telefon {
     grid-area: telefon;
-  }
-  .kontakt-oss-adresse {
+}
+
+.kontakt-oss-adresse {
     grid-area: adresse;
-  }
-  
-  .fore-footer-sponsors {
+}
+
+.fore-footer-sponsors {
     grid-template-columns: 5rem;
     display: grid;
     grid-template-areas: "header images";
-  }
-  .fore-footer-sponsors-header {
+}
+
+.fore-footer-sponsors-header {
     display: inline-block;
-  }
-  .fore-footer-sponsors-images {
+}
+
+.fore-footer-sponsors-images {
     grid-area: images;
     display: flex;
     flex-flow: row wrap;
     /* display: grid;
     grid-template-columns: 10rem repeat(auto-fill, 500px); */
-  }
-  .fore-footer-sponsors img {
+}
+
+.fore-footer-sponsors img {
     /* transparent bg */
     mix-blend-mode: multiply;
     object-fit: contain;
     object-fit: contain;
     max-width: 100%;
-  }
-  
-  @media (max-width: 800px) { 
+}
+
+@media (max-width: 800px) {
     .kontakt-oss-grid {
-      grid-template-areas: 
-      "epost"
-      "telefon"
-      "adresse";
+        grid-template-areas: "epost" "telefon" "adresse";
     }
     .footer {
-      padding: 0 .5rem;
+        padding: 0 .5rem;
     }
-  }
-  
-  @media (max-width: 500px) {
+}
+
+@media (max-width: 500px) {
     .fore-footer-item {
-      border-right: 0;
+        border-right: 0;
     }
     .fore-footer-wrapper {
-      display: flex;
-      flex-direction: column;
+        display: flex;
+        flex-direction: column;
     }
-    .kontakt-oss-grid { 
-      display: flex;
-      flex-direction: column;
-      text-align: center;
+    .kontakt-oss-grid {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
     }
     .kontakt-oss-grid h5 {
         justify-content: center;
     }
-  }
+}
+
+/* index.html */
+
+/* forsidebilde */
+
+.hero-forside {
+    background: rgba(0, 0, 0, .5);
+    height: 600px;
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.hero-forside img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+    position: relative;
+}
+
+/* Nyheter grid */
+
+fore-hjem-nyheter {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(240px, auto));
+    grid-auto-rows: 1fr;
+    gap: 2rem;
+    grid-column: 1/2;
+    align-items: flex-start;
+    max-width: 780px;
+}
+
+.forside {
+    display: grid;
+    grid-template-columns: 2fr max-content;
+    column-gap: .5rem;
+    gap: 2rem;
+    padding-top: 3rem;
+}
+
+.værmelding-temperatur {
+    transform: translateY(50%);
+    text-anchor: end;
+    dominant-baseline: ideographic;
+    font-size: 4rem;
+}
+
+.åpningstider-liste {
+    padding: 0;
+    list-style: none;
+}
+
+/* aside innhold */
+
+aside .content-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+@media only screen and (max-width: 720px) {
+    .forside {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    aside .content-wrapper {
+        flex-direction: row;
+        gap: 2rem;
+        justify-content: space-evenly;
+    }
+}
