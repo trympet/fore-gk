@@ -24,14 +24,16 @@
         </div>
         <div class="boksebilde nyhetsbilde"></div>
       </div>
-
-      <script src="./scripts/nyheter.js"></script>
-      <script>
-
-        /**
-         * Denne siden bruker location-fragmentet i URIen til å hente korresponderende nyhetsartikkel.
-         * Hvis nyheten ikke finnes, printes det ut en feilmelding.
-         */
+    </main>
+    <fore-footer></fore-footer>
+    <script type="module" src="./scripts/common.js"></script>
+    <script type="module">
+      import { Init, NyhetBoks } from "./scripts/nyheter.js";
+      Init();
+      /**
+       * Denne siden bruker location-fragmentet i URIen til å hente korresponderende nyhetsartikkel.
+       * Hvis nyheten ikke finnes, printes det ut en feilmelding.
+       */
 
       (async () => {
         const tittelElement = document.querySelector(".nyhet-navn");
@@ -44,7 +46,7 @@
         
         if (nyhetNavnFraURI) {
           
-          const nyhet = await NyhetCard.getNyhetFraNavn(nyhetNavnFraURI)
+          const nyhet = await NyhetBoks.getNyhetFraNavn(nyhetNavnFraURI)
           tekst = nyhet?.tekst || "Vi klarte ikke å laste inn nyheten. Vennligst prøv igjen senere.";
 
           if (nyhet) {
@@ -62,9 +64,6 @@
         tekstElement.textContent = tekst;
 
       })();
-      </script>
-    </main>
-    <fore-footer></fore-footer>
-    <script type="module" src="./scripts/common.js"></script>
+    </script>
   </body>
 </html>

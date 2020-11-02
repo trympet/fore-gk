@@ -31,7 +31,7 @@ export class NyhetBoks extends ForeElement {
 
   get _HTML() {
     return `
-<a href="./nyhet.html#${this._nyhet.tittel}" class="boks-link">
+<a href="./nyhet.html#${this._nyhet.tittel}">
   <div class="boks boks-link boks-vertikal">
     <div class="boksebilde" style="background-image: url(${this._nyhet.bilde})">
     </div>
@@ -50,7 +50,7 @@ export class NyhetBoks extends ForeElement {
   constructor(nyhet) {
     super();
     this._nyhet = nyhet;
-    this.classList.add("fore-nyhet", "boks", "boks-link");
+    this.classList.add("fore-nyhet", "boks");
   }
 
   /**
@@ -91,7 +91,7 @@ export class NyhetArkivBoks extends NyhetBoks {
   get _HTML() {
     return `
 <a href="./nyhet.html#${this._nyhet.tittel}">
-<div class="boks boks-horisontal">
+<div class="boks boks-link boks-horisontal">
   <div class="boksetekst">
     <h2 class="boks-overskrift">${this._nyhet.tittel}</h2>
     <h3 class="boks-underoverskrift">Dato publisert: ${this._dato.toLocaleDateString()}</h3>
