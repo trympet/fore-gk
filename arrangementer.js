@@ -6,7 +6,6 @@ for (let i=0; i<dager.length;i++){
     if (dagTall === new Date().getDate()){
         dager[i].classList.add("idag");
     }
-    console.log(showPopUp.bind(this, dagTall))
     dager[i].addEventListener("click", showPopUp.bind(this, dagTall, dager[i]));
     
 }

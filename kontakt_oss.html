@@ -5,70 +5,90 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Kontakt oss</title>
         <link rel="stylesheet" href="./css/style.css">
-
     </head>
 
 
     <body>
         <fore-navigasjon></fore-navigasjon>
         <main>
-            <div>
-                <h1>Kontakt oss</h1>
-                <hr>
+            <h1>Kontakt oss</h1>
+            <hr>
 
-                <h3> Her kan du kontakte Fore Golfklubb</h3>
+            <h2> Her kan du kontakte Fore Golfklubb</h2>
 
-                <p> Har du et spørsmål? <br>
-                    Du kan sjekke om spørsmålet ditt allerede
-                    er besvart <br> under vår Q&A.
-                </p>
+            <div id="bokser">
+                <div id="kontakt_form">
 
+                    <p> Har du et spørsmål? </p>
+                    <p> Du kan sjekke om spørsmålet ditt allerede
+                        er besvart under vår Q&A.
+                    </p>
+                    <form id="Kontakt_oss">
+                        <div class="form-body">
+                            <label>
+                                Navn
+                                <input type="text" id="Navn" name="Navn" required>
+                            </label>
+                            <label>
+                                E-post
+                                <input type="email" id="epost" name="E-post"
+                                    required>
+                            </label>
+                            <label>
+                                Melding
+                                <textarea id="Melding" name="Melding" minlength ="20" maxlength="1000" required></textarea>
+                            </label>
+                        </div>
+                        <div class="form-footer">
+                            <div class="flex-spacer"></div>
+                            <input type="submit" value="Send inn"
+                                class="formStyle" id="submitKontakt">
+                    </form>
+                </div>
 
-                <div id="bokser">
-                    <div id="kontakt_form">
-                        <form action="link"
-                            method="post" id="Kontakt_oss">
-                            <br><label for="Navn"> Navn </label>
-                            <br><input type="text" id="Navn" name="Navn"
-                                required>
-                            <br><label for="epost"> E-post </label>
-                            <br><input type="email" id="epost" name="E-post"
-                                required>
-                            <br><label for="Melding"> Melding </label>
-                            <br><textarea id="Melding" name="Melding" minlength ="20" maxlength="1000" required></textarea>
-                            <div class="form-footer">
-                                <div class="flex-spacer"></div>
+                <div id="infoboks">
 
-
-                                <input type="submit" value="Send inn" class="formStyle" id="submitKontakt">
-
-                            </div>
-                        </form>
+                    <div class="telefon">
+                        <h3 class="info"><span class="ikon ikon-telefon"></span>
+                            Telefon</h3>
+                        <p class="infotekst">+47 987 65 432</p>
                     </div>
 
-                    <div id="infoboks">
-                        <div class="telefon">
-                            <p class="info"><span class="ikon" id="telefon"></span> Telefon</p>
-                            <p class="infotekst">+47 987 65 432</p>
-                        </div>
-                        <div class="adresse">
-                            
-                            <p class="info"><span class="ikon" id="adresse_kontakt"></span> Adresse </p>
-                            <p class="infotekst"> Adresse 10A <br>
-                                7040, Trondheim <br>
-                                Norway</p>
-                        </div>
-                        <div class="mail">
-                            
-                            <p class="info"><span class="ikon" id="mail"></span> E-post </p>
-                            <p class="infotekst"> mail@foregk.no</p>
-                        </div>
+                    <div class="adresse">
+                        <h3 class="info"><span class="ikon ikon-hus"></span>
+                            Adresse </h3>
+                        <p class="infotekst">Adresse&nbsp;10A&nbsp;<br>7040,&nbsp;Trondheim<br>Norway</p>
                     </div>
+
+                    <div class="mail">
+                        <h3 class="info"><span class="ikon ikon-epost"></span>
+                            E-post </h3>
+                        <p class="infotekst"> mail@foregk.no</p>
+                    </div>
+
                 </div>
             </div>
-
         </main>
         <fore-footer></fore-footer>
+
+        <fore-dialogboks>
+            <h2 slot="dialog-header">Din henvendelse er mottatt</h2>
+            <p slot="dialog-body">Din henvendelse er registrert. Vi svarer vanligvis innen to virkedager.</p>
+            <button slot="dialog-footer" id="lukk-dialog-knapp" class="grønn-knapp">Ok</button>
+        </fore-dialogboks>
+
         <script type="module" src="./scripts/common.js"></script>
+        <script type="module">
+            import {DialogBoks} from "./scripts/form.js";
+        
+            const form = document.querySelector("form");
+        
+            
+            const dialog = document.querySelector("fore-dialogboks");
+            dialog.visDialogForForm(form);
+        
+            const lukk = document.querySelector("#lukk-dialog-knapp");
+            lukk.addEventListener("click", () => dialog.skjul());
+          </script>
     </body>
 </html>
