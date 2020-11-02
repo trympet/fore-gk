@@ -23,8 +23,9 @@ h1, h2, h3 {
 .footer-item header {
   margin-top: -2rem;
 }
-.footer-item header, .footer-item ul {
+.footer-item header h4, .footer-item ul {
   text-align: center;
+  justify-content: center;
 }
 .footer-item ul {
   list-style: none;
@@ -58,7 +59,7 @@ h1, h2, h3 {
 .kontakt-oss-grid > * {
   margin-bottom: 1rem;
 }
-.kontakt-oss-epost, {
+.kontakt-oss-epost {
   grid-area: epost;
 }
 .kontakt-oss-telefon {
@@ -89,7 +90,6 @@ h1, h2, h3 {
   background-position: left;
   padding-left: 20px;
 }
->>>>>>> 785195bf7045d32a28e986ea659bd78dace22ead
 
 .footer_epost {
   background-image: url(../assets/mailikon.svg);
@@ -157,4 +157,4 @@ h1, h2, h3 {
     flex-direction: column;
     text-align: center;
   }
-    
+}
