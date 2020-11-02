@@ -176,7 +176,6 @@ a {
     }
 }
 
-
 /*Calendar*/
 
 .kalender {
@@ -266,11 +265,6 @@ a {
 
 /* CSS til nyhetsarkiv */
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 14348c57f354cf6793afcdd2c0ad5eadf0662dc1
 #overLinja {
     display: flex;
     flex-direction: row;
@@ -336,28 +330,17 @@ a {
     position: relative;
     cursor: pointer;
     height: 240px;
-    flex-direction: column-reverse;
+    display: flex;
+    flex-direction: row;
 }
 
-/* CSS til nyhet */
-
-/* Card nyheter */
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 14348c57f354cf6793afcdd2c0ad5eadf0662dc1
 .boks .boksetekst {
     flex: 0 0 40%;
 }
 
 .boks .boksetekst p {
     /* Tillater newline fra API */
-<<<<<<< HEAD
-   white-space: pre-line;
-=======
-    white-space: pre-line;
->>>>>>> 14348c57f354cf6793afcdd2c0ad5eadf0662dc1
+        white-space: pre-line;
 }
 
 .boks .boksebilde {
@@ -369,7 +352,7 @@ a {
 }
 
 img {
-    height: 100%;
+    height: 16em;
     width: 100%;
     object-fit: cover;
     display: block;
@@ -389,6 +372,8 @@ img {
     text-decoration: none;
     color: inherit;
 }
+
+/* CSS til nyhet */
 
 a {
     text-decoration: none;
