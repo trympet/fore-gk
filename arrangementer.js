@@ -15,7 +15,7 @@ for (let i=0; i<dager.length;i++){
 const dagerArray = ['Klubbmesterskap!','Ikke program denne dagen!','Ikke program denne dagen!','Dag for damer','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Lekedag for barn!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!','Ikke program denne dagen!'];
 
 function showPopUp(dag, element, e) {
-    document.getElementById("text").innerHTML = dagerArray[dag - 1];
+    document.getElementById("textHappening").innerHTML = dagerArray[dag - 1];
     let aktiv = document.getElementsByClassName("aktivDag");
     for (let i=0;i<aktiv.length;i++){
         let el = aktiv[i];
