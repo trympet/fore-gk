@@ -2,8 +2,42 @@ const visPopup = () => {
 
 }
 
-/** Dialogboks interface som tilbyr metoder tilknyttet dialogboksen for å manipulere dialogboksens utseende på dokumentet */
+/** Modulær dialogboks som kan tilpasses ved å gi slottede elementer.
+ * Dialogboksen består av en header, body og footer, hvor slottene henholdsvis heter
+ * 'dialog-header', 'dialog-body' og 'dialog-footer'.
+ * 
+ * State oppdateres med vis() eller lukk().
+ * 
+ * åpne() og lukk() fyrer av eventene 'åpnet' og 'lukkes'.
+ */
 export class DialogBoks extends HTMLElement {
+
+  get templateHTML() {
+    return `
+      <div class="dialogboks">
+        <div class="dialog-header">
+          <slot name="dialog-header"></slot>
+        </div>
+        <div class="dialog-body">
+          <slot name="dialog-body"></slot>
+        </div>
+        <div class="dialog-footer">
+          <slot name="dialog-footer"></slot>
+        </div>
+      </div>
+      <div class="dialog-bakgrunn"></div>
+    `;
+  }
+  
+  get dialogWrapper() {
+    return this.shadowRoot.querySelector(".dialogboks");
+  }
+
+  get bakgrunn() {
+    return this.shadowRoot.querySelector(".dialog-bakgrunn");
+  }
+  
+  
   /**
    * Lage en dialogboks
    * @param {String} overskrift - Overskriften til dialogboksen
@@ -15,24 +49,28 @@ export class DialogBoks extends HTMLElement {
     bodyElement,
     { lukk = true, ok = false } = { lukk: true, ok: false }
   ) {
-    super(); // etablerer prototypekjeden
+    super();
 
-    this.innerHTML = ''; // hvis elementet kalles inline skjer ingenting
-    this.overskrift = document.createElement('h5');
-    this.overskrift.textContent = overskrift;
-    this.body = bodyElement; // bodyen til dialogboksen
-    this.lukk = lukk;
-    this.ok = ok;
-    this.wrapper = document.createElement('div'); // wrapper for innholdet i dialogboksen
-    this.wrapper.style.transform = 'scale(0)'; // skjuler dialogboksen
-    this.wrapper.className = 'dialogboks';
-    this.bakgrunn = document.createElement('div'); // bakgrunn som skjuler innholdet bak dialogboksen
-    this.bakgrunn.className = 'bakgrunn';
+    // this.innerHTML = ''; // hvis elementet kalles inline skjer ingenting
+    // this.overskrift = document.createElement('h5');
+    // this.overskrift.textContent = overskrift;
+    // this.body = bodyElement; // bodyen til dialogboksen
+    // this.lukk = lukk;
+    // this.ok = ok;
+    // this.wrapper = document.createElement('div'); // wrapper for innholdet i dialogboksen
+    // this.wrapper.style.transform = 'scale(0)'; // skjuler dialogboksen
+    // this.wrapper.className = 'dialogboks';
+    // this.bakgrunn = document.createElement('div'); // bakgrunn som skjuler innholdet bak dialogboksen
+    // this.bakgrunn.className = 'bakgrunn';
 
-    this.header = document.createElement('div'); // header
-    this.header.className = 'header';
-    this.header.appendChild(this.overskrift);
-    this.body.classList.add('body');
+    // this.header = document.createElement('div'); // header
+    // this.header.className = 'header';
+    // this.header.appendChild(this.overskrift);
+    // this.body.classList.add('body');
+    this.attachShadow({ mode: 'open' });
+    const template = document.createElement("template");
+    template.innerHTML = this.templateHTML;
+    this.shadowRoot.append(template.content);
   }
   /**
    * Kjøres hver gang elementet blir appendet til et element som er festet til dokumentet
@@ -40,41 +78,17 @@ export class DialogBoks extends HTMLElement {
    */
   connectedCallback() {
     // fester alle elementer til et shadowroot-dokument for å unngå css-konflikter
-    const shadowRoot = this.attachShadow({ mode: 'open' });
+    // const shadowRoot = this.attachShadow({ mode: 'open' });
+    this.bakgrunn.addEventListener("click", () => this.skjul())
 
-    const footer = document.createElement('div');
-    footer.className = 'footer';
+    // const footer = document.createElement('div');
+    // footer.className = 'footer';
 
-    // lukk-knapp i footer
-    if (this.lukk) {
-      const lukkKnapp = document.createElement('button');
-      lukkKnapp.addEventListener('click', this.skjul.bind(this));
-      lukkKnapp.innerText = 'Lukk';
-      footer.appendChild(lukkKnapp);
-      this.bakgrunn.addEventListener('click', event => {
-        // lukker dialogboks når man klikker på bakgrunn
-        if (event.currentTarget === this.bakgrunn) {
-          this.skjul();
-        }
-      });
-    }
-
-    // ok-knapp i footer
-    if (this.ok) {
-      const okKnapp = document.createElement('button');
-      okKnapp.addEventListener('click', this.skjul.bind(this));
-      okKnapp.addEventListener('click', () =>
-        this.dispatchEvent(new CustomEvent('ok'))
-      ); // ok-eventlistener når lukkes
-      okKnapp.innerText = 'Ok';
-      footer.appendChild(okKnapp);
-    }
-
-    this.wrapper.appendChild(this.header);
-    this.wrapper.appendChild(this.body);
-    this.wrapper.appendChild(footer);
-    shadowRoot.appendChild(this.wrapper);
-    shadowRoot.appendChild(this.bakgrunn);
+    // this.wrapper.appendChild(this.header);
+    // this.wrapper.appendChild(this.body);
+    // this.wrapper.appendChild(footer);
+    // shadowRoot.appendChild(this.wrapper);
+    // shadowRoot.appendChild(this.bakgrunn);
 
     const stiler = document.createElement('style');
     stiler.textContent = `
@@ -101,23 +115,19 @@ export class DialogBoks extends HTMLElement {
       margin: 1.75rem auto;
       z-index: 2;
     }
-    .header {
+    .dialog-header {
       border-top-left-radius: .125rem;
       border-top-right-radius: .125rem;
       border-bottom: 1px solid #dee2e6;
-      padding: 1rem;
+      padding: 0 1rem;
     }
-    .header h5 {
-      line-height: 1.5;
-      font-size: 1.8rem;
-    }
-    .body {
+    .dialog-body {
       font-size: 1rem;
       position: relative;
       flex: 1 1 auto;
       padding: 1rem;
     }
-    .footer {
+    .dialog-footer {
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -126,7 +136,7 @@ export class DialogBoks extends HTMLElement {
       border-bottom-right-radius: .3rem;
       border-bottom-left-radius: .3rem;
     }
-    .footer button {
+    .dialog-footer button {
       cursor: pointer;
       background-color: #a6c!important;
       color: #fff;
@@ -140,7 +150,7 @@ export class DialogBoks extends HTMLElement {
       white-space: normal;
       word-wrap: break-word;
     }
-    .bakgrunn {
+    .dialog-bakgrunn {
       opacity: 0;
       cursor: pointer;
       transition: opacity .5s;
@@ -158,17 +168,18 @@ export class DialogBoks extends HTMLElement {
       visibility: visible!important;
     }
     `;
-    shadowRoot.appendChild(stiler);
+    this.shadowRoot.appendChild(stiler);
+    this.vis();
   }
   /** Åpner dialogboksen */
   vis() {
-    setTimeout(() => this.wrapper.classList.add('åpne'),6) // kan kun animeres etter det har gått minst 1 frame
+    setTimeout(() => this.dialogWrapper.classList.add('åpne'),6) // kan kun animeres etter det har gått minst 1 frame
     this.bakgrunn.classList.add('skjult');
     this.dispatchEvent(new CustomEvent('åpnet')); // sender event når dialogboksen åpnes
   }
   /** Lukker dialogboksen */
   skjul() {
-    this.wrapper.classList.remove('åpne');
+    this.dialogWrapper.classList.remove('åpne');
     this.bakgrunn.classList.remove('skjult');
     this.dispatchEvent(new CustomEvent('lukket')); // sender event når dialogboksen lukkes
   }
