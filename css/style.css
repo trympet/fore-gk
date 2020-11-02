@@ -162,3 +162,146 @@ img {
       flex-direction: column-reverse;
   }
 }
+
+/*Calendar*/
+
+.kalender {
+    max-width: 400px;
+}
+
+.mnd {
+    padding: 12px 0;
+    background: #9bbd6a;
+    text-align: center;
+}
+
+.mnd ul {
+    margin: 0;
+    padding: 5px;
+}
+
+.mnd ul li {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.ukedag {
+    margin: 0;
+    padding: 10px 0;
+    background-color:#ddd;
+}
+
+.ukedag li {
+    display: inline-block;
+    width: 13%;
+    color: #555;
+    text-align: center;
+}
+
+.dag {
+    padding: 15px 0;
+    background: #eee;
+    margin: 0;
+}
+
+.dag li {
+    list-style-type: none;
+    display: inline-block;
+    width: 13%;
+    text-align: center;
+    margin-bottom: 16px;
+    font-size:15px;
+    color: #555;
+    cursor: pointer;
+}
+
+.idag {
+    background-color: #9bbd6a !important;
+    border-radius: 50px !important;
+    color: white !important;
+}
+
+.dag li:hover {
+    background-color: lightgray;
+    border-radius: 50px;
+}
+
+#wrapperCalendar {
+    display: flex;
+    flex-direction: row;
+}
+
+#textWrapperHappening {
+    flex-basis: 50%;
+    text-align: center;
+}
+
+#textHappening {
+    height: 10%;
+    max-width: 100px;
+    margin: auto;
+    margin-top: 15%;
+}
+
+.aktivDag {
+    background-color: lightgray;
+    border-radius: 50px;
+}
+
+/*Scheme medlemskap*/
+
+input[type=text], input[type=number], select, #fdato, #epost {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 15px;
+    display: block;
+}
+
+input[type=submit] {
+    width: 150px;
+    background-color: #9bbd6a;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+input[type=submit]:hover {
+    background-color: #82a461;
+}
+
+#form {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    column-gap: 10px;
+    row-gap: 2rem;
+}
+
+label {
+    display: inline-block;
+    grid-column: span 5;
+}
+
+#adresse {
+    grid-column: 1 / span 6;
+}
+
+#postnr {
+    grid-column: 7 / span 4;
+}
+@media only screen and (max-width: 460px) {
+    #form {
+        display: flex;
+        flex-direction: column;
+    }
+}
