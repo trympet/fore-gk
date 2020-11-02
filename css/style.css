@@ -164,8 +164,6 @@ img {
 }
 
 
-
-
 /*Calendar*/
 
 .kalender {
@@ -304,6 +302,7 @@ label {
 }
 
 /*kontakt oss */
+
 
 #submitKontakt {
     flex: 1 0 0;
