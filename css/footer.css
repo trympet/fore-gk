@@ -1,36 +1,36 @@
-footer {
+.fore-footer {
   background: var(--primary-color);
   padding: 0 1.5rem;
   padding-bottom: 1rem;
 }
 
-.footer-wrapper {
+.fore-footer-wrapper {
   display: grid;
   grid-template-columns: 2fr 3fr 2fr;
 }
-.footer-item {
+.fore-footer-item {
   border-right: 1px solid black;
   flex: 0 0 30%;
   margin: 2rem 0;
 }
 
-.footer-item:last-of-type {
+.fore-footer-item:last-of-type {
   border-right: 0;
 }
-.footer-item header {
+.fore-footer-item header {
   margin-top: -2rem;
 }
-.footer-item header h2, .footer-item ul {
+.fore-footer-item header h2, .fore-footer-item ul {
   text-align: center;
   justify-content: center;
 }
-.footer-item ul {
+.fore-footer-item ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.footer-logo-img {
+.fore-footer-logo-img {
   mix-blend-mode: color-burn;
   max-height: 140px;
   margin: auto;
@@ -66,62 +66,22 @@ footer {
   grid-area: adresse;
 }
 
-.footer_adresse {
-  background-image: url(../assets/husikon.svg);
-  height: 20px;
-  width: 20px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: left;
-  padding-left: 20px;
-}
-
-.footer_telefon {
-  background-image: url(../assets/telefonikon.svg);
-  height: 20px;
-  width: 20px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: left;
-  padding-left: 20px;
-}
-
-.footer_epost {
-  background-image: url(../assets/mailikon.svg);
-}
-
-.footer_telefon {
-     background-image: url(../assets/telefonikon.svg); 
-}
-
-.footer_telefon, .footer_epost, .footer_adresse{
-  height: 20px;
-  width: 20px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: left;
-  padding-left: 20px;
-}
-
-.footer-sponsors {
+.fore-footer-sponsors {
   grid-template-columns: 5rem;
   display: grid;
   grid-template-areas: "header images";
 }
-.footer-sponsors-header {
+.fore-footer-sponsors-header {
   display: inline-block;
 }
-.footer-sponsors-images {
+.fore-footer-sponsors-images {
   grid-area: images;
   display: flex;
   flex-flow: row wrap;
   /* display: grid;
   grid-template-columns: 10rem repeat(auto-fill, 500px); */
 }
-.footer-sponsors img {
+.fore-footer-sponsors img {
   /* transparent bg */
   mix-blend-mode: multiply;
   object-fit: contain;
@@ -142,10 +102,10 @@ footer {
 }
 
 @media (max-width: 500px) {
-  .footer-item {
+  .fore-footer-item {
     border-right: 0;
   }
-  .footer-wrapper {
+  .fore-footer-wrapper {
     display: flex;
     flex-direction: column;
   }

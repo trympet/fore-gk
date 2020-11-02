@@ -1,4 +1,6 @@
-export default class ForeFooter extends HTMLElement {
+import { ForeElement } from "./fore-element.js";
+
+export default class ForeFooter extends ForeElement {
   _SPONSORS = [
     "circle-1.png",
     "logoipsum.png",
@@ -10,16 +12,16 @@ export default class ForeFooter extends HTMLElement {
   ]
   SPONSOR_LOGO_PATH = "./assets/sponsors/";
   HTML = `
-<div class="footer-wrapper">
-  <div class="footer-item">
-    <div class="footer-item-content">
+<div class="fore-footer-wrapper">
+  <div class="fore-footer-item">
+    <div class="fore-footer-item-content">
       <a href='./index.html'><img src="./assets/footer-logo.svg" alt="Fore Golfklubb"
-        class="footer-logo-img"></a>
+        class="fore-footer-logo-img"></a>
     </div>
   </div>
-  <div class="footer-item">
+  <div class="fore-footer-item">
     <header><h2 class="h4">Kontakt oss</h2></header>
-    <div class="footer-item-content">
+    <div class="fore-footer-item-content">
       <div class="kontakt-oss-grid">
         <div class="kontakt-oss-epost">
           <h5><span class="ikon ikon-epost"></span>Epost</h5>
@@ -36,9 +38,9 @@ export default class ForeFooter extends HTMLElement {
       </div>
     </div>
   </div>
-  <div class="footer-item">
+  <div class="fore-footer-item">
     <header><h2 class="h4">Laget av...</h2></header>
-    <div class="footer-item-content">
+    <div class="fore-footer-item-content">
       <ul>
         <li>Trym Flogard</li>
         <li>Jørgen Johannesen</li>
@@ -49,9 +51,9 @@ export default class ForeFooter extends HTMLElement {
     </div>
   </div>
 </div>
-<div class="footer-sponsors">
-  <h2 class="footer-sponsors-header h4">Sponsorer</h2>
-  <div class="footer-sponsors-images"></div>
+<div class="fore-footer-sponsors">
+  <h2 class="fore-footer-sponsors-header h4">Sponsorer</h2>
+  <div class="fore-footer-sponsors-images"></div>
 </div>`
 
   get sponsors() {
@@ -64,33 +66,15 @@ export default class ForeFooter extends HTMLElement {
     })
   }
 
-  get styleLink() {
-    const linkElem = document.createElement('link');
-    linkElem.setAttribute('rel', 'stylesheet');
-    linkElem.setAttribute('href', './css/footer.css');
-    return linkElem;
-  }
-  get styleLinkT() {
-    const linkElem = document.createElement('link');
-    linkElem.setAttribute('rel', 'stylesheet');
-    linkElem.setAttribute('href', './css/style.css');
-    return linkElem;
-  }
-
   constructor() {
     super();
     const template = document.createElement("footer");
+    template.classList.add("fore-footer");
     template.innerHTML = this.HTML;
 
-    const sponsorContainer = template.querySelector(".footer-sponsors-images");
+    const sponsorContainer = template.querySelector(".fore-footer-sponsors-images");
     sponsorContainer.append(...this.sponsors);
-
-
-    
-    // Attach the created element to the shadow dom
-
-    this.attachShadow({ mode: "open" })
-      .append(this.styleLink, this.styleLinkT, template);
+    this.shadowRoot.append(this.stiler, template);
   }
 }
 
