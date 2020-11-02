@@ -49,34 +49,30 @@ input[type=submit]:hover {
 #telefon{
     background-image: url(./assets/telefonikon.jpg);
     height: 20px;
-    width: 23px;
-    display: inline-block;
-    mix-blend-mode: color-burn;
-    background-repeat: no-repeat;
-    background-size: contain;
+    width: 23px;  
 }
 
 #adresse{
    background-image: url(./assets/husikon.png);
     height: 24px;
     width: 24px;
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-size: contain;
-    mix-blend-mode: color-burn;
 }
 
 #mail{
     background-image: url(./assets/mailikon.png);
     height: 25px;
     width: 30px;
-    display: inline-block;
-    mix-blend-mode: color-burn;
-    background-size: contain;
-    background-repeat: no-repeat;
     background-position: bottom;
     margin-left: -5px;
     margin-bottom: -3px;
+}
+
+
+#mail, #adresse, #telefon {
+     display: inline-block;
+    mix-blend-mode: color-burn;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 #infoboks{
@@ -89,6 +85,7 @@ input[type=submit]:hover {
     flex-direction: column;
     margin-top: -510px;
     margin-inline-end: 100px;
+   
     }
 
 #bokser{
@@ -116,11 +113,15 @@ input[type=submit]:hover {
     }
     #infoboks{
         flex-direction: row;
+         margin-top: auto;
+        margin-inline-end: 0px;
     }
 }
 @media (max-width: 480px) {
     #infoboks{
         flex-direction: column;
         text-align: center;
+         margin-top: auto;
+        margin-inline-end: 0px;
     }
 }
