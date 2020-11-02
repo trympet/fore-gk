@@ -58,7 +58,7 @@ h1, h2, h3 {
 .kontakt-oss-grid > * {
   margin-bottom: 1rem;
 }
-.kontakt-oss-epost {
+.kontakt-oss-epost, {
   grid-area: epost;
 }
 .kontakt-oss-telefon {
@@ -116,4 +116,4 @@ h1, h2, h3 {
     flex-direction: column;
     text-align: center;
   }
-}
+    
