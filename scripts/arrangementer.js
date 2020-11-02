@@ -6,7 +6,6 @@ for (let i = 0; i < dager.length; i++) {
   if (dagTall === new Date().getDate()) {
     dager[i].classList.add("idag");
   }
-  console.log(showPopUp.bind(this, dagTall));
   dager[i].addEventListener("click", showPopUp.bind(this, dagTall));
 }
 
@@ -45,6 +44,5 @@ const dagerArray = [
 ];
 
 function showPopUp(dag, e) {
-  console.log(dag);
   document.getElementById("text").innerHTML = dagerArray[dag - 1] || "Ikke program denne dagen!";
 }

@@ -24,7 +24,6 @@
             for (let i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";}
             slides[slide_index-1].style.display = 'flex';
-            console.log(slide_index)
         }
 
         /* Navigasjonstabell */

@@ -198,7 +198,6 @@ export class NyhetBoksCollectionElement extends ForeElement {
     if (this._isConnected) {
       await this._visNyheter();
     }
-    console.log(name, oldValue, newValue);
   }
 
   /**
