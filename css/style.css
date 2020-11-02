@@ -70,9 +70,9 @@ main {
 
 /*p {
     font-size: 24px;
-}
+}*/
 
- h2 {
+/* h2 {
     font-size: 41px;
 }
 
@@ -159,10 +159,11 @@ a {
     padding: 20px;
 }
 
-img {
+.bg_slides img {
     height: 100%;
-    width: 500px;
+    width: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .bg_slides h2, .bg_slides h3, .bg_slides p {
@@ -266,6 +267,10 @@ img {
 /* CSS til nyhetsarkiv */
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 14348c57f354cf6793afcdd2c0ad5eadf0662dc1
 #overLinja {
     display: flex;
     flex-direction: row;
@@ -338,14 +343,21 @@ img {
 
 /* Card nyheter */
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14348c57f354cf6793afcdd2c0ad5eadf0662dc1
 .boks .boksetekst {
     flex: 0 0 40%;
 }
 
 .boks .boksetekst p {
     /* Tillater newline fra API */
+<<<<<<< HEAD
    white-space: pre-line;
+=======
+    white-space: pre-line;
+>>>>>>> 14348c57f354cf6793afcdd2c0ad5eadf0662dc1
 }
 
 .boks .boksebilde {
@@ -453,11 +465,10 @@ a {
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
 }
-*/
+
 h2 {
     line-height: 1.2;
 }
-
 
 /*Form medlemskap*/
 
