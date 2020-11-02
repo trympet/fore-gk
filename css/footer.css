@@ -68,6 +68,39 @@ h1, h2, h3 {
   grid-area: adresse;
 }
 
+.footer_adresse {
+  background-image: url(../assets/husikon.svg);
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-right: 4px;
+}
+
+.footer_telefon {
+  background-image: url(../assets/telefonikon.svg);
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-right: 4px;
+}
+
+.footer_epost {
+  background-image: url(../assets/mailikon.svg);
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-right: 4px;
+}
+
 .footer-sponsors {
   grid-template-columns: 5rem;
   display: grid;
