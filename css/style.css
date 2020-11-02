@@ -147,6 +147,14 @@ a {
     flex-direction: row;
 }
 
+.bg_slides .slide_text {
+    flex: 0 0 40%;
+}
+
+.bg_slides .slide_text {
+    flex: 0 0 60%;
+}
+
 .slide_text {
     padding: 20px;
 }
@@ -157,12 +165,12 @@ img {
     object-fit: cover;
 }
 
-.boks h2, .boks h3, .boks p {
+.bg_slides h2, .bg_slides h3, .bg_slides p {
     margin: 0;
 }
 
 @media (max-width: 960px) {
-    .boks {
+    .bg_slides {
         flex-direction: column-reverse;
     }
 }
