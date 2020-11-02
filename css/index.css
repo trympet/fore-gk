@@ -19,7 +19,7 @@
 
 /* Nyheter grid */
 
-fore-nyheter {
+fore-hjem-nyheter {
   display: grid;
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(240px, auto));
@@ -36,6 +36,19 @@ main {
   column-gap: .5rem;
   gap: 2rem;
   padding-top: 3rem;
+}
+
+.værmelding-temperatur {
+  transform: translateY(50%);
+  text-anchor: end;
+  dominant-baseline: ideographic;
+  font-size: 4rem;
+}
+
+.åpningstider-liste {
+  padding: 0;
+  list-style: none;
+  
 }
 
 /* aside innhold */

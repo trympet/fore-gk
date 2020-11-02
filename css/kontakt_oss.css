@@ -1,20 +1,21 @@
-input{
-    padding: 12px 20px; 
+input {
+    padding: 12px 20px;
     width: 100%;
     box-shadow: 10;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 }
 
-textarea{
+textarea {
     padding: 12px 20px;
     width: 100%;
     min-height: 20rem;
 }
 
-
 .info {
-    display: inline;
+    display: flex;
+    margin: 0;
     font-weight: bold;
+    align-items: flex-end;
 }
 
 .infotekst {
@@ -22,6 +23,7 @@ textarea{
 }
 
 /*Style for submit knapp på "kontakt oss"- og "bli medlem" - form. */
+
 input[type=submit] {
     /* width: 200px; */
     background-color: #9bbd6a;
@@ -35,63 +37,50 @@ input[type=submit] {
     flex: 1 0 0;
 }
 
-
 input[type=submit]:hover {
     background-color: #82a461;
 }
-
 
 .form-footer {
     display: flex;
     margin-top: 1.5rem;
 }
 
-#telefon{
-    background-image: url(./assets/telefonikon.jpg);
-    height: 20px;
-    width: 23px;
-    display: inline-block;
-    mix-blend-mode: color-burn;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-#adresse{
-   background-image: url(./assets/husikon.png);
+.ikon {
     height: 24px;
     width: 24px;
     display: inline-block;
     background-repeat: no-repeat;
     background-size: contain;
-    mix-blend-mode: color-burn;
+    background-position: center;
+    margin-right: 4px;
 }
 
-#mail{
-    background-image: url(./assets/mailikon.png);
-    height: 25px;
-    width: 30px;
-    display: inline-block;
-    mix-blend-mode: color-burn;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    margin-left: -5px;
-    margin-bottom: -3px;
+#telefon {
+    background-image: url(../assets/telefonikon.svg);
 }
 
-#infoboks{
+#adresse {
+    background-image: url(../assets/husikon.svg);
+}
+
+#mail {
+    background-image: url(../assets/mailikon.svg);
+}
+
+#infoboks {
     min-width: 18rem;
     background-color: #E8E8E8;
-    padding: 2rem; 
+    padding: 2rem;
     border-radius: 60px;
     column-gap: 2rem;
     display: flex;
     flex-direction: column;
     margin-top: -510px;
     margin-inline-end: 100px;
-    }
+}
 
-#bokser{
+#bokser {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -100,10 +89,10 @@ input[type=submit]:hover {
 #kontakt_form {
     max-width: 20rem;
     width: 100%;
-    }
-
+}
 
 /* Bruker media-query for å gjøre nettsiden responsiv */
+
 @media (max-width: 720px) {
     #bokser {
         flex-direction: column;
@@ -114,12 +103,13 @@ input[type=submit]:hover {
     .form-footer {
         flex-direction: column;
     }
-    #infoboks{
+    #infoboks {
         flex-direction: row;
     }
 }
+
 @media (max-width: 480px) {
-    #infoboks{
+    #infoboks {
         flex-direction: column;
         text-align: center;
     }

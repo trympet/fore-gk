@@ -10,7 +10,7 @@
   <body>
     <fore-navigasjon></fore-navigasjon>
     <div class="wrapper">
-      <section class="hero">
+      <div class="hero">
         <picture>
           <!-- Generer nye bilder her: https://www.responsivebreakpoints.com/ -->
           <source
@@ -53,11 +53,10 @@
             src="./assets/hero/golf-bane-hero_hvhs1e_ar_16_9,c_fill,g_auto__c_scale,w_1400.jpg"
             alt="">
         </picture>
-      </section>
+      </div>
       <main>
-        <fore-nyheter data-antall="4">
-          <fore-nyhet></fore-nyhet>
-        </fore-nyheter>
+        <fore-hjem-nyheter antall-nyheter="4">
+        </fore-hjem-nyheter>
         <aside>
           <div class="content-wrapper">
             <div class="baneforhold">
@@ -66,25 +65,33 @@
             </div>
             <div class="værmelding">
               <h3>Værmelding</h3>
-            </div>
-            <div class="åpningstider">
-              <h3>Åpningstider</h3>
-              <ol>
-                <li>Mandag:</li>
-                <li>Tirsdag:</li>
-                <li>Onsdag:</li>
-                <li>Torsdag:</li>
-                <li>Fredag:</li>
-                <li>Lørdag:</li>
-                <li>Søndag:</li>
-              </ol>
-            </div>
-          </aside>
-          </div>
-      </main>
-    </div>
-    <fore-footer></fore-footer>
-    <script type="module" src="./scripts/common.js"></script>
-    <script src="./scripts/nyheter.js"></script>
-  </body>
-</html>
+              <svg viewBox="0 0 250 100" xmlns="http://www.w3.org/2000/svg"
+                stroke="red" fill="grey">
+                <image class="værmelding-ikon"
+                  width="100"
+                  height="100" />
+                  <text x="250" y="50" class="værmelding-temperatur" />
+                  </svg>
+                </div>
+                <div class="åpningstider">
+                  <h3>Åpningstider</h3>
+                  <ol class="åpningstider-liste">
+                    <li>Mandag: 09:00 - 16:00</li>
+                    <li>Tirsdag: 09:00 - 16:00</li>
+                    <li>Onsdag: 09:00 - 16:00</li>
+                    <li>Torsdag: 09:00 - 16:00</li>
+                    <li>Fredag: 09:00 - 16:00</li>
+                    <li>Lørdag: 10:00 - 15:00</li>
+                    <li>Søndag: 10:00 - 15:00</li>
+                  </ol>
+                </div>
+              </div>
+            </aside>
+          </main>
+        </div>
+        <fore-footer></fore-footer>
+        <script type="module" src="./scripts/hjem.js"></script>
+        <script src="./scripts/nyheter.js"></script>
+        <script src="./scripts/værmelding.js"></script>
+      </body>
+    </html>
