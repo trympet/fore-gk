@@ -164,155 +164,149 @@ img {
 }
 
 
-input {
-    padding: 12px 20px;
-    width: 100%;
-    box-shadow: 10;
-    margin-bottom: 20px;
+/* KONTAKT CSS*/
+
+
+
+/*Calendar*/
+
+.kalender {
+    max-width: 400px;
 }
 
-textarea {
-    padding: 12px 20px;
-    width: 100%;
-    min-height: 20rem;
+.mnd {
+    padding: 12px 0;
+    background: #9bbd6a;
+    text-align: center;
 }
 
-.info {
-    display: flex;
+.mnd ul {
     margin: 0;
-    font-weight: bold;
-    align-items: flex-end;
+    padding: 5px;
 }
 
-.infotekst {
-    margin-top: 0px;
+.mnd ul li {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
 }
 
-/*Style for submit knapp på "kontakt oss"- og "bli medlem" - form. */
+.ukedag {
+    margin: 0;
+    padding: 10px 0;
+    background-color:#ddd;
+}
+
+.ukedag li {
+    display: inline-block;
+    width: 13%;
+    color: #555;
+    text-align: center;
+}
+
+.dag {
+    padding: 15px 0;
+    background: #eee;
+    margin: 0;
+}
+
+.dag li {
+    list-style-type: none;
+    display: inline-block;
+    width: 13%;
+    text-align: center;
+    margin-bottom: 16px;
+    font-size:15px;
+    color: #555;
+    cursor: pointer;
+}
+
+.idag {
+    background-color: #9bbd6a !important;
+    border-radius: 50px !important;
+    color: white !important;
+}
+
+.dag li:hover {
+    background-color: lightgray;
+    border-radius: 50px;
+}
+
+#wrapperCalendar {
+    display: flex;
+    flex-direction: row;
+}
+
+#textWrapperHappening {
+    flex-basis: 50%;
+    text-align: center;
+}
+
+#textHappening {
+    height: 10%;
+    max-width: 100px;
+    margin: auto;
+    margin-top: 15%;
+}
+
+.aktivDag {
+    background-color: lightgray;
+    border-radius: 50px;
+}
+
+/*Scheme medlemskap*/
+
+input[type=text], input[type=number], select, #fdato, #epost {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 15px;
+    display: block;
+}
 
 input[type=submit] {
-    /* width: 200px; */
+    width: 150px;
     background-color: #9bbd6a;
     color: white;
     padding: 14px 20px;
-    /* margin: 25px 9px; */
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 15px;
-    flex: 1 0 0;
+    font-size: 18px;
 }
 
 input[type=submit]:hover {
     background-color: #82a461;
 }
 
-.form-footer {
-    display: flex;
-    margin-top: 1.5rem;
+#form {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    column-gap: 10px;
+    row-gap: 2rem;
 }
 
-/*
-#telefon{
-    background-image: url(./assets/telefonikon.jpg);
-    height: 20px;
-    width: 23px;  
-}
-
-#adresse_kontakt{
-   background-image: url(./assets/husikon.png);
-    height: 24px;
-    width: 24px;
-}
-
-#mail{
-    background-image: url(./assets/mailikon.png);
-    height: 25px;
-    width: 30px;
-    background-position: bottom;
-    margin-left: -5px;
-    margin-bottom: -3px;
-}
-
-
-#mail, #adresse, #telefon {
+label {
     display: inline-block;
-    background-size: contain;
-    background-repeat: no-repeat;
+    grid-column: span 5;
 }
 
-*/
-
- .ikon {
-    height: 24px;
-    width: 24px;
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    margin-right: 4px;
+#adresse {
+    grid-column: 1 / span 6;
 }
 
-#telefon {
-    background-image: url(../assets/telefonikon.svg);
+#postnr {
+    grid-column: 7 / span 4;
 }
-
-#adresse_kontakt {
-    background-image: url(../assets/husikon.svg);
-}
-
-#mail {
-    background-image: url(../assets/mailikon.svg);
-}
-
-#infoboks {
-    min-width: 18rem;
-    background-color: #E8E8E8;
-    padding: 2rem;
-    border-radius: 60px;
-    column-gap: 2rem;
-    display: flex;
-    flex-direction: column;
-    margin-top: -510px;
-    margin-inline-end: 100px;
-}
-
-#bokser {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#kontakt_form {
-    max-width: 20rem;
-    width: 100%;
-}
-
-/* Bruker media-query for å gjøre nettsiden responsiv */
-
-@media (max-width: 720px) {
-    #bokser {
+@media only screen and (max-width: 460px) {
+    #form {
+        display: flex;
         flex-direction: column;
     }
-    #kontakt_form {
-        max-width: unset;
-    }
-    .form-footer {
-        flex-direction: column;
-    }
-    #infoboks {
-        flex-direction: row;
-         margin-top: auto;
-        margin-inline-end: 0px;
-    }
 }
-
-@media (max-width: 480px) {
-    #infoboks {
-        flex-direction: column;
-        text-align: center;
-         margin-top: auto;
-        margin-inline-end: 0px;
-    }
-}
-

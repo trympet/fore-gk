@@ -24,27 +24,8 @@ textarea {
 
 /*Style for submit knapp på "kontakt oss"- og "bli medlem" - form. */
 
-input[type=submit] {
-    /* width: 200px; */
-    background-color: #9bbd6a;
-    color: white;
-    padding: 14px 20px;
-    /* margin: 25px 9px; */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 15px;
-    flex: 1 0 0;
-}
 
-input[type=submit]:hover {
-    background-color: #82a461;
-}
 
-.form-footer {
-    display: flex;
-    margin-top: 1.5rem;
-}
 
 /*
 #telefon{
