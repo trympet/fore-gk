@@ -35,7 +35,7 @@ class NyhetCard extends HTMLElement {
  
   get _HTML() {
     return `
-<a href="/nyhet.html#${this._nyhet.tittel}">
+<a href="./nyhet.html#${this._nyhet.tittel}">
   <div class="card card-link">
     <div class="card-image" style="background-image: url(${this._nyhet.bilde})">
     </div>
