@@ -617,6 +617,9 @@ input[type=submit]:hover {
         margin-top: auto;
         margin-inline-end: 0px;
     }
+    .info {
+        justify-content: center;
+    }
 }
 
 @media only screen and (max-width: 460px) {
