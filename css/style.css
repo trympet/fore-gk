@@ -198,7 +198,7 @@ a {
 }
 
 .bg_slides h2, .bg_slides h3, .bg_slides p {
-    margin-left: 20px;
+    margin: 10px 20px !important;
 }
 
 @media (max-width: 960px) {
