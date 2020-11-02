@@ -574,18 +574,6 @@ textarea {
     margin-top: 0px;
 }
 
-#telefon {
-    background-image: url(../assets/telefonikon.svg);
-}
-
-#adresse_kontakt {
-    background-image: url(../assets/husikon.svg);
-}
-
-#mail {
-    background-image: url(../assets/mailikon.svg);
-}
-
 #infoboks {
     min-width: 18rem;
     background-color: #E8E8E8;
