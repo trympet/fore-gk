@@ -5,7 +5,7 @@ export default class ForeNavigasjon extends ForeElement {
     {
       navn: "Hjem",
       uri: "index.html",
-      alias: "/"
+      alias: /^\/$/
     },
     {
       navn: "Klubben",
@@ -49,7 +49,7 @@ export default class ForeNavigasjon extends ForeElement {
   isActive(path, alias = null) {
     return (
       window.location.pathname.split("#")[0].includes(path) ||
-      window.location.pathname.split("#")[0].includes(alias)
+      window.location.pathname.split("#")[0].match(alias) != null
     );
   }
   
