@@ -167,6 +167,7 @@ img {
     }
 }
 
+
 /*Calendar*/
 
 .kalender {
@@ -451,7 +452,7 @@ h2 {
 
 input[type=text], input[type=number], select, #fdato, #epost {
     width: 100%;
-    padding: 12px 20px;
+    padding: 15px 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
