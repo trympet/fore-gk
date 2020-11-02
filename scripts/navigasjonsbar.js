@@ -5,6 +5,7 @@ export default class ForeNavigasjon extends ForeElement {
     {
       navn: "Hjem",
       uri: "index.html",
+      alias: "/"
     },
     {
       navn: "Klubben",
