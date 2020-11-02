@@ -18,7 +18,7 @@ export default class ForeFooter extends HTMLElement {
     </div>
   </div>
   <div class="footer-item">
-    <header><h4>Kontakt oss</h4></header>
+    <header><h2 class="h4">Kontakt oss</h2></header>
     <div class="footer-item-content">
       <div class="kontakt-oss-grid">
         <div class="kontakt-oss-epost">
@@ -37,7 +37,7 @@ export default class ForeFooter extends HTMLElement {
     </div>
   </div>
   <div class="footer-item">
-    <header><h4>Laget av...</h4></header>
+    <header><h2 class="h4">Laget av...</h2></header>
     <div class="footer-item-content">
       <ul>
         <li>Trym Flogard</li>
@@ -50,7 +50,7 @@ export default class ForeFooter extends HTMLElement {
   </div>
 </div>
 <div class="footer-sponsors">
-  <h4 class="footer-sponsors-header">Sponsorer</h4>
+  <h2 class="footer-sponsors-header h4">Sponsorer</h2>
   <div class="footer-sponsors-images"></div>
 </div>`
 

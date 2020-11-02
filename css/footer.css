@@ -14,16 +14,13 @@ footer {
   margin: 2rem 0;
 }
 
-h1, h2, h3 {
-  margin-top: 0;
-}
 .footer-item:last-of-type {
   border-right: 0;
 }
 .footer-item header {
   margin-top: -2rem;
 }
-.footer-item header h4, .footer-item ul {
+.footer-item header h2, .footer-item ul {
   text-align: center;
   justify-content: center;
 }

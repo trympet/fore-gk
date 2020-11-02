@@ -108,22 +108,9 @@ h3, .h3 {
     font-size: 1.17rem;
 }
 
-/*p {
-    font-size: 24px;
-}*/
-
-/* h2 {
-    font-size: 41px;
+h4, .h4 {
+    font-size: 1rem;
 }
-
-h3 {
-    font-size: 36px;
-    border-bottom: 1px solid;
-    display: inline-block;
-    margin: 15px 0;
-} */
-
-/* Img */
 
 /* Tables */
 
@@ -495,11 +482,18 @@ h2 {
     line-height: 1.2;
 }
 
-/*Form medlemskap*/
-
-input, select, #fdato, #epost {
-    width: 100%;
+/* Form/skjemaer */
+input, select, textarea {
     padding: 15px 20px;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+textarea {
+    min-height: 20rem;
+}
+
+input, select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -507,7 +501,15 @@ input, select, #fdato, #epost {
     display: block;
 }
 
-.formStyle {
+.form-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-footer {
+    display: flex;
+}
+.form-footer input[type=submit], .form-footer button[type=submit] {
     width: 150px;
     background-color: var(--primary-color);
     color: white;
@@ -522,18 +524,27 @@ input[type=submit]:hover {
     background-color: #82a461;
 }
 
+/* Bli medlem */
+
+input[type=submit]:hover {
+    background-color: #82a461;
+}
+
 #form {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 25px;
+    padding-bottom: 0;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     column-gap: 10px;
-    row-gap: 2rem;
 }
 
-label {
-    display: inline-block;
+#form.form-body {
+    margin-bottom: 1.3125rem;
+}
+
+#form label {
     grid-column: span 5;
 }
 
@@ -549,17 +560,6 @@ label {
 
 #submitKontakt {
     flex: 1 0 0;
-}
-
-.form-footer {
-    display: flex;
-    margin-top: 1.5rem;
-}
-
-textarea {
-    padding: 12px 20px;
-    width: 100%;
-    min-height: 20rem;
 }
 
 .info {

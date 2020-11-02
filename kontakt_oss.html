@@ -12,62 +12,68 @@
     <body>
         <fore-navigasjon></fore-navigasjon>
         <main>
-            <div>
-                <h1>Kontakt oss</h1>
-                <hr>
+            <h1>Kontakt oss</h1>
+            <hr>
 
-                <h2> Her kan du kontakte Fore Golfklubb</h2>
+            <h2> Her kan du kontakte Fore Golfklubb</h2>
 
-                <div id="bokser">
-                    <div id="kontakt_form">
+            <div id="bokser">
+                <div id="kontakt_form">
 
-                        <p> Har du et spørsmål? </p>
-                        <p> Du kan sjekke om spørsmålet ditt allerede
-                            er besvart under vår Q&A.
-                        </p>
-                        <form action="link"
-                            method="post" id="Kontakt_oss">
-                            <br><label for="Navn"> Navn </label>
-                            <br><input type="text" id="Navn" name="Navn"
-                                required>
-                            <br><label for="epost"> E-post </label>
-                            <br><input type="email" id="epost" name="E-post"
-                                required>
-                            <br><label for="Melding"> Melding </label>
-                            <br><textarea id="Melding" name="Melding" required></textarea>
-                            <div class="form-footer">
-                                <div class="flex-spacer"></div>
+                    <p> Har du et spørsmål? </p>
+                    <p> Du kan sjekke om spørsmålet ditt allerede
+                        er besvart under vår Q&A.
+                    </p>
+                    <form action="link"
+                        method="post" id="Kontakt_oss">
+                        <div class="form-body">
+                            <label>
+                                Navn
+                                <input type="text" id="Navn" name="Navn" required>
+                            </label>
+                            <label>
+                                E-post
+                                <input type="email" id="epost" name="E-post"
+                                    required>
+                            </label>
+                            <label>
+                                Melding
+                                <textarea id="Melding" name="Melding" required></textarea>
+                            </label>
+                        </div>
+                        <div class="form-footer">
+                            <div class="flex-spacer"></div>
+                            <input type="submit" value="Send inn"
+                                class="formStyle" id="submitKontakt">
 
+                        </div>
+                    </form>
+                </div>
 
-                                <input type="submit" value="Send inn" class="formStyle" id="submitKontakt">
+                <div id="infoboks">
 
-                            </div>
-                        </form>
+                    <div class="telefon">
+                        <h3 class="info"><span class="ikon ikon-telefon"></span>
+                            Telefon</h3>
+                        <p class="infotekst">+47 987 65 432</p>
                     </div>
 
-                    <div id="infoboks">
-                        
-                        <div class="telefon">
-                            <h3 class="info"><span class="ikon ikon-telefon"></span> Telefon</h3>
-                            <p class="infotekst">+47 987 65 432</p>
-                        </div>
-                        
-                        <div class="adresse">
-                            <h3 class="info"><span class="ikon ikon-hus"></span> Adresse </h3>
-                            <p class="infotekst"> Adresse 10A <br>
-                                7040, Trondheim <br>
-                                Norway</p>
-                        </div>
-                        
-                        <div class="mail">
-                            <h3 class="info"><span class="ikon ikon-epost"></span> E-post </h3>
-                            <p class="infotekst"> mail@foregk.no</p>
-                        </div>
-                        
+                    <div class="adresse">
+                        <h3 class="info"><span class="ikon ikon-hus"></span>
+                            Adresse </h3>
+                        <p class="infotekst"> Adresse 10A <br>
+                            7040, Trondheim <br>
+                            Norway</p>
                     </div>
+
+                    <div class="mail">
+                        <h3 class="info"><span class="ikon ikon-epost"></span>
+                            E-post </h3>
+                        <p class="infotekst"> mail@foregk.no</p>
+                    </div>
+
                 </div>
             </div>
-
         </main>
         <fore-footer></fore-footer>
         <script type="module" src="./scripts/common.js"></script>
