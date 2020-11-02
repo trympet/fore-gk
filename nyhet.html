@@ -43,6 +43,7 @@
         let tittel = "Nyhet ikke funnet";
         
         const nyhetNavnFraURI = decodeURIComponent(window.location.hash.slice(1));
+        document.title = nyhetNavnFraURI;
         
         if (nyhetNavnFraURI) {
           
