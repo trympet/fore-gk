@@ -15,7 +15,7 @@
         <p>Priser finner du lenger ned på siden!</p>
         
     
-        <form action="link">
+        <form>
             <div id="form">
               <label for="navn">
                 Fullt navn
@@ -50,6 +50,9 @@
             </div>
             <br><input type="submit" value="Send inn" class="formStyle">
         </form>
+
+
+        </div>
     
         
         <h3>Informasjon om priser</h3>
@@ -91,8 +94,15 @@
     <script type="module" src="./scripts/form.js"></script>
     <script type="module">
     import {DialogBoks} from "./scripts/form.js";
-    const lukk = document.querySelector("#lukk-dialog-knapp");
+
+    const form = document.querySelector("form");
+
+    
     const dialog = document.querySelector("app-dialogboks");
+    dialog.visDialogForForm(form);
+    // dialog.vis();
+
+    const lukk = document.querySelector("#lukk-dialog-knapp");
     lukk.addEventListener("click", () => dialog.skjul());
   </script>
   </body>

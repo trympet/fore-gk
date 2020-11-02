@@ -1,17 +1,12 @@
-const visPopup = () => {
-
-}
-
 /** Modulær dialogboks som kan tilpasses ved å gi slottede elementer.
  * Dialogboksen består av en header, body og footer, hvor slottene henholdsvis heter
  * 'dialog-header', 'dialog-body' og 'dialog-footer'.
- * 
+ *
  * State oppdateres med vis() eller lukk().
- * 
+ *
  * åpne() og lukk() fyrer av eventene 'åpnet' og 'lukkes'.
  */
 export class DialogBoks extends HTMLElement {
-
   get templateHTML() {
     return `
       <div class="dialogboks">
@@ -19,6 +14,22 @@ export class DialogBoks extends HTMLElement {
           <slot name="dialog-header"></slot>
         </div>
         <div class="dialog-body">
+
+          <div class="dialog-loader">
+            <svg
+              class="dialog-loader-checkmark"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 52 52">
+              <circle class="dialog-loader-spinner" cx="26" cy="26" r="25" fill="none" />
+              <circle class="dialog-loader-sirkel" cx="26" cy="26" r="25" fill="none" />
+              <path
+                class="dialog-loader-hake"
+                fill="none"
+                d="M14.1 27.2l7.1 7.2 16.7-16.8"
+              />
+            </svg>
+          </div>
+
           <slot name="dialog-body"></slot>
         </div>
         <div class="dialog-footer">
@@ -28,74 +39,46 @@ export class DialogBoks extends HTMLElement {
       <div class="dialog-bakgrunn"></div>
     `;
   }
-  
-  get dialogWrapper() {
+
+  get dialogBoks() {
     return this.shadowRoot.querySelector(".dialogboks");
   }
 
   get bakgrunn() {
     return this.shadowRoot.querySelector(".dialog-bakgrunn");
   }
-  
-  
+
+  get loader() {
+    return this.shadowRoot.querySelector("dialog")
+  }
+
   /**
    * Lage en dialogboks
    * @param {String} overskrift - Overskriften til dialogboksen
    * @param {HTMLDivElement} bodyElement - HTMLElement med body-innholdet til dialogboksen
    * @param {{lukk:true, ok:false}} [alternativer] - lukk: om det skal vises lukk-knapp, ok: om det skal vises ok-knapp
    */
-  constructor(
-    overskrift,
-    bodyElement,
-    { lukk = true, ok = false } = { lukk: true, ok: false }
-  ) {
+  constructor() {
     super();
-
-    // this.innerHTML = ''; // hvis elementet kalles inline skjer ingenting
-    // this.overskrift = document.createElement('h5');
-    // this.overskrift.textContent = overskrift;
-    // this.body = bodyElement; // bodyen til dialogboksen
-    // this.lukk = lukk;
-    // this.ok = ok;
-    // this.wrapper = document.createElement('div'); // wrapper for innholdet i dialogboksen
-    // this.wrapper.style.transform = 'scale(0)'; // skjuler dialogboksen
-    // this.wrapper.className = 'dialogboks';
-    // this.bakgrunn = document.createElement('div'); // bakgrunn som skjuler innholdet bak dialogboksen
-    // this.bakgrunn.className = 'bakgrunn';
-
-    // this.header = document.createElement('div'); // header
-    // this.header.className = 'header';
-    // this.header.appendChild(this.overskrift);
-    // this.body.classList.add('body');
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: "open" });
     const template = document.createElement("template");
     template.innerHTML = this.templateHTML;
     this.shadowRoot.append(template.content);
   }
+
   /**
    * Kjøres hver gang elementet blir appendet til et element som er festet til dokumentet
    * Genererer dialogboksen og fester underelementer til DialogBoks-elementet
    */
   connectedCallback() {
-    // fester alle elementer til et shadowroot-dokument for å unngå css-konflikter
-    // const shadowRoot = this.attachShadow({ mode: 'open' });
-    this.bakgrunn.addEventListener("click", () => this.skjul())
+    this.bakgrunn.addEventListener("click", () => this.skjul());
 
-    // const footer = document.createElement('div');
-    // footer.className = 'footer';
-
-    // this.wrapper.appendChild(this.header);
-    // this.wrapper.appendChild(this.body);
-    // this.wrapper.appendChild(footer);
-    // shadowRoot.appendChild(this.wrapper);
-    // shadowRoot.appendChild(this.bakgrunn);
-
-    const stiler = document.createElement('style');
+    const stiler = document.createElement("style");
     stiler.textContent = `
     h1, h2, h3, h4, h5 {
       display: inline;
     }
-    .åpne {
+    .dialog-åpen {
       transform: scale(1)!important;
     }
     .dialogboks {
@@ -114,6 +97,13 @@ export class DialogBoks extends HTMLElement {
       width: auto;
       margin: 1.75rem auto;
       z-index: 2;
+    }
+    .dialogboks.loading .dialog-header, .dialogboks.loading .dialog-body, .dialogboks.loading .dialog-footer {
+      visibility: hidden;
+    }
+    .dialogboks.loading .dialog-bakgrunn {
+      /* Ikke dismiss før httprequest er ferdig */
+      pointer-events: none;
     }
     .dialog-header {
       border-top-left-radius: .125rem;
@@ -163,25 +153,142 @@ export class DialogBoks extends HTMLElement {
       z-index: 1;
       visibility: hidden;
     }
-    .skjult {
+    .dialog-skjult {
       opacity: .5;
       visibility: visible!important;
     }
+    .dialog-loader-spinner {
+      stroke: var(--primary-color);
+      transform-origin: center;
+      /* Halvsirkel */
+      stroke-dasharray: 999;
+      stroke-dashoffset: 890;
+  }
+  
+  
+  .dialog-loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+    }
+    .dialog-loader-sirkel {
+      stroke-dasharray: 216; /* ORIGINALLY 166px */
+      stroke-dashoffset: 216; /* ORIGINALLY 166px */
+      stroke-width: 2;
+      stroke-miterlimit: 10;
+      stroke: var(--primary-color);
+      fill: none;
+    }
+    
+    .dialog-loader-checkmark {
+      width: 106px; /* ORIGINALLY 56px */
+      height: 106px; /* ORIGINALLY 56px */
+      border-radius: 50%;
+      display: block;
+      stroke-width: 2;
+      stroke: #fff;
+      stroke-miterlimit: 10;
+      box-shadow: inset 0px 0px 0px var(--primary-color);
+    }
+    .dialogboks.completed .dialog-loader {
+        visibility: visible;
+      }
+      .dialogboks.completed .dialog-loader-checkmark {
+          animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;    
+      }
+    .dialogboks.completed .dialog-loader-hake {
+      animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+    }
+    .dialogboks.completed .dialog-loader-sirkel {
+      animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    }
+    .dialogboks.completed .dialog-loader-spinner {
+        visibility: hidden;
+    }
+    .dialogboks.loading .dialog-loader  {
+        visibility: visible;
+    }
+    
+    .dialogboks.loading .dialog-loader-spinner {
+        /* ikke animer før animasjonen er synlig */
+      animation: rotate 1s cubic-bezier(0.08, 0.4, 0.92, 0.59) infinite;
+    }
+  
+    .dialog-loader-hake {
+      transform-origin: 50% 50%;
+      stroke-dasharray: 98; /* ORIGINALLY 48px */
+      stroke-dashoffset: 98; /* ORIGINALLY 48px*/
+    }
+  
+    @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    
+    @keyframes stroke {
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+    @keyframes scale {
+      0%, 100% {
+        transform: none;
+      }
+      50% {
+        transform: scale3d(1.1, 1.1, 1);
+      }
+    }
+    @keyframes fill {
+      100% {
+        box-shadow: inset 0px 0px 0px 80px var(--primary-color);
+      }
+    }
     `;
     this.shadowRoot.appendChild(stiler);
-    this.vis();
   }
   /** Åpner dialogboksen */
   vis() {
-    setTimeout(() => this.dialogWrapper.classList.add('åpne'),6) // kan kun animeres etter det har gått minst 1 frame
-    this.bakgrunn.classList.add('skjult');
-    this.dispatchEvent(new CustomEvent('åpnet')); // sender event når dialogboksen åpnes
+    setTimeout(() => this.dialogBoks.classList.add("dialog-åpen"), 6); // kan kun animeres etter det har gått minst 1 frame
+    this.bakgrunn.classList.add("dialog-skjult");
+    this.dispatchEvent(new CustomEvent("åpnet")); // sender event når dialogboksen åpnes
   }
   /** Lukker dialogboksen */
   skjul() {
-    this.dialogWrapper.classList.remove('åpne');
-    this.bakgrunn.classList.remove('skjult');
-    this.dispatchEvent(new CustomEvent('lukket')); // sender event når dialogboksen lukkes
+    this.dialogBoks.classList.remove("dialog-åpen");
+    this.bakgrunn.classList.remove("dialog-skjult");
+    this.dispatchEvent(new CustomEvent("lukket")); // sender event når dialogboksen lukkes
+  }
+
+  visDialogForForm(form) {
+    // Initial state er loading for forms
+    this.dialogBoks.classList.add("loading");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) {
+        return;
+      }
+      this.vis();
+      // Fake submit. Dette ville vært post request i produksjon.
+      const loader = document.querySelector(".loader");
+      setTimeout(() => {
+        // Fake timeout for å simulere submit, noe som kan ta tid.
+        this.dialogBoks.classList.add("completed");
+        this.dialogBoks.classList.remove("loading");
+
+        // Setter alle formelementer til disabled.
+        for (const element of form.elements) {
+          element.setAttribute("disabled", "true");
+        }
+
+        // Fjerne statusindikator etter 2s.
+        // setTimeout(() => loader.classList.remove("completed"), 3000);
+      }, 2000);
+    });
   }
 }
-customElements.define('app-dialogboks', DialogBoks); // definerer DialogBoks-elementet
+customElements.define("app-dialogboks", DialogBoks); // definerer DialogBoks-elementet
