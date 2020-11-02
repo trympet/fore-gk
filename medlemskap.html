@@ -50,5 +50,15 @@
   </main>
   <fore-footer></fore-footer>
   <script type="module" src="./scripts/common.js"></script>
+  <script type="module" src="./scripts/form.js"></script>
+  <script type="module">
+    import {DialogBoks} from "./scripts/form.js";
+    const paragraf = document.createElement("p");
+    paragraf.textContent = "Takk for din interesse! Din forespørsel er nå registrert. Vi vil svare deg på oppgitt epost innen 2 virkedager.";
+    // const boks = document.createElement("app-dialogboks");
+    var boks = new DialogBoks("Takk for din henvendelse", paragraf);
+    document.body.append(boks);
+    boks.vis("Moren din er mann", paragraf);
+  </script>
 </body>
 </html>
