@@ -494,7 +494,7 @@ input, select {
     display: flex;
 }
 
-.form-footer input[type=submit], .form-footer button[type=submit] {
+.form-footer input[type=submit], .form-footer button[type=submit], .grønn-knapp {
     width: 150px;
     background-color: var(--primary-color);
     color: white;
@@ -632,18 +632,15 @@ input[type=submit]:hover {
 
 .dialogboks {
     transform: scale(0);
-    transition: transform .5s;
-    top: 5rem;
-    left: 5rem;
-    right: 5rem;
+    transition: transform .325s;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
     position: fixed;
     pointer-events: auto!important;
     background-color: #fff;
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
-    border: 0;
-    border-radius: .125rem;
-    min-width: 500px;
-    width: auto;
+    max-width: 800px;
     margin: 1.75rem auto;
     z-index: 2;
 }
