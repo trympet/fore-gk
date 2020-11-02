@@ -69,14 +69,12 @@ input[type=submit]:hover {
 
 
 #mail, #adresse, #telefon {
-     display: inline-block;
-    mix-blend-mode: color-burn;
+    display: inline-block;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-#infoboks{
-.ikon {
+ .ikon {
     height: 24px;
     width: 24px;
     display: inline-block;
@@ -108,6 +106,7 @@ input[type=submit]:hover {
     flex-direction: column;
     margin-top: -510px;
     margin-inline-end: 100px;
+}
 
 #bokser {
     display: flex;
