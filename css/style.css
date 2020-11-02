@@ -255,7 +255,7 @@ img {
     border-radius: 50px;
 }
 
-/*Scheme medlemskap*/
+/*Form medlemskap*/
 
 input[type=text], input[type=number], select, #fdato, #epost {
     width: 100%;
@@ -267,7 +267,7 @@ input[type=text], input[type=number], select, #fdato, #epost {
     display: block;
 }
 
-input[type=submit] {
+.formStyle{
     width: 150px;
     background-color: #9bbd6a;
     color: white;
@@ -275,7 +275,7 @@ input[type=submit] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 input[type=submit]:hover {
@@ -304,6 +304,110 @@ label {
 #postnr {
     grid-column: 7 / span 4;
 }
+
+/*Form kontakt */
+
+#submitKontakt {
+    flex: 1 0 0;
+}
+
+.form-footer {
+    display: flex;
+    margin-top: 1.5rem;
+}
+
+textarea {
+    padding: 12px 20px;
+    width: 100%;
+    min-height: 20rem;
+}
+
+.info {
+    display: flex;
+    margin: 0;
+    font-weight: bold;
+    align-items: flex-end;
+}
+
+.infotekst {
+    margin-top: 0px;
+}
+
+
+
+.ikon {
+    height: 24px;
+    width: 24px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin-right: 4px;
+}
+
+#telefon {
+    background-image: url(../assets/telefonikon.svg);
+}
+
+#adresse_kontakt {
+    background-image: url(../assets/husikon.svg);
+}
+
+#mail {
+    background-image: url(../assets/mailikon.svg);
+}
+
+#infoboks {
+    min-width: 18rem;
+    background-color: #E8E8E8;
+    padding: 2rem;
+    border-radius: 60px;
+    column-gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: -510px;
+    margin-inline-end: 100px;
+}
+
+#bokser {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#kontakt_form {
+    max-width: 20rem;
+    width: 100%;
+}
+
+/* Bruker media-query for å gjøre nettsiden responsiv */
+
+@media (max-width: 720px) {
+    #bokser {
+        flex-direction: column;
+    }
+    #kontakt_form {
+        max-width: unset;
+    }
+    .form-footer {
+        flex-direction: column;
+    }
+    #infoboks {
+        flex-direction: row;
+        margin-top: auto;
+        margin-inline-end: 0px;
+    }
+}
+
+@media (max-width: 480px) {
+    #infoboks {
+        flex-direction: column;
+        text-align: center;
+        margin-top: auto;
+        margin-inline-end: 0px;
+    }
+}
+
 @media only screen and (max-width: 460px) {
     #form {
         display: flex;
