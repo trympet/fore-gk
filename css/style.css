@@ -163,6 +163,9 @@ img {
   }
 }
 
+
+
+
 /*Calendar*/
 
 .kalender {
@@ -300,7 +303,7 @@ label {
     grid-column: 7 / span 4;
 }
 
-/*Form kontakt */
+/*kontakt oss */
 
 #submitKontakt {
     flex: 1 0 0;
