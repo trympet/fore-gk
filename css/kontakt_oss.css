@@ -46,7 +46,35 @@ input[type=submit]:hover {
     margin-top: 1.5rem;
 }
 
-.ikon {
+#telefon{
+    background-image: url(./assets/telefonikon.jpg);
+    height: 20px;
+    width: 23px;  
+}
+
+#adresse{
+   background-image: url(./assets/husikon.png);
+    height: 24px;
+    width: 24px;
+}
+
+#mail{
+    background-image: url(./assets/mailikon.png);
+    height: 25px;
+    width: 30px;
+    background-position: bottom;
+    margin-left: -5px;
+    margin-bottom: -3px;
+}
+
+
+#mail, #adresse, #telefon {
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+ .ikon {
     height: 24px;
     width: 24px;
     display: inline-block;
@@ -105,6 +133,8 @@ input[type=submit]:hover {
     }
     #infoboks {
         flex-direction: row;
+         margin-top: auto;
+        margin-inline-end: 0px;
     }
 }
 
@@ -112,5 +142,7 @@ input[type=submit]:hover {
     #infoboks {
         flex-direction: column;
         text-align: center;
+         margin-top: auto;
+        margin-inline-end: 0px;
     }
 }
