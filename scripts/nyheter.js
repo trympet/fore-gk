@@ -1,21 +1,29 @@
 //@ts-check
+
+class ForeElement extends HTMLElement {
+  get stiler() {
+    const linkElem = document.createElement("link");
+    linkElem.setAttribute("rel", "stylesheet");
+    linkElem.setAttribute("href", "./css/style.css");
+    return linkElem;
+  }
+
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
+}
+
 /**
  * HTMLElement for én nyhetsartikkel. Inneholder egne stiler.
- * @extends HTMLElement
+ * @extends ForeElement
  */
-class NyhetCard extends HTMLElement {
+class NyhetCard extends ForeElement {
   _nyhet; // Tildelt i cctor
   truncateTegn = null;
 
   get _dato() {
     return new Date(this._nyhet.dato);
-  }
-
-  get _stiler() {
-    const link = document.createElement("link");
-    link.setAttribute("rel", "stylesheet");
-    link.setAttribute("href", "./css/nyhet.css");
-    return link;
   }
 
   get _tekst() {
@@ -35,15 +43,15 @@ class NyhetCard extends HTMLElement {
  
   get _HTML() {
     return `
-<a href="./nyhet.html#${this._nyhet.tittel}">
-  <div class="card card-link">
-    <div class="card-image" style="background-image: url(${this._nyhet.bilde})">
+<a href="./nyhet.html#${this._nyhet.tittel}" class="boks-link">
+  <div class="boks boks-link boks-vertikal">
+    <div class="boksebilde" style="background-image: url(${this._nyhet.bilde})">
     </div>
-    <div class="card-primary">
-      <h2 class="card-title">${this._nyhet.tittel}</h2>
-      <h3 class="card-subtitle">${this._nyhet.forfatter}</h3>
+    <div class="boksetekst">
+      <h2 class="boks-overskrift">${this._nyhet.tittel}</h2>
+      <h3 class="boks-underoverskrift">${this._nyhet.forfatter}</h3>
+      <p>${this._tekst}</p>
     </div>
-    <div class="card-body">${this._tekst}</div>
   </div>
 </a>`;
   }
@@ -54,8 +62,7 @@ class NyhetCard extends HTMLElement {
   constructor(nyhet) {
     super();
     this._nyhet = nyhet;
-    this.attachShadow({ mode: "open" });
-    this.classList.add("fore-nyhet", "card", "card-link");
+    this.classList.add("fore-nyhet", "boks", "boks-link");
   }
 
   /**
@@ -64,11 +71,11 @@ class NyhetCard extends HTMLElement {
    */
   async connectedCallback() {
     // Nyhet kan også spesifiseres i dataset
+    this.shadowRoot.innerHTML = this._HTML;
     if (!this._nyhet && this.dataset.nyhet) {
       this._nyhet = await NyhetCard.getNyhetFraNavn(this.dataset.nyhet);
     }
-    this.shadowRoot.innerHTML = this._HTML;
-    this.shadowRoot.append(this._stiler);
+    this.shadowRoot.append(this.stiler);
   }
 
   /**
@@ -92,24 +99,16 @@ customElements.define("fore-nyhet", NyhetCard, { extends: "article" });
 class NyhetArkivCard extends NyhetCard {
   // Override stiler fra NyhetCard
   truncateTegn = 250;
-  get _stiler() {
-    const linkElem = document.createElement("link");
-    linkElem.setAttribute("rel", "stylesheet");
-    linkElem.setAttribute("href", "./css/nyhetsarkiv.css");
-    return linkElem;
-  }
 
   // Override HTML fra NyhetCard
   get _HTML() {
     return `
-<a href="./nyhet.html#${this._nyhet.tittel}" class="tekstlink">
-<div class="boks">
+<a href="./nyhet.html#${this._nyhet.tittel}">
+<div class="boks boks-horisontal">
   <div class="boksetekst">
-    <div class="boksetekst-wrapper">
-    <h2>${this._nyhet.tittel}</h2>
-    <h3>Dato publisert: ${this._dato.toLocaleDateString()}</h3>
+    <h2 class="boks-overskrift">${this._nyhet.tittel}</h2>
+    <h3 class="boks-underoverskrift">Dato publisert: ${this._dato.toLocaleDateString()}</h3>
     <p>${this._tekst}</p>
-  </div>
   </div>
   <div class="boksebilde">
     <img src="${this._nyhet.bilde}">
@@ -120,6 +119,8 @@ class NyhetArkivCard extends NyhetCard {
 
   constructor(nyhet) {
     super(nyhet);
+    this.classList.add("fore-arkiv-nyhet")
+    this.shadowRoot.append(this.stiler);
   }
 }
 customElements.define("fore-arkiv-nyhet", NyhetArkivCard, {
@@ -128,9 +129,9 @@ customElements.define("fore-arkiv-nyhet", NyhetArkivCard, {
 
 /**
  * Element som lager og viser flere nyheter
- * @extends HTMLElement
+ * @extends ForeElement
  */
-class NyhetCardCollectionElement extends HTMLElement {
+class NyhetCardCollectionElement extends ForeElement {
   antallNyheter = 4; // antall nyheter i collection
   startNyheter = 0; // startindeks på nyheter.
 
@@ -153,19 +154,6 @@ class NyhetCardCollectionElement extends HTMLElement {
       ),
     ]);
   };
-
-  get _stiler() {
-    const style = document.createElement("style");
-    style.append(`
-      fore-nyheter {
-        display: grid;
-        align-items: center;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 344px));
-        gap: 2rem;
-      }
-      `);
-    return style;
-  }
 
   /**
    * Antall nyheter som finnes i API. Her MÅ man bruke await!
@@ -192,8 +180,6 @@ class NyhetCardCollectionElement extends HTMLElement {
   constructor(template = NyhetCard) {
     super();
     this._template = template;
-
-    this.attachShadow({ mode: "open" });
   }
 
   /**
@@ -248,7 +234,7 @@ class NyhetCardCollectionElement extends HTMLElement {
    */
   async _visNyheter() {
     this.shadowRoot.innerHTML = "";
-    this.shadowRoot.append(this._stiler);
+    this.shadowRoot.append(this.stiler);
     const nyheter = await this._getNyheter();
     nyheter.forEach((nyhet) => {
       this.shadowRoot.append(new this._template(nyhet));

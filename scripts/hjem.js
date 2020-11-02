@@ -1,6 +1,6 @@
 import "./common.js";
 class ForeHjemNyhetCard extends NyhetCard {
-  truncateTegn = 225;
+  truncateTegn = 221;
 }
 customElements.define("fore-hjem-nyhet", ForeHjemNyhetCard, { extends: "article" });
 
