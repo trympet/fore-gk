@@ -73,3 +73,15 @@ body {font-family: Verdana, sans-serif;}
     flex-basis: 50%;
     text-align: center;
 }
+
+#text {
+    height: 10%;
+    max-width: 100px;
+    margin: auto;
+    margin-top: 15%;
+}
+
+.aktivDag {
+    background-color: lightgray;
+    border-radius: 50px;
+}
