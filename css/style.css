@@ -1054,4 +1054,7 @@ input[type=submit]:hover {
       flex-direction: column;
       text-align: center;
     }
+    .kontakt-oss-grid h5 {
+        justify-content: center;
+    }
   }
