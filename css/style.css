@@ -257,6 +257,8 @@ img {
 
 /* CSS til nyhetsarkiv */
 
+
+
 #overLinja {
     display: flex;
     flex-direction: row;
@@ -498,6 +500,7 @@ label {
     grid-column: 7 / span 4;
 }
 
+
 /*kontakt oss */
 
 
@@ -526,7 +529,6 @@ textarea {
 .infotekst {
     margin-top: 0px;
 }
-
 
 
 .ikon {
