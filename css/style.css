@@ -107,6 +107,7 @@ body {
     min-height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 main {
@@ -882,8 +883,31 @@ input[type=submit]:hover {
 
 /* Navigasjonsbar */
 
+.nav-wrapper {
+    /* Denne må dekke hele skjermen av en eller annen grunn.
+     * Tror det har med shadowroot ikke kan ha overflow å gjøre elns 
+     */
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     position: absolute;
+}
+
+fore-navigasjon {
+    /* Padding = navbar høyde */
+    margin-bottom: 8rem;
+}
+
 .nav-header {
     padding: 0 1rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+}
+
+.nav-header a {
+    display: block;
 }
 
 .nav-header-img {
@@ -897,6 +921,11 @@ input[type=submit]:hover {
     background: var(--primary-color);
     display: flex;
     flex-direction: column;
+    height: 3rem;
+    z-index: 50;
+    position: sticky;
+    top: 0;
+    justify-content: center;
 }
 
 #nav-list {
@@ -958,7 +987,7 @@ input[type=submit]:hover {
     height: 100%;
     opacity: 0;
     content: '';
-    position: absolute;
+    position: fixed;
     visibility: hidden;
 }
 

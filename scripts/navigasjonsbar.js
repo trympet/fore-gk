@@ -59,6 +59,7 @@ export default class ForeNavigasjon extends ForeElement {
   constructor() {
     super();
     this.template = document.createElement("div");
+    this.template.classList.add("nav-wrapper")
     this.template.innerHTML = this.HTML;
 
     const navList = this.template.querySelector("#nav-list");
