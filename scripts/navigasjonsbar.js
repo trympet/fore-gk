@@ -34,7 +34,7 @@ export default class ForeNavigasjon extends ForeElement {
   <header class="nav-header">
     <a href='./index.html'>
       <img class="nav-header-img" src="./images/logo.svg" alt="Fore Golfklubb">
-    <a>
+    </a>
   </header>
   <nav class="navbar">
     <ul id="nav-list">
