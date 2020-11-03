@@ -2,9 +2,12 @@
 <html lang="nb">
   <head>
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="preload" href="./scripts/fore-element.js" as="script" crossorigin="anonymous">
-    <link rel="preload" href="./scripts/navigasjonsbar.js" as="script" crossorigin="anonymous">
-    <link rel="preload" href="./scripts/footer.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="./scripts/fore-element.js" as="script"
+      crossorigin="anonymous">
+    <link rel="preload" href="./scripts/navigasjonsbar.js" as="script"
+      crossorigin="anonymous">
+    <link rel="preload" href="./scripts/footer.js" as="script"
+      crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fore GK</title>
@@ -86,58 +89,61 @@
             alt="oversiktsbilde golfbane">
         </picture>
       </div>
-      <main class="forside">
+      <main>
         <section>
           <h1 class="h2">Velkommen til Fore GK</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur dolor deserunt autem possimus dignissimos eveniet soluta veniam, officiis recusandae beatae iste ducimus in ipsam? Nobis enim sequi ex reiciendis inventore?</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Consequuntur dolor deserunt autem possimus dignissimos eveniet
+            soluta veniam, officiis recusandae beatae iste ducimus in ipsam?
+            Nobis enim sequi ex reiciendis inventore?</p>
         </section>
-        <div class="forside-content section">
+        <div class="forside-content forside section">
           <section>
             <h2>Nyheter</h2>
             <fore-hjem-nyheter antall-nyheter="4">
             </fore-hjem-nyheter>
           </section>
-          <section class="maps-container">
-            <h2>Besøk oss</h2>
-            <div class="map-iframe-container">
-              <iframe title="adresse"
+          <aside>
+            <div class="content-wrapper">
+              <div class="baneforhold">
+                <h2 class="h3">Baneforhold</h2>
+                <p id="baneforhold"></p>
+              </div>
+              <div class="værmelding">
+                <h2 class="h3">Værmelding</h2>
+                <svg viewBox="0 0 250 100" xmlns="http://www.w3.org/2000/svg"
+                  stroke="red" fill="grey">
+                  <image class="værmelding-ikon"
+                    width="100"
+                    height="100"></image>
+                  <text x="250" y="50" class="værmelding-temperatur"></text>
+                </svg>
+              </div>
+              <div class="åpningstider">
+                <h2 class="h3">Åpningstider</h2>
+                <ol class="åpningstider-liste">
+                  <li>Man-fre: 09:00 - 16:00</li>
+                  <li>Lør-søn: 10:00 - 15:00</li>
+                </ol>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <section class="maps-container">
+          <h2>Besøk oss</h2>
+          <div class="map-iframe-container">
+            <iframe title="adresse"
               src="https://maps.google.com/maps?q=Tømmerdalsveien+50&t=&z=13&ie=UTF8&iwloc=&output=embed"
               frameborder="0" allowfullscreen></iframe>
-            </div>
-          </section>
-        </div>
-        <aside>
-          <div class="content-wrapper">
-            <div class="baneforhold">
-              <h2 class="h3">Baneforhold</h2>
-              <p id="baneforhold"></p>
-            </div>
-            <div class="værmelding">
-              <h2 class="h3">Værmelding</h2>
-              <svg viewBox="0 0 250 100" xmlns="http://www.w3.org/2000/svg"
-                stroke="red" fill="grey">
-                <image class="værmelding-ikon"
-                  width="100"
-                  height="100" />
-                  <text x="250" y="50" class="værmelding-temperatur" />
-                  </svg>
-                </div>
-                <div class="åpningstider">
-                  <h2 class="h3">Åpningstider</h2>
-                  <ol class="åpningstider-liste">
-                    <li>Man-fre: 09:00 - 16:00</li>
-                    <li>Lør-søn: 10:00 - 15:00</li>
-                  </ol>
-                </div>
-              </div>
-            </aside>
-          </main>
-        </div>
-        <fore-footer></fore-footer>
-        <script type="module" src="./scripts/common.js"></script>
-        <script type="module" src="./scripts/hjem.js"></script>
-        <script type="module" src="./scripts/nyheter.js">
+          </div>
+        </section>
+      </main>
+    </div>
+    <fore-footer></fore-footer>
+    <script type="module" src="./scripts/common.js"></script>
+    <script type="module" src="./scripts/hjem.js"></script>
+    <script type="module" src="./scripts/nyheter.js">
         </script>
-        <script src="./scripts/værmelding.js"></script>
-      </body>
-    </html>
+    <script src="./scripts/værmelding.js"></script>
+  </body>
+</html>

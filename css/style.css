@@ -1227,7 +1227,6 @@ fore-hjem-nyheter {
     display: grid;
     grid-template-columns: 2fr max-content;
     column-gap: 2rem;
-    padding-top: 3rem;
 }
 
 .værmelding-temperatur {
@@ -1256,7 +1255,7 @@ aside .content-wrapper {
 @media only screen and (max-width: 720px) {
     .forside {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
     aside .content-wrapper {
         flex-direction: row;
