@@ -499,7 +499,7 @@ fore-nyheter {
 }
 
 @media (max-width: 960px) {
-    .boks {
+    .boks:not(.boks-vertikal) {
         flex-direction: column-reverse;
     }
 }
@@ -1226,7 +1226,7 @@ aside .content-wrapper {
 @media only screen and (max-width: 720px) {
     .forside {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
     aside .content-wrapper {
         flex-direction: row;
