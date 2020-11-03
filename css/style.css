@@ -32,15 +32,15 @@ h1 .ikon, h2 .ikon, h3 .ikon {
 }
 
 .ikon-epost {
-    background-image: url(../assets/mailikon.svg);
+    background-image: url(../images/mailikon.svg);
 }
 
 .ikon-telefon {
-    background-image: url(../assets/telefonikon.svg);
+    background-image: url(../images/telefonikon.svg);
 }
 
 .ikon-hus {
-    background-image: url(../assets/husikon.svg);
+    background-image: url(../images/husikon.svg);
 }
 
 .ikon-forover {
@@ -913,7 +913,7 @@ input[type=submit]:hover {
     height: 40px;
     border-radius: 50%;
     /* lettere å treffe på mobil */
-    background: url("../assets/menu.svg");
+    background: url("../images/menu.svg");
     background-repeat: no-repeat;
     background-position: center;
     border: none;

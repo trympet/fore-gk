@@ -17,7 +17,7 @@
     "dato": 1597190400000,
     "tittel": "Vi åpner igjen!",
     "forfatter": "Gunnar Olsen",
-    "bilde": "./assets/nyheter/nyhet-bilde-1.jpg",
+    "bilde": "./images/nyheter/nyhet-bilde-1.jpg",
     "tekst": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec tortor quis neque eleifend posuere. Morbi iaculis purus ex, vitae faucibus ante vulputate id. Suspendisse in leo quis diam laoreet vehicula sed quis diam. "
   },
   {
