@@ -50,6 +50,31 @@
        * Hvis nyheten ikke finnes, printes det ut en feilmelding.
        */
 
+       // For SEO. Les mer her: https://developers.google.com/search/docs/guides/intro-structured-data?hl=en
+
+       const getStrucutredData = ({tittel, forfatter, bilde, dato}) => {
+         return `
+         {
+          "@context": "https://schema.org/",
+          "@type": "NewsArticle",
+          "headline": "${tittel}",
+          "datePublished": ${new Date(dato).toISOString()},
+          "image": [ "${bilde}" ],
+          "author": {
+            "@type": "Person",
+            "name": "${forfatter}"
+          }
+         }`
+       };
+       
+       // Lager JSON-LD elementet i head elementet.
+       const createStructuredDataElement = (structuredData) => {
+        const script = document.createElement('script');
+        script.setAttribute('type', 'application/ld+json');
+        script.textContent = structuredData;
+        document.head.appendChild(script);
+       };
+
       (async () => {
         const tittelElement = document.querySelector(".nyhet-navn");
         const datoElement = document.querySelector(".nyhet-dato-publisert");
@@ -75,6 +100,8 @@
             const dateTime = new Date(nyhet.dato);
             dato = dateTime.toLocaleDateString();
             datoElement.setAttribute("datetime", dateTime.toISOString())
+
+            createStructuredDataElement(getStrucutredData(nyhet));
           }
         }
         else {
