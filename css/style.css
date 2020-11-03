@@ -591,6 +591,10 @@ input[type=submit]:hover {
     width: 100%;
 }
 
+#Melding {
+    font-size: 15px; 
+}
+
 /* Bruker media-query for å gjøre nettsiden responsiv */
 
 @media (max-width: 720px) {
