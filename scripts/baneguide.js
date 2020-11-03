@@ -15,7 +15,9 @@
             slide_index -= 1;
             slideShow();
         }
-
+        
+        /* Lager slider */
+        /* Inspirert fra: 'https://www.w3schools.com/howto/howto_js_slideshow.asp' */
         function slideShow(){
             let slides = document.getElementsByClassName('bg_slides');
             if (slide_index > slides.length){slide_index = 1}
@@ -27,11 +29,12 @@
         }
 
         /* Navigasjonstabell */
+        /* Legger til eventListener på alle cellene i tabellen */
         document.querySelectorAll('baneguide_nav').forEach(item => {
         item.addEventListener('click', bg_nav)
         })
 
-        /* Funnet online */
+        /* Henter ut verdien fra cellen som klikkes på */
         let table = document.getElementById("baneguide_navbar");
         if (table != null) {
             for (let i = 0; i < table.rows.length; i++) {
