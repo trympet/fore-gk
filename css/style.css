@@ -516,6 +516,7 @@ input, select, textarea {
     padding: 15px 20px;
     width: 100%;
     margin-bottom: 2rem;
+    background: #fff;
 }
 
 textarea {
