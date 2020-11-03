@@ -2,6 +2,9 @@
 <html lang="nb">
   <head>
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="preload" href="./scripts/fore-element.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="./scripts/navigasjonsbar.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="./scripts/footer.js" as="script" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fore GK</title>
@@ -95,7 +98,7 @@
             </fore-hjem-nyheter>
           </section>
           <section class="maps-container">
-            <h2>Besøk oss</h1>
+            <h2>Besøk oss</h2>
             <div class="map-iframe-container">
               <iframe title="adresse"
               src="https://maps.google.com/maps?q=Tømmerdalsveien+50&t=&z=13&ie=UTF8&iwloc=&output=embed"
@@ -131,6 +134,7 @@
           </main>
         </div>
         <fore-footer></fore-footer>
+        <script type="module" src="./scripts/common.js"></script>
         <script type="module" src="./scripts/hjem.js"></script>
         <script type="module" src="./scripts/nyheter.js">
         </script>
