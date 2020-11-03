@@ -23,7 +23,7 @@ function blaForover() {
   const foreArkivNyheter = document.getElementsByTagName(
     "fore-arkiv-nyheter"
   )[0];
-  foreArkivNyheter.attributes["start-nyheter"].value = sideIndeks;
+  foreArkivNyheter.attributes["start-nyheter"].value = sideIndeks * nyhetsElement.antallNyheter;
   setButtonState();
   setPaginatorState();
 }
