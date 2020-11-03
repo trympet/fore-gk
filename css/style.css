@@ -605,19 +605,26 @@ input[type=submit]:hover {
     column-gap: 2rem;
     display: flex;
     flex-direction: column;
-    margin-top: -510px;
-    margin-inline-end: 100px;
+    grid-area: infoboks;
 }
 
 #bokser {
-    display: flex;
+    display: grid;
     justify-content: space-between;
-    align-items: center;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-areas:
+        "form . infoboks"
+        "form kart kart";
+}
+#submitKontakt {
+    margin-bottom: 0;
 }
 
 #kontakt_form {
+    grid-area: form;
     max-width: 20rem;
     width: 100%;
+    align-self: center;
 }
 
 #Melding {
@@ -628,7 +635,11 @@ input[type=submit]:hover {
 
 @media (max-width: 720px) {
     #bokser {
+        display: flex;
         flex-direction: column;
+    }
+    #Kontakt_oss {
+        padding-bottom: 2rem;
     }
     #kontakt_form {
         max-width: unset;
@@ -1103,6 +1114,7 @@ input[type=submit]:hover {
 
 .maps-container {
     grid-column: 1;
+    grid-area: kart;
 }
 
 .map-iframe-container {

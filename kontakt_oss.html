@@ -18,9 +18,11 @@
 
             <div id="bokser">
                 <div id="kontakt_form">
+                    <div class="flex-spacer"></div>
+                    <p> Har du et spørsmål? Benytt deg av kontaktskjemaet under
+                        for å sende inn ditt spørsmål, eller kontakt oss via
+                        telefon eller epost. </p>
 
-                    <p> Har du et spørsmål? Benytt deg av kontaktskjemaet under for å sende inn ditt spørsmål, eller kontakt oss via telefon eller epost.  </p>
-                    
                     <form id="Kontakt_oss">
                         <div class="form-body">
                             <label>
@@ -47,42 +49,49 @@
                         </div>
                     </form>
                 </div>
+                <div id="infoboks">
 
-                    <div id="infoboks">
+                    <div class="telefon">
+                        <h3 class="info"><span class="ikon ikon-telefon"></span>
+                            Telefon</h3>
+                        <p class="infotekst">+47 987 65 432</p>
+                    </div>
 
-                        <div class="telefon">
-                            <h3 class="info"><span class="ikon ikon-telefon"></span>
-                                Telefon</h3>
-                            <p class="infotekst">+47 987 65 432</p>
-                        </div>
+                    <div class="adresse">
+                        <h3 class="info"><span class="ikon ikon-adresse"></span>
+                            Adresse </h3>
+                        <p class="infotekst">Adresse&nbsp;10A&nbsp;<br>7040,&nbsp;Trondheim<br>Norway</p>
+                    </div>
 
-                        <div class="adresse">
-                            <h3 class="info"><span class="ikon ikon-adresse"></span>
-                                Adresse </h3>
-                            <p class="infotekst">Adresse&nbsp;10A&nbsp;<br>7040,&nbsp;Trondheim<br>Norway</p>
-                        </div>
+                    <div class="mail">
+                        <h3 class="info"><span class="ikon ikon-epost"></span>
+                            E-post </h3>
+                        <p class="infotekst"> mail@foregk.no</p>
+                    </div>
 
-                        <div class="mail">
-                            <h3 class="info"><span class="ikon ikon-epost"></span>
-                                E-post </h3>
-                            <p class="infotekst"> mail@foregk.no</p>
-                        </div>
-
+                </div>
+                <div class="maps-container">
+                    <h2>Besøk oss</h1>
+                    <div class="map-iframe-container">
+                        <iframe title="adresse"
+                            src="https://maps.google.com/maps?q=Tømmerdalsveien+50&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
-            </main>
-            <fore-footer></fore-footer>
+            </div>
+        </main>
+        <fore-footer></fore-footer>
 
-            <fore-dialogboks>
-                <h2 slot="dialog-header">Din henvendelse er mottatt</h2>
-                <p slot="dialog-body">Din henvendelse er registrert. Vi svarer
-                    vanligvis innen to virkedager.</p>
-                <button slot="dialog-footer" id="lukk-dialog-knapp"
-                    class="grønn-knapp">Ok</button>
-            </fore-dialogboks>
+        <fore-dialogboks>
+            <h2 slot="dialog-header">Din henvendelse er mottatt</h2>
+            <p slot="dialog-body">Din henvendelse er registrert. Vi svarer
+                vanligvis innen to virkedager.</p>
+            <button slot="dialog-footer" id="lukk-dialog-knapp"
+                class="grønn-knapp">Ok</button>
+        </fore-dialogboks>
 
-            <script type="module" src="./scripts/common.js"></script>
-            <script type="module">
+        <script type="module" src="./scripts/common.js"></script>
+        <script type="module">
             import {DialogBoks} from "./scripts/form.js";
         
             const form = document.querySelector("form");
@@ -94,5 +103,5 @@
             const lukk = document.querySelector("#lukk-dialog-knapp");
             lukk.addEventListener("click", () => dialog.skjul());
           </script>
-        </body>
-    </html>
+    </body>
+</html>
