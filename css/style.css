@@ -126,7 +126,10 @@ h3, .h3 {
 
 h4, .h4 {
     font-size: 1rem;
-    text-decoration: underline;
+}
+
+h4 {
+      text-decoration: underline;
 }
 
 /* Tables */
