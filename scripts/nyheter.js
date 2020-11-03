@@ -101,7 +101,7 @@ export class NyhetArkivBoks extends NyhetBoks {
     <p>${this._tekst}</p>
   </div>
   <div class="boksebilde nyhetsbilde">
-    <img src="${this._nyhet.bilde}">
+    <img src="${this._nyhet.bilde}" alt="${this._nyhet.tittel}">
   </div>
 </div>
 </a>`;
