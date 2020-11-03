@@ -207,7 +207,7 @@ a {
     }
 }
 
-/*Calendar*/
+/* arrangementer.html */
 
 .kalender {
     max-width: 400px;
@@ -315,6 +315,14 @@ fore-nyheter {
     width: 100%;
     object-fit: cover;
     display: block;
+}
+
+.nyhethr {
+    margin-bottom: 3em;
+}
+
+.ennyhet .boksetekst {
+    padding: 0;
 }
 
 /* CSS til nyhetsarkiv */
@@ -525,7 +533,7 @@ input[type=submit]:hover {
     background-color: unset;
 }
 
-/* Bli medlem */
+/* medlemskap.html */
 
 input[type=submit]:hover {
     background-color: #82a461;
@@ -557,7 +565,7 @@ input[type=submit]:hover {
     grid-column: 7 / span 4;
 }
 
-/*kontakt oss */
+/* kontakt_oss.html */
 
 #submitKontakt {
     flex: 1 0 0;
