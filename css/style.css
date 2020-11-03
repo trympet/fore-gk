@@ -908,13 +908,14 @@ fore-navigasjon {
 
 .nav-header a {
     display: block;
-}
-
-.nav-header-img {
     width: 440px;
     max-width: 100%;
     margin: auto;
+}
+
+.nav-header-img {
     display: block;
+    width: 100%;
 }
 
 .navbar {
