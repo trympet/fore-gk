@@ -1097,6 +1097,28 @@ input[type=submit]:hover {
 
 /* index.html */
 
+.maps-container {
+    grid-column: 1;
+}
+
+.map-iframe-container {
+    grid-column: 1;
+    height: 400px;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    margin-bottom: 1.5rem;
+}
+.maps-container iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border: 0;
+}
+
 /* forsidebilde */
 
 .hero-forside {
