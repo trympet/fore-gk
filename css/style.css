@@ -1112,6 +1112,10 @@ input[type=submit]:hover {
 
 /* index.html */
 
+.forside section, .forside .section {
+    grid-column: 1;
+}
+
 .maps-container {
     grid-column: 1;
     grid-area: kart;
@@ -1171,8 +1175,7 @@ fore-hjem-nyheter {
 .forside {
     display: grid;
     grid-template-columns: 2fr max-content;
-    column-gap: .5rem;
-    gap: 2rem;
+    column-gap: 2rem;
     padding-top: 3rem;
 }
 
@@ -1191,6 +1194,8 @@ fore-hjem-nyheter {
 /* aside innhold */
 
 aside .content-wrapper {
+    padding: 1rem 0;
+    margin-top: 0.83em;
     margin-left: auto;
     margin-right: auto;
     display: flex;
