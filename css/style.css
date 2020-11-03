@@ -310,6 +310,14 @@ fore-nyheter {
     display: block;
 }
 
+.nyhethr {
+    margin-bottom: 3em;
+}
+
+.ennyhet .boksetekst {
+    padding: 0;
+}
+
 /* CSS til nyhetsarkiv */
 
 #overLinja {
