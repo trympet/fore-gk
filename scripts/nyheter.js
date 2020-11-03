@@ -37,8 +37,10 @@ export class NyhetBoks extends ForeElement {
     <div class="boksebilde" style="background-image: url(${this._nyhet.bilde})">
     </div>
     <div class="boksetekst">
-      <h2 class="boks-overskrift">${this._nyhet.tittel}</h2>
-      <h3 class="boks-underoverskrift">${this._nyhet.forfatter}</h3>
+      <header>
+        <h2 class="boks-overskrift">${this._nyhet.tittel}</h2>
+        <h3 class="boks-underoverskrift">${this._nyhet.forfatter}</h3>
+      </header>
       <p>${this._tekst}</p>
     </div>
   </div>
@@ -96,8 +98,10 @@ export class NyhetArkivBoks extends NyhetBoks {
 <a href="./nyhet.html#${this._nyhet.tittel}">
 <div class="boks boks-link boks-horisontal">
   <div class="boksetekst">
-    <h2 class="boks-overskrift">${this._nyhet.tittel}</h2>
-    <h3 class="boks-underoverskrift">Dato publisert: ${this._dato.toLocaleDateString()}</h3>
+    <header>
+      <h2 class="boks-overskrift">${this._nyhet.tittel}</h2>
+      <h3 class="boks-underoverskrift">Dato publisert: <time datetime="${this._dato.toISOString()}" >${this._dato.toLocaleDateString()}</time></h3>
+    </header>
     <p>${this._tekst}</p>
   </div>
   <div class="boksebilde nyhetsbilde">

@@ -9,14 +9,15 @@ export default class ForeFooter extends ForeElement {
     "logoipsum-alt.png",
     "treva.png",
     "ntnu.png",
-  ]
-  SPONSOR_LOGO_PATH = "./images/sponsors/";
+  ];
+  _SPONSOR_LOGO_PATH = "./images/sponsors/";
   HTML = `
 <div class="fore-footer-wrapper">
   <div class="fore-footer-item">
     <div class="fore-footer-item-content">
-      <a href='./index.html'><img src="./images/footer-logo.svg" alt="Fore Golfklubb"
-        class="fore-footer-logo-img"></a>
+      <a href='./index.html'>
+        <img src="./images/footer-logo.svg" alt="Fore Golfklubb" class="fore-footer-logo-img">
+      </a>
     </div>
   </div>
   <div class="fore-footer-item">
@@ -54,16 +55,16 @@ export default class ForeFooter extends ForeElement {
 <div class="fore-footer-sponsors">
   <h2 class="fore-footer-sponsors-header h4">Sponsorer</h2>
   <div class="fore-footer-sponsors-images"></div>
-</div>`
+</div>`;
 
   get sponsors() {
-    return this._SPONSORS.map(sponsor => {
-      const path = this.SPONSOR_LOGO_PATH + sponsor;
+    return this._SPONSORS.map((sponsor) => {
+      const path = this._SPONSOR_LOGO_PATH + sponsor;
       const image = document.createElement("img");
       image.setAttribute("src", path);
       image.setAttribute("alt", sponsor);
       return image;
-    })
+    });
   }
 
   constructor() {
@@ -72,10 +73,12 @@ export default class ForeFooter extends ForeElement {
     template.classList.add("fore-footer");
     template.innerHTML = this.HTML;
 
-    const sponsorContainer = template.querySelector(".fore-footer-sponsors-images");
+    const sponsorContainer = template.querySelector(
+      ".fore-footer-sponsors-images"
+    );
     sponsorContainer.append(...this.sponsors);
     this.shadowRoot.append(this.stiler, template);
-    
+
     this.addAriaToIcons();
   }
 }

@@ -9,6 +9,7 @@ for (let i = 0; i < dager.length; i++) {
   dager[i].addEventListener("click", showPopUp.bind(this, dagTall));
 }
 
+// array med informasjon om hva som skjer de ulike dagene i måneden.
 const dagerArray = [
   "Klubbmesterskap! Første start går kl 09.00, oppmøte på gressbanen bak klubbhuset kl 07.30.",
   "Damedag! Se informasjon lenger ned på siden.",
