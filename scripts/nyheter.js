@@ -33,6 +33,7 @@ export class NyhetBoks extends ForeElement {
     return `
 <a href="./nyhet.html#${this._nyhet.tittel}">
   <div class="boks boks-link boks-vertikal">
+    <!-- Bildet har ingen semantisk betydning. Bildet er derfor satt som bakgrunn -->
     <div class="boksebilde" style="background-image: url(${this._nyhet.bilde})">
     </div>
     <div class="boksetekst">
@@ -64,6 +65,8 @@ export class NyhetBoks extends ForeElement {
       this._nyhet = await NyhetBoks.getNyhetFraNavn(this.dataset.nyhet);
     }
     this.shadowRoot.append(this.stiler);
+    
+    this.addAriaToIcons();
   }
 
   /**
@@ -223,6 +226,8 @@ export class NyhetBoksCollectionElement extends ForeElement {
     nyheter.forEach((nyhet) => {
       this.shadowRoot.append(new this._template(nyhet));
     });
+
+    this.addAriaToIcons();
   }
 }
 

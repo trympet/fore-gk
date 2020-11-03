@@ -70,7 +70,7 @@ export default class ForeNavigasjon extends ForeElement {
       </li>`;
     });
     const togglebutton = document.createElement("button");
-    togglebutton.className = "sidenav-button";
+    togglebutton.className = "ikon ikon-meny ikon-stort sidenav-button touch-knapp";
     this.shadowRoot.append(this.template, this.stiler)
 
     this.backdrop.addEventListener("click", this.onBackdropClick.bind(this))
@@ -78,7 +78,8 @@ export default class ForeNavigasjon extends ForeElement {
     this.shadowRoot
       .querySelector("button")
       .addEventListener("click", this.onNavToggle.bind(this));
-
+      
+    this.addAriaToIcons();
   }
 
   onSelectonChange(e) {

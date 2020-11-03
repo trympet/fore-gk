@@ -24,15 +24,15 @@ export default class ForeFooter extends ForeElement {
     <div class="fore-footer-item-content">
       <div class="kontakt-oss-grid">
         <div class="kontakt-oss-epost">
-          <h5><span class="ikon ikon-epost"></span>Epost</h5>
+          <h2 class="h5"><span class="ikon ikon-epost"></span>Epost</h2>
           <p>mail@foregk.no</p>
         </div>
         <div class="kontakt-oss-telefon">
-          <h5><span class="ikon ikon-telefon"></span>Telefon</h5>
+          <h2 class="h5"><span class="ikon ikon-telefon"></span>Telefon</h2>
           <p>+47&nbsp;98765432</p>
         </div>
         <div class="kontakt-oss-adresse">
-          <h5><span class="ikon ikon-adresse"></span>Adresse</h5>
+          <h2 class="h5"><span class="ikon ikon-adresse"></span>Adresse</h2>
           <p>Adresse&nbsp;10A&nbsp;<br>7040,&nbsp;Trondheim<br>Norway</p>
         </div>
       </div>
@@ -75,6 +75,8 @@ export default class ForeFooter extends ForeElement {
     const sponsorContainer = template.querySelector(".fore-footer-sponsors-images");
     sponsorContainer.append(...this.sponsors);
     this.shadowRoot.append(this.stiler, template);
+    
+    this.addAriaToIcons();
   }
 }
 

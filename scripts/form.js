@@ -73,6 +73,8 @@ export class DialogBoks extends ForeElement {
    */
   connectedCallback() {
     this.bakgrunn.addEventListener("click", () => this.skjul());
+    
+    this.addAriaToIcons();
   }
   /** Åpner dialogboksen */
   vis() {
