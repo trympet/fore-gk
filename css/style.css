@@ -175,7 +175,7 @@ td:hover {
 
 #next, #prev {
     position: absolute;
-    top: 42%;
+    top: 38%;
     height: 50px;
     margin: 3px;
     cursor: pointer;
