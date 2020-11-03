@@ -1,7 +1,20 @@
+//@ts-check
 import { ForeElement } from "./fore-element.js";
 
+/**
+ * Navbar element til bruk på alle undersider.
+ * @public
+ * @extends {ForeElement}
+ */
 export default class ForeNavigasjon extends ForeElement {
-  SIDER = [
+
+  /**
+   * Array med undersider.
+   * Objeketene kan spesifisere alias hvis de har flere paths som
+   * burde indikeres som aktiv i navbaren.
+   * @public
+   */
+  sider = [
     {
       navn: "Hjem",
       uri: "index.html",
@@ -30,23 +43,31 @@ export default class ForeNavigasjon extends ForeElement {
     },
   ];
 
-  HTML = `
-  <header class="nav-header">
-    <a href='./index.html'>
-      <img class="nav-header-img" src="./images/logo.svg" alt="Fore Golfklubb">
-    </a>
-  </header>
-  <nav class="navbar">
-    <ul id="nav-list">
-    </ul>
-    <div class="backdrop"></div>
-  </nav>`;
+  get _HTML() {
+    return `
+    <header class="nav-header">
+      <a href='./index.html'>
+        <img class="nav-header-img" src="./images/logo.svg" alt="Fore Golfklubb">
+      </a>
+    </header>
+    <nav class="navbar">
+      <ul id="nav-list">
+      </ul>
+      <div class="backdrop"></div>
+    </nav>`;
+  }
 
-  get backdrop() {
+  get _backdrop() {
     return this.shadowRoot.querySelector(".backdrop");
   }
 
-  isActive(path, alias = null) {
+  /**
+   * Sjekke om et element i this.sider er aktivt.
+   * @param {string} path - pathen som skal testes
+   * @param {string | RegExp} alias - alias til elementet
+   * @returns {boolean}
+   */
+  erAktiv(path, alias = null) {
     return (
       window.location.pathname.split("#")[0].includes(path) ||
       window.location.pathname.split("#")[0].match(alias) != null
@@ -60,12 +81,12 @@ export default class ForeNavigasjon extends ForeElement {
     super();
     this.template = document.createElement("div");
     this.template.classList.add("nav-wrapper")
-    this.template.innerHTML = this.HTML;
+    this.template.innerHTML = this._HTML;
 
     const navList = this.template.querySelector("#nav-list");
-    this.SIDER.forEach(({ navn, uri, alias }) => {
+    this.sider.forEach(({ navn, uri, alias }) => {
       navList.innerHTML += `<li class="nav-item ${
-        this.isActive(uri, alias) ? "active" : ""
+        this.erAktiv(uri, alias) ? "active" : ""
       }">
         <a href="${uri}" class="nav-link">${navn}</a>
       </li>`;
@@ -74,7 +95,7 @@ export default class ForeNavigasjon extends ForeElement {
     togglebutton.className = "ikon ikon-meny ikon-stort sidenav-button touch-knapp";
     this.shadowRoot.append(this.template, this.stiler)
 
-    this.backdrop.addEventListener("click", this.onBackdropClick.bind(this))
+    this._backdrop.addEventListener("click", this.onBackdropClick.bind(this))
     this.shadowRoot.querySelector("nav").append(togglebutton);
     this.shadowRoot
       .querySelector("button")
@@ -83,17 +104,24 @@ export default class ForeNavigasjon extends ForeElement {
     this.addAriaToIcons();
   }
 
-  onSelectonChange(e) {
-    window.location.pathname = e.target.value;
-  }
-
-  onNavToggle(e) {
+  /**
+   * Håndterer klikk på menyikonet i navbaren og oppdaterer visuell state.
+   * @private
+   * @returns {void}
+   */
+  onNavToggle() {
     // forhindrer animasjon når siden lastes inn
     this.template.querySelector("#nav-list").classList.add("touched")
     this.template.querySelector("#nav-list").classList.toggle("active")
   }
 
-  onBackdropClick(e) {
+  /**
+   * Håndterer klikk på backdrop mens sidemeny er åpen.
+   * Oppdaterer visuell state.
+   * @private
+   * @returns {void}
+   */
+  onBackdropClick() {
     this.template.querySelector("#nav-list").classList.remove("active")
   }
 }

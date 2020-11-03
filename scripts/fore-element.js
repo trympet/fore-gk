@@ -1,4 +1,11 @@
+//@ts-check
 
+/**
+ * Abtrakt klasse for alle webcomponents på denne nettsiden.
+ * @abstract
+ * @extends {HTMLElement}
+ * @public
+ */
 export class ForeElement extends HTMLElement {
   get stiler() {
     const linkElem = document.createElement("link");
@@ -7,6 +14,10 @@ export class ForeElement extends HTMLElement {
     return linkElem;
   }
 
+  /**
+   * Metode som må kalles hvis ikoner skal bli annotert med aria-atributter.
+   * @protected
+   */
   addAriaToIcons = () => {
     const ikoner = this.shadowRoot.querySelectorAll(".ikon");
     for (const ikon of ikoner) {
@@ -20,7 +31,4 @@ export class ForeElement extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
   }
-  
-
-  
 }

@@ -67,10 +67,6 @@ h1 .ikon, h2 .ikon, h3 .ikon {
 
 /* Document layout */
 
-section {
-    padding: 1rem 0;
-}
-
 main {
     margin: 0 10%;
     position: relative;
@@ -1170,7 +1166,11 @@ fore-navigasjon {
 
 /* index.html */
 
-.forside section, .forside .section {
+.forside section {
+    padding: 1rem 0;
+}
+
+.forside-content section, .forside-content .section {
     grid-column: 1;
 }
 
@@ -1231,7 +1231,7 @@ fore-hjem-nyheter {
     margin-bottom: 1rem;
 }
 
-.forside {
+.forside-content {
     display: grid;
     grid-template-columns: 2fr max-content;
     column-gap: 2rem;
@@ -1261,7 +1261,7 @@ aside .content-wrapper {
 }
 
 @media only screen and (max-width: 720px) {
-    .forside {
+    .forside-content {
         display: flex;
         flex-direction: column-reverse;
     }

@@ -10,7 +10,8 @@ const ikonFormat = "svg";
 const imageContainer = document.querySelector(".værmelding-ikon");
 const temperaturElement = document.querySelector(".værmelding-temperatur");
 
-const getNowcast = async () => {
+// Henter værmeldingen for dette øyeblikk
+const hentVærmelding = async () => {
   const res = await (await fetch(endpoint)).json();
   const timeFrames = res?.properties?.timeseries;
   if (timeFrames) {
@@ -20,35 +21,14 @@ const getNowcast = async () => {
   }
 };
 
+// Henter ikonet som korresponderer med været.
 const getIkonUri = (timeframe) => {
   const ikon = timeframe?.data["next_1_hours"]?.summary["symbol_code"];
   return `${ikonPath}/${ikon}.${ikonFormat}`;
 };
 
+// Henter temperatur
 const getTemperatur = (timeframe) =>
   timeframe?.data?.instant?.details?.["air_temperature"] + "°C";
 
-getNowcast();
-
-
-const setBaneforhold = () => {
-  const dag = new Date(Date.now())
-    .getDay();
-  const baneforholdElement = document.querySelector("#baneforhold");
-
-  let forhold = "";
-  switch (dag) {
-    case 1:
-    case 4:
-      forhold = "Nyklipt i dag";
-      break;
-    case 0:
-      forhold = "Nylig vannet";
-      break;
-    default:
-      forhold = "Nylig klipt"
-      break;
-  }
-  baneforholdElement.textContent = forhold;
-}
-setBaneforhold();
+hentVærmelding();

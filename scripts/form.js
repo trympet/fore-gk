@@ -9,7 +9,11 @@ import { ForeElement } from "./fore-element.js";
  * åpne() og lukk() fyrer av eventene 'åpnet' og 'lukkes'.
  */
 export class DialogBoks extends ForeElement {
-  get templateHTML() {
+  
+  /**
+   * Innhold i template elementet.
+   */
+  get templateInnhold() {
     return `
     <!-- aria-atributter for å hjelpe synshemmede -->
       <div class="dialogboks" role="dialog" aria-labelledby="dialog-label" aria-modal="true">
@@ -57,7 +61,7 @@ export class DialogBoks extends ForeElement {
   constructor() {
     super();
     const template = document.createElement("template");
-    template.innerHTML = this.templateHTML;
+    template.innerHTML = this.templateInnhold;
     this.shadowRoot.append(this.stiler, template.content);
   }
 
