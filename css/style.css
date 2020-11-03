@@ -355,6 +355,13 @@ fore-nyheter {
     padding: 0;
 }
 
+.nyhet-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
 /* CSS til nyhetsarkiv */
 
 #overLinja {

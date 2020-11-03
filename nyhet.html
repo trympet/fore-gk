@@ -17,11 +17,14 @@
     <fore-navigasjon></fore-navigasjon>
     <main>
 
-      <h1 class="nyhet-navn"></h1>
+      <article>
+        <header class="nyhet-header">
+          <h1 class="nyhet-navn"></h1>
+          <h2 class="h3">Publisert:&nbsp;<time class="nyhet-dato-publisert"></time></h2>
+        </header>
 
-      <hr class="nyhethr">
+        <hr class="nyhethr">
 
-      <div class="ennyhet">
 
         <div class="boks">
 
@@ -33,10 +36,9 @@
 
           <div class="boksebilde nyhetsbilde"></div>
 
-        </div>
 
-      </div>
-        
+        </div>
+      </article>
     </main>
     <fore-footer></fore-footer>
     <script type="module" src="./scripts/common.js"></script>
@@ -50,9 +52,11 @@
 
       (async () => {
         const tittelElement = document.querySelector(".nyhet-navn");
+        const datoElement = document.querySelector(".nyhet-dato-publisert");
         const tekstElement = document.querySelector(".nyhet-tekst");
         const bildeContainer = document.querySelector(".boksebilde");
         let tekst = "";
+        let dato = "ukjent"
         let tittel = "Nyhet ikke funnet";
         
         const nyhetNavnFraURI = decodeURIComponent(window.location.hash.slice(1));
@@ -62,13 +66,15 @@
           
           const nyhet = await NyhetBoks.getNyhetFraNavn(nyhetNavnFraURI)
           tekst = nyhet?.tekst || "Vi klarte ikke å laste inn nyheten. Vennligst prøv igjen senere.";
-
           if (nyhet) {
             tittel = nyhet.tittel;
             const bildeElement = document.createElement("img");
             bildeElement.setAttribute("src", nyhet.bilde);
             bildeElement.setAttribute("alt", nyhet.tittel);
             bildeContainer.append(bildeElement);
+            const dateTime = new Date(nyhet.dato);
+            dato = dateTime.toLocaleDateString();
+            datoElement.setAttribute("datetime", dateTime.toISOString())
           }
         }
         else {
@@ -76,6 +82,7 @@
         }
         tittelElement.textContent = tittel;
         tekstElement.textContent = tekst;
+        datoElement.textContent = dato;
 
       })();
     </script>
