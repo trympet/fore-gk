@@ -1,4 +1,32 @@
-//@ts-check
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: nyheter.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: nyheter.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//@ts-check
 
 import { ForeElement } from "./fore-element.js";
 
@@ -39,20 +67,20 @@ export class NyhetBoks extends ForeElement {
 
   get _HTML() {
     return `
-<a href="./nyhet.html#${this._nyhet.tittel}">
-  <div class="boks boks-link boks-vertikal">
-    <!-- Bildet har ingen semantisk betydning. Bildet er derfor satt som bakgrunn -->
-    <div class="boksebilde" style="background-image: url(${this._nyhet.bilde})">
-    </div>
-    <div class="boksetekst">
-      <header>
-        <h2 class="boks-overskrift">${this._nyhet.tittel}</h2>
-        <h3 class="boks-underoverskrift">${this._nyhet.forfatter}</h3>
-      </header>
-      <p>${this._tekst}</p>
-    </div>
-  </div>
-</a>`;
+&lt;a href="./nyhet.html#${this._nyhet.tittel}">
+  &lt;div class="boks boks-link boks-vertikal">
+    &lt;!-- Bildet har ingen semantisk betydning. Bildet er derfor satt som bakgrunn -->
+    &lt;div class="boksebilde" style="background-image: url(${this._nyhet.bilde})">
+    &lt;/div>
+    &lt;div class="boksetekst">
+      &lt;header>
+        &lt;h2 class="boks-overskrift">${this._nyhet.tittel}&lt;/h2>
+        &lt;h3 class="boks-underoverskrift">${this._nyhet.forfatter}&lt;/h3>
+      &lt;/header>
+      &lt;p>${this._tekst}&lt;/p>
+    &lt;/div>
+  &lt;/div>
+&lt;/a>`;
   }
 
   /**
@@ -71,7 +99,7 @@ export class NyhetBoks extends ForeElement {
   async connectedCallback() {
     // Nyhet kan også spesifiseres i dataset
     this.shadowRoot.innerHTML = this._HTML;
-    if (!this._nyhet && this.dataset.nyhet) {
+    if (!this._nyhet &amp;&amp; this.dataset.nyhet) {
       this._nyhet = await NyhetBoks.getNyhetFraNavn(this.dataset.nyhet);
     }
     this.shadowRoot.append(this.stiler);
@@ -82,7 +110,7 @@ export class NyhetBoks extends ForeElement {
   /**
    * Henter én nyhet fra API
    * @param {string} navn - Overskrift/navn til nyhetsartikkel.
-   * @returns {Promise<object>} Returnerer nyhet som matcher. Hvis ikke nyhet finnes returneres Promise<undefined>
+   * @returns {Promise&lt;object>} Returnerer nyhet som matcher. Hvis ikke nyhet finnes returneres Promise&lt;undefined>
    * @static
    * @public
    */
@@ -105,20 +133,20 @@ export class NyhetArkivBoks extends NyhetBoks {
   // Override HTML fra NyhetBoks
   get _HTML() {
     return `
-<a href="./nyhet.html#${this._nyhet.tittel}">
-<div class="boks boks-link boks-horisontal">
-  <div class="boksetekst">
-    <header>
-      <h2 class="boks-overskrift">${this._nyhet.tittel}</h2>
-      <h3 class="boks-underoverskrift">Dato publisert: <time datetime="${this._dato.toISOString()}" >${this._dato.toLocaleDateString()}</time></h3>
-    </header>
-    <p>${this._tekst}</p>
-  </div>
-  <div class="boksebilde nyhetsbilde">
-    <img src="${this._nyhet.bilde}" alt="${this._nyhet.tittel}">
-  </div>
-</div>
-</a>`;
+&lt;a href="./nyhet.html#${this._nyhet.tittel}">
+&lt;div class="boks boks-link boks-horisontal">
+  &lt;div class="boksetekst">
+    &lt;header>
+      &lt;h2 class="boks-overskrift">${this._nyhet.tittel}&lt;/h2>
+      &lt;h3 class="boks-underoverskrift">Dato publisert: &lt;time datetime="${this._dato.toISOString()}" >${this._dato.toLocaleDateString()}&lt;/time>&lt;/h3>
+    &lt;/header>
+    &lt;p>${this._tekst}&lt;/p>
+  &lt;/div>
+  &lt;div class="boksebilde nyhetsbilde">
+    &lt;img src="${this._nyhet.bilde}" alt="${this._nyhet.tittel}">
+  &lt;/div>
+&lt;/div>
+&lt;/a>`;
   }
 
   /**
@@ -162,7 +190,7 @@ export class NyhetBoksCollectionElement extends ForeElement {
       new Promise((resolve) => setTimeout(() => resolve(0), 7500)),
       new Promise((resolve) =>
         setInterval(() => {
-          if (this._isConnected && this._nyheterLengde !== -1) {
+          if (this._isConnected &amp;&amp; this._nyheterLengde !== -1) {
             return resolve(this._nyheterLengde);
           }
         }, 100)
@@ -172,7 +200,7 @@ export class NyhetBoksCollectionElement extends ForeElement {
 
   /**
    * Antall nyheter som finnes i API. Her MÅ man bruke await!
-   * @type {Promise<number>}
+   * @type {Promise&lt;number>}
    */
   get nyheterCount() {
     // Kjører bare rutinen én gang per instanse.
@@ -185,7 +213,7 @@ export class NyhetBoksCollectionElement extends ForeElement {
   /**
    * Attributter som observeres og endrer innhold dynamisk.
    * Les mer: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#Using_the_lifecycle_callbacks
-   * @returns {Array<string>}
+   * @returns {Array&lt;string>}
    * @static
    */
   static get observedAttributes() {
@@ -194,7 +222,7 @@ export class NyhetBoksCollectionElement extends ForeElement {
 
   /**
    * Lager nytt nyhetssamlingselement.
-   * @param {typeof NyhetBoks} template - typeof klasse nyhetselement som skal vises
+   * @param {NyhetsBoks} template - typeof klasse nyhetselement som skal vises
    */
   constructor(template = NyhetBoks) {
     super();
@@ -237,7 +265,7 @@ export class NyhetBoksCollectionElement extends ForeElement {
 
   /**
    * @private
-   * @returns {Promise<object[]>} - Returnerer array med nyheter fra API
+   * @returns {Promise&lt;object[]>} - Returnerer array med nyheter fra API
    */
   async _getNyheter() {
     const req = await fetch("./api/nyheter.json");
@@ -291,3 +319,26 @@ export const Init = () => {
 };
 
 
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ArkivCollection.html">ArkivCollection</a></li><li><a href="DialogBoks.html">DialogBoks</a></li><li><a href="ForeElement.html">ForeElement</a></li><li><a href="ForeFooter.html">ForeFooter</a></li><li><a href="ForeHjemNyhetCard.html">ForeHjemNyhetCard</a></li><li><a href="ForeHjemNyheterCollection.html">ForeHjemNyheterCollection</a></li><li><a href="ForeNavigasjon.html">ForeNavigasjon</a></li><li><a href="NyhetArkivBoks.html">NyhetArkivBoks</a></li><li><a href="NyhetBoks.html">NyhetBoks</a></li><li><a href="NyhetBoksCollectionElement.html">NyhetBoksCollectionElement</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addAriaToIcons">addAriaToIcons</a></li><li><a href="global.html#Init">Init</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Tue Nov 03 2020 23:44:37 GMT+0100 (GMT+01:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

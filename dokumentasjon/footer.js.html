@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: footer.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: footer.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//@ts-check
+import { ForeElement } from "./fore-element.js";
+
+// konstante medlemmer er annotert i blokkbokstaver.
+
+/**
+ * Footerelement delt av alle sider. Elementet har ingen constructor,
+ * og det tar heller ingen parametere eller atributter.
+ * @public
+ */
+export class ForeFooter extends ForeElement {
+  _SPONSORS = [
+    "circle-1.png",
+    "logoipsum.png",
+    "generic-company-abc.png",
+    "hexa.png",
+    "logoipsum-alt.png",
+    "treva.png",
+    "ntnu.png",
+  ];
+
+  _SPONSOR_LOGO_PATH = "./images/sponsors/";
+
+  HTML = `
+  &lt;div class="fore-footer-wrapper">
+    &lt;div class="fore-footer-item">
+      &lt;div class="fore-footer-item-content">
+        &lt;a href='./index.html'>
+          &lt;img src="./images/footer-logo.svg" alt="Fore Golfklubb" class="fore-footer-logo-img">
+        &lt;/a>
+      &lt;/div>
+    &lt;/div>
+    &lt;div class="fore-footer-item">
+      &lt;header>&lt;h2 class="h4">Kontakt oss&lt;/h2>&lt;/header>
+      &lt;div class="fore-footer-item-content">
+        &lt;div class="kontakt-oss-grid">
+          &lt;div class="kontakt-oss-epost">
+            &lt;h2 class="h5">&lt;span class="ikon ikon-epost">&lt;/span>Epost&lt;/h2>
+            &lt;p>mail@foregk.no&lt;/p>
+          &lt;/div>
+          &lt;div class="kontakt-oss-telefon">
+            &lt;h2 class="h5">&lt;span class="ikon ikon-telefon">&lt;/span>Telefon&lt;/h2>
+            &lt;p>+47&amp;nbsp;98765432&lt;/p>
+          &lt;/div>
+          &lt;div class="kontakt-oss-adresse">
+            &lt;h2 class="h5">&lt;span class="ikon ikon-adresse">&lt;/span>Adresse&lt;/h2>
+            &lt;p>Adresse&amp;nbsp;10A&amp;nbsp;&lt;br>7040,&amp;nbsp;Trondheim&lt;br>Norway&lt;/p>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+    &lt;div class="fore-footer-item">
+      &lt;header>&lt;h2 class="h4">Laget av...&lt;/h2>&lt;/header>
+      &lt;div class="fore-footer-item-content">
+        &lt;ul>
+          &lt;li>Trym Flogard&lt;/li>
+          &lt;li>Jørgen Johannesen&lt;/li>
+          &lt;li>Kaja Askeland Gabrielsen&lt;/li>
+          &lt;li>Emilie Sandberg Knudsen&lt;/li>
+          &lt;li>Karen Seim Midtlien&lt;/li>
+        &lt;/ul>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+  &lt;div class="fore-footer-sponsors">
+    &lt;h2 class="fore-footer-sponsors-header h4">Sponsorer&lt;/h2>
+    &lt;div class="fore-footer-sponsors-images">&lt;/div>
+  &lt;/div>`;
+ 
+  /**
+   * Hent alle sponsorer
+   * @returns {HTMLImageElement[]} - bildeelementet for alle sponsorer
+   */
+  get sponsors() {
+    return this._SPONSORS.map((sponsor) => {
+      const path = this._SPONSOR_LOGO_PATH + sponsor;
+      const image = document.createElement("img");
+      image.setAttribute("src", path);
+      image.setAttribute("alt", sponsor);
+      return image;
+    });
+  }
+
+  constructor() {
+    super();
+    const template = document.createElement("footer");
+    template.classList.add("fore-footer");
+    template.innerHTML = this.HTML;
+
+    const sponsorContainer = template.querySelector(
+      ".fore-footer-sponsors-images"
+    );
+    sponsorContainer.append(...this.sponsors); // legge til alle bilder
+    this.shadowRoot.append(this.stiler, template);
+
+    this.addAriaToIcons();
+  }
+}
+
+customElements.define("fore-footer", ForeFooter);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ArkivCollection.html">ArkivCollection</a></li><li><a href="DialogBoks.html">DialogBoks</a></li><li><a href="ForeElement.html">ForeElement</a></li><li><a href="ForeFooter.html">ForeFooter</a></li><li><a href="ForeHjemNyhetCard.html">ForeHjemNyhetCard</a></li><li><a href="ForeHjemNyheterCollection.html">ForeHjemNyheterCollection</a></li><li><a href="ForeNavigasjon.html">ForeNavigasjon</a></li><li><a href="NyhetArkivBoks.html">NyhetArkivBoks</a></li><li><a href="NyhetBoks.html">NyhetBoks</a></li><li><a href="NyhetBoksCollectionElement.html">NyhetBoksCollectionElement</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addAriaToIcons">addAriaToIcons</a></li><li><a href="global.html#Init">Init</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Tue Nov 03 2020 23:44:37 GMT+0100 (GMT+01:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

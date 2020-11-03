@@ -6,6 +6,7 @@ import { ForeElement } from "./fore-element.js";
 /**
  * Footerelement delt av alle sider. Elementet har ingen constructor,
  * og det tar heller ingen parametere eller atributter.
+ * @public
  */
 export default class ForeFooter extends ForeElement {
   _SPONSORS = [

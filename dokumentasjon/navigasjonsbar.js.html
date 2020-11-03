@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: navigasjonsbar.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: navigasjonsbar.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//@ts-check
+import { ForeElement } from "./fore-element.js";
+
+/**
+ * Navbar element til bruk på alle undersider.
+ * @public
+ * @extends {ForeElement}
+ */
+export class ForeNavigasjon extends ForeElement {
+
+  /**
+   * Array med undersider.
+   * Objeketene kan spesifisere alias hvis de har flere paths som
+   * burde indikeres som aktiv i navbaren.
+   * @public
+   */
+  sider = [
+    {
+      navn: "Hjem",
+      uri: "index.html",
+      alias: /^\/$/
+    },
+    {
+      navn: "Klubben",
+      uri: "klubben.html",
+    },
+    {
+      navn: "Arrangementer",
+      uri: "arrangementer.html",
+    },
+    {
+      navn: "Medlemskap",
+      uri: "medlemskap.html",
+    },
+    {
+      navn: "Nyheter",
+      uri: "nyhetsarkiv.html",
+      alias: "nyhet.html",
+    },
+    {
+      navn: "Kontakt oss",
+      uri: "kontakt_oss.html",
+    },
+  ];
+
+  get _HTML() {
+    return `
+    &lt;header class="nav-header">
+      &lt;a href='./index.html'>
+        &lt;img class="nav-header-img" src="./images/logo.svg" alt="Fore Golfklubb">
+      &lt;/a>
+    &lt;/header>
+    &lt;nav class="navbar">
+      &lt;ul id="nav-list">
+      &lt;/ul>
+      &lt;div class="backdrop">&lt;/div>
+    &lt;/nav>`;
+  }
+
+  get _backdrop() {
+    return this.shadowRoot.querySelector(".backdrop");
+  }
+
+  /**
+   * Sjekke om et element i this.sider er aktivt.
+   * @param {string} path - pathen som skal testes
+   * @param {string | RegExp} alias - alias til elementet
+   * @returns {boolean}
+   */
+  erAktiv(path, alias = null) {
+    return (
+      window.location.pathname.split("#")[0].includes(path) ||
+      window.location.pathname.split("#")[0].match(alias) != null
+    );
+  }
+  
+  template;
+
+
+  constructor() {
+    super();
+    this.template = document.createElement("div");
+    this.template.classList.add("nav-wrapper")
+    this.template.innerHTML = this._HTML;
+
+    const navList = this.template.querySelector("#nav-list");
+    this.sider.forEach(({ navn, uri, alias }) => {
+      navList.innerHTML += `&lt;li class="nav-item ${
+        this.erAktiv(uri, alias) ? "active" : ""
+      }">
+        &lt;a href="${uri}" class="nav-link">${navn}&lt;/a>
+      &lt;/li>`;
+    });
+    const togglebutton = document.createElement("button");
+    togglebutton.className = "ikon ikon-meny ikon-stort sidenav-button touch-knapp";
+    this.shadowRoot.append(this.template, this.stiler)
+
+    this._backdrop.addEventListener("click", this.onBackdropClick.bind(this))
+    this.shadowRoot.querySelector("nav").append(togglebutton);
+    this.shadowRoot
+      .querySelector("button")
+      .addEventListener("click", this.onNavToggle.bind(this));
+      
+    this.addAriaToIcons();
+  }
+
+  /**
+   * Håndterer klikk på menyikonet i navbaren og oppdaterer visuell state.
+   * @private
+   * @returns {void}
+   */
+  onNavToggle() {
+    // forhindrer animasjon når siden lastes inn
+    this.template.querySelector("#nav-list").classList.add("touched")
+    this.template.querySelector("#nav-list").classList.toggle("active")
+  }
+
+  /**
+   * Håndterer klikk på backdrop mens sidemeny er åpen.
+   * Oppdaterer visuell state.
+   * @private
+   * @returns {void}
+   */
+  onBackdropClick() {
+    this.template.querySelector("#nav-list").classList.remove("active")
+  }
+}
+
+customElements.define("fore-navigasjon", ForeNavigasjon);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ArkivCollection.html">ArkivCollection</a></li><li><a href="DialogBoks.html">DialogBoks</a></li><li><a href="ForeElement.html">ForeElement</a></li><li><a href="ForeFooter.html">ForeFooter</a></li><li><a href="ForeHjemNyhetCard.html">ForeHjemNyhetCard</a></li><li><a href="ForeHjemNyheterCollection.html">ForeHjemNyheterCollection</a></li><li><a href="ForeNavigasjon.html">ForeNavigasjon</a></li><li><a href="NyhetArkivBoks.html">NyhetArkivBoks</a></li><li><a href="NyhetBoks.html">NyhetBoks</a></li><li><a href="NyhetBoksCollectionElement.html">NyhetBoksCollectionElement</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addAriaToIcons">addAriaToIcons</a></li><li><a href="global.html#Init">Init</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Tue Nov 03 2020 23:44:37 GMT+0100 (GMT+01:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
