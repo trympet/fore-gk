@@ -11,10 +11,11 @@ import { ForeElement } from "./fore-element.js";
 export class DialogBoks extends ForeElement {
   get templateHTML() {
     return `
-      <div class="dialogboks">
-        <div class="dialog-header">
-          <slot name="dialog-header"></slot>
-        </div>
+    <!-- aria-atributter for å hjelpe synshemmede -->
+      <div class="dialogboks" role="dialog" aria-labelledby="dialog-label" aria-modal="true">
+        <header class="dialog-header">
+          <slot name="dialog-header" id="dialog-label"></slot>
+        </header>
         <div class="dialog-body">
 
           <div class="dialog-loader">
@@ -42,23 +43,16 @@ export class DialogBoks extends ForeElement {
     `;
   }
 
-  get dialogBoks() {
+  get _dialogBoks() {
     return this.shadowRoot.querySelector(".dialogboks");
   }
 
-  get bakgrunn() {
+  get _bakgrunn() {
     return this.shadowRoot.querySelector(".dialog-bakgrunn");
   }
 
-  get loader() {
-    return this.shadowRoot.querySelector("dialog");
-  }
-
   /**
-   * Lage en dialogboks
-   * @param {String} overskrift - Overskriften til dialogboksen
-   * @param {HTMLDivElement} bodyElement - HTMLElement med body-innholdet til dialogboksen
-   * @param {{lukk:true, ok:false}} [alternativer] - lukk: om det skal vises lukk-knapp, ok: om det skal vises ok-knapp
+   * Lage en ny dialogboks
    */
   constructor() {
     super();
@@ -72,46 +66,59 @@ export class DialogBoks extends ForeElement {
    * Genererer dialogboksen og fester underelementer til DialogBoks-elementet
    */
   connectedCallback() {
-    this.bakgrunn.addEventListener("click", () => this.skjul());
+    this._bakgrunn.addEventListener("click", () => this.skjul());
     
     this.addAriaToIcons();
   }
-  /** Åpner dialogboksen */
+
+  /** 
+   * Åpner dialogboksen 
+   * @returns {void}
+   */
   vis() {
-    setTimeout(() => this.dialogBoks.classList.add("dialog-åpen"), 6); // kan kun animeres etter det har gått minst 1 frame
-    this.bakgrunn.classList.add("dialog-skjult");
+    setTimeout(() => this._dialogBoks.classList.add("dialog-åpen"), 6); // kan kun animeres etter det har gått minst 1 frame
+    this._bakgrunn.classList.add("dialog-skjult");
     this.dispatchEvent(new CustomEvent("åpnet")); // sender event når dialogboksen åpnes
   }
-  /** Lukker dialogboksen */
+
+  /** 
+   * Lukker dialogboksen 
+   * @returns {void}
+   */
   skjul() {
-    this.dialogBoks.classList.remove("dialog-åpen");
-    this.bakgrunn.classList.remove("dialog-skjult");
+    this._dialogBoks.classList.remove("dialog-åpen");
+    this._bakgrunn.classList.remove("dialog-skjult");
     this.dispatchEvent(new CustomEvent("lukket")); // sender event når dialogboksen lukkes
   }
 
+  /**
+   * Lytter etter submit event fra et skjema og åpner dialogen når skjemaet submittes.
+   * @param {HTMLFormElement} form - Formelementet som dialogen skal lytte til
+   * @returns {void}
+   */
   visDialogForForm(form) {
     // Initial state er loading for forms
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+
       if (!form.reportValidity()) {
         return;
       }
-      this.dialogBoks.classList.add("loading");
+
+      this._dialogBoks.classList.add("loading");
       this.vis();
+      
       // Fake submit. Dette ville vært post request i produksjon.
-      const loader = document.querySelector(".loader");
       setTimeout(() => {
         // Fake timeout for å simulere submit, noe som kan ta tid.
-        this.dialogBoks.classList.add("completed");
-        this.dialogBoks.classList.remove("loading");
+        this._dialogBoks.classList.add("completed");
+        this._dialogBoks.classList.remove("loading");
 
         // Setter alle formelementer til disabled.
         for (const element of form.elements) {
           element.setAttribute("disabled", "true");
         }
 
-        // Fjerne statusindikator etter 2s.
-        // setTimeout(() => loader.classList.remove("completed"), 3000);
       }, 2000);
     });
   }
