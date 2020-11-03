@@ -54,6 +54,10 @@ h1 .ikon, h2 .ikon, h3 .ikon {
 
 /* Document layout */
 
+section {
+    padding: 1rem 0;
+}
+
 main {
     margin: 0 10%;
     position: relative;
@@ -1149,6 +1153,7 @@ fore-hjem-nyheter {
     grid-column: 1/2;
     align-items: flex-start;
     max-width: 780px;
+    margin-bottom: 1rem;
 }
 
 .forside {
