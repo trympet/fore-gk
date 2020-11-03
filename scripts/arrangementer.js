@@ -10,7 +10,7 @@ for (let i = 0; i < dager.length; i++) {
 }
 
 const dagerArray = [
-  "Klubbmesterskap!",
+  "Klubbmesterskap! Første start går kl 09.00, oppmøte på gressbanen bak klubbhuset kl 07.30.",
   null,
   null,
   "Dag for damer",

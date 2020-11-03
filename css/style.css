@@ -284,9 +284,9 @@ a {
 
 #text {
     height: 10%;
-    max-width: 100px;
+    max-width: 200px;
     margin: auto;
-    margin-top: 15%;
+    margin-top: 5%;
 }
 
 .aktivDag {
