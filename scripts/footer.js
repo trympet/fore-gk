@@ -32,7 +32,7 @@ export default class ForeFooter extends ForeElement {
           <p>+47&nbsp;98765432</p>
         </div>
         <div class="kontakt-oss-adresse">
-          <h5><span class="ikon ikon-telefon"></span>Adresse</h5>
+          <h5><span class="ikon ikon-adresse"></span>Adresse</h5>
           <p>Adresse&nbsp;10A&nbsp;<br>7040,&nbsp;Trondheim<br>Norway</p>
         </div>
       </div>
