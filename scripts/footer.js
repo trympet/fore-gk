@@ -10,12 +10,12 @@ export default class ForeFooter extends ForeElement {
     "treva.png",
     "ntnu.png",
   ]
-  SPONSOR_LOGO_PATH = "./assets/sponsors/";
+  SPONSOR_LOGO_PATH = "./images/sponsors/";
   HTML = `
 <div class="fore-footer-wrapper">
   <div class="fore-footer-item">
     <div class="fore-footer-item-content">
-      <a href='./index.html'><img src="./assets/footer-logo.svg" alt="Fore Golfklubb"
+      <a href='./index.html'><img src="./images/footer-logo.svg" alt="Fore Golfklubb"
         class="fore-footer-logo-img"></a>
     </div>
   </div>
