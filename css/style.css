@@ -709,7 +709,7 @@ input[type=submit]:hover {
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
     max-width: 800px;
     margin: 1.75rem auto;
-    z-index: 2;
+    z-index: 1000;
 }
 
 .dialogboks.loading .dialog-header, .dialogboks.loading .dialog-body, .dialogboks.loading .dialog-footer {
@@ -774,7 +774,7 @@ input[type=submit]:hover {
     visibility: hidden;
 }
 
-.dialog-skjult {
+.backdrop.dialog-skjult {
     opacity: .5;
     visibility: visible!important;
 }

@@ -43,7 +43,7 @@ export class DialogBoks extends ForeElement {
           <slot name="dialog-footer"></slot>
         </div>
       </div>
-      <div class="dialog-bakgrunn"></div>
+      <div class="backdrop"></div>
     `;
   }
 
@@ -52,7 +52,7 @@ export class DialogBoks extends ForeElement {
   }
 
   get _bakgrunn() {
-    return this.shadowRoot.querySelector(".dialog-bakgrunn");
+    return this.shadowRoot.querySelector(".backdrop");
   }
 
   /**
