@@ -515,11 +515,22 @@ fore-nyheter {
 
 /* Form/skjemaer */
 
+input:disabled, select:disabled, textarea:disabled, button:disabled {
+    background-color: rgba(239, 239, 239, 0.3);
+}
+
+.form-footer input[type=submit]:disabled {
+    background-color: rgba(0,0,0,.12);
+    color: rgba(0,0,0,.26);
+    cursor: default;
+}
+
 input, select, textarea {
     padding: 15px 20px;
     width: 100%;
     margin-bottom: 2rem;
     background: #fff;
+    border-radius: 4px;
 }
 
 textarea {
@@ -529,7 +540,6 @@ textarea {
 
 input, select {
     border: 1px solid #ccc;
-    border-radius: 4px;
     box-sizing: border-box;
     font-size: 15px;
     display: block;
@@ -693,8 +703,8 @@ input[type=submit]:hover {
 
 /* Melding som mottas når medlemskap/kontakt oss - forms blir sendt inn*/
 
-.dialog-apen {
-    transform: scale(1)!important;
+.dialogboks.dialog-apen {
+    transform: scale(1);
 }
 
 .dialogboks {
@@ -704,7 +714,7 @@ input[type=submit]:hover {
     left: 1rem;
     right: 1rem;
     position: fixed;
-    pointer-events: auto!important;
+    pointer-events: all !important;
     background-color: #fff;
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
     max-width: 800px;
@@ -776,7 +786,7 @@ input[type=submit]:hover {
 
 .backdrop.dialog-skjult {
     opacity: .5;
-    visibility: visible!important;
+    visibility: visible;
 }
 
 .dialog-loader-spinner {
