@@ -415,7 +415,7 @@ fore-nyheter {
     margin: 1.5rem 0;
 }
 
-/* Bokser */
+/* Bokser, brukes for nyheter og baneguide */
 
 .boks {
     background: #FFFFFF;
@@ -544,7 +544,7 @@ input, select {
     display: flex;
 }
 
-.form-footer input[type=submit], .form-footer button[type=submit], .grønn-knapp {
+.form-footer input[type=submit], .form-footer button[type=submit], .gronn-knapp {
     width: 150px;
     background-color: var(--primary-color);
     color: white;
@@ -693,7 +693,7 @@ input[type=submit]:hover {
     }
 }
 
-.dialog-åpen {
+.dialog-apen {
     transform: scale(1)!important;
 }
 
@@ -1237,14 +1237,14 @@ fore-hjem-nyheter {
     column-gap: 2rem;
 }
 
-.værmelding-temperatur {
+.vaermelding-temperatur {
     transform: translateY(50%);
     text-anchor: end;
     dominant-baseline: ideographic;
     font-size: 4rem;
 }
 
-.åpningstider-liste {
+.apningstider-liste {
     padding: 0;
     list-style: none;
 }
