@@ -652,7 +652,6 @@ input[type=submit]:hover {
 }
 
 /* Bruker media-query for å gjøre nettsiden responsiv */
-
 @media (max-width: 720px) {
     #bokser {
         display: flex;
@@ -670,7 +669,6 @@ input[type=submit]:hover {
     #infoboks {
         flex-direction: row;
         margin-top: auto;
-        margin-inline-end: 0px;
     }
 }
 
@@ -679,7 +677,6 @@ input[type=submit]:hover {
         flex-direction: column;
         text-align: center;
         margin-top: auto;
-        margin-inline-end: 0px;
     }
     .info {
         justify-content: center;
@@ -692,6 +689,10 @@ input[type=submit]:hover {
         flex-direction: column;
     }
 }
+
+
+/* Melding som mottas når medlemskap/kontakt oss - forms blir sendt inn*/
+
 
 .dialog-åpen {
     transform: scale(1)!important;
