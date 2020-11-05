@@ -29,12 +29,10 @@
         }
 
         /* Navigasjonstabell */
-        /* Legger til eventListener på alle cellene i tabellen */
-        document.querySelectorAll('baneguide_nav').forEach(item => {
-        item.addEventListener('click', bg_nav)
-        })
 
-        /* Henter ut verdien fra cellen som klikkes på */
+        /* Legger til onclick på alle cellene i tabellen og henter ut value
+        fra cellen som klikkes på */
+        /* Inspirert av: http://dotnetlearners.com/javascript/find-table-cell-value-on-cell-table-click-using-javascript*/
         let table = document.getElementById("baneguide_navbar");
         if (table != null) {
             for (let i = 0; i < table.rows.length; i++) {
