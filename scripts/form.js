@@ -80,7 +80,7 @@ export class DialogBoks extends ForeElement {
    * @returns {void}
    */
   vis() {
-    setTimeout(() => this._dialogBoks.classList.add("dialog-åpen"), 6); // kan kun animeres etter det har gått minst 1 frame
+    setTimeout(() => this._dialogBoks.classList.add("dialog-apen"), 6); // kan kun animeres etter det har gått minst 1 frame
     this._bakgrunn.classList.add("dialog-skjult");
     this.dispatchEvent(new CustomEvent("åpnet")); // sender event når dialogboksen åpnes
   }
@@ -90,7 +90,7 @@ export class DialogBoks extends ForeElement {
    * @returns {void}
    */
   skjul() {
-    this._dialogBoks.classList.remove("dialog-åpen");
+    this._dialogBoks.classList.remove("dialog-apen");
     this._bakgrunn.classList.remove("dialog-skjult");
     this.dispatchEvent(new CustomEvent("lukket")); // sender event når dialogboksen lukkes
   }

@@ -7,8 +7,8 @@ const endpoint =
 const ikonPath = "./images/vaermelding";
 const ikonFormat = "svg";
 
-const imageContainer = document.querySelector(".værmelding-ikon");
-const temperaturElement = document.querySelector(".værmelding-temperatur");
+const imageContainer = document.querySelector(".vaermelding-ikon");
+const temperaturElement = document.querySelector(".vaermelding-temperatur");
 
 // Henter værmeldingen for dette øyeblikk
 const hentVærmelding = async () => {
