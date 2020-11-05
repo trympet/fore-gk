@@ -669,6 +669,7 @@ input[type=submit]:hover {
     #infoboks {
         flex-direction: row;
         margin-top: auto;
+        margin-inline-end: 0px;
     }
 }
 
@@ -677,6 +678,7 @@ input[type=submit]:hover {
         flex-direction: column;
         text-align: center;
         margin-top: auto;
+        margin-inline-end: 0px;
     }
     .info {
         justify-content: center;
