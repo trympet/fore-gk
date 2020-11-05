@@ -68,9 +68,11 @@ export default class ForeNavigasjon extends ForeElement {
    * @returns {boolean}
    */
   erAktiv(path, alias = null) {
+    const document = window.location.pathname.split("#")[0]; // kun URN, ikke URI
+    const fragment = document.match(/(\w*[.]html\/?|\/)$/) // matcher kun siste del av URN
     return (
-      window.location.pathname.split("#")[0].includes(path) ||
-      window.location.pathname.split("#")[0].match(alias) != null
+      (fragment || document).includes(path) ||
+      (fragment[0] || document).match(alias) != null
     );
   }
   
